@@ -1,0 +1,82 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.popup-container {
+  width: 300px;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f2f2f2;
+}
+.head__left {
+  display: flex;
+  align-items: center;
+}
+.head__left-icon {
+  width: 55px;
+  height: 55px;
+  margin: 5px;
+}
+.head__left-name {
+  font-size: 20px;
+  margin: 0;
+}
+.head__right {
+  margin-left: auto;
+}
+.head__right .main_button {
+  margin-right: 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 39px;
+  height: 21px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 22px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 17px;
+  width: 17px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #6c0ebe;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #6c0ebe;
+}
+
+input:checked + .slider:before {
+  transform: translateX(17px);
+}/*# sourceMappingURL=popup.css.map */
