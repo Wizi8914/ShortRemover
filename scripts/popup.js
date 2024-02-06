@@ -4,5 +4,4 @@ document.addEventListener('DOMContentLoaded', function () {
     toggleCheckbox.addEventListener('change', function () {
         chrome.runtime.sendMessage({ command: 'toggleExtension', value: toggleCheckbox.checked });
     });
-      
-  });
+});

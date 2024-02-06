@@ -12,6 +12,21 @@
         "default_popup": "pages/popup.html"
     },
     "background": {
-        "service_worker": "script/service-worker.js"
-    }
+        "service_worker": "scripts/service-worker.js"
+    },
+    "permissions": [
+        "storage",
+        "activeTab",
+        "declarativeContent",
+        "scripting",
+        "tabs"
+    ],
+    "content_scripts": [
+        {
+          "js": [
+            "scripts/content-script.js"
+            ],
+            "matches": ["*://*.youtube.com/*"]
+        }
+      ]
 }

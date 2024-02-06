@@ -78,5 +78,5 @@ input:focus + .slider {
 }
 
 input:checked + .slider:before {
-  transform: translateX(17px, ease-in-out);
+  transform: translateX(17px);
 }/*# sourceMappingURL=popup.css.map */

@@ -90,7 +90,7 @@ body {
   }
   
   input:checked + .slider:before {
-    -webkit-transform: translateX(17px, ease-in-out);
-    -ms-transform: translateX(17px, ease-in-out);
-    transform: translateX(17px, ease-in-out);
+    -webkit-transform: translateX(17px);
+    -ms-transform: translateX(17px);
+    transform: translateX(17px);
   }
