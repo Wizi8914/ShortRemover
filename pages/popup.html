@@ -1,46 +1,55 @@
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" href="/css/header.css">
-        <link rel="stylesheet" href="/css/container.css">
-    </head>
-    <body>
-        <header class="head">
-            <div class="head__left">
-                <img class="head__left-icon" src="../images/icon-128.png" alt="ShortRemoverIcon">
-                <h1 class="head__left-name">ShortRemover</h1>
-            </div>
-            <div class="head__right">
-                <label class="switch main_button">
-                    <input id="main-button" type="checkbox">
-                    <span class="slider"></span>
-                </label>
-            </div>
-        </header>
-        <div class="param-container">
-            <div class="disable-params"></div>
-            <div class="param">
-                <label id="param-button" class="switch param-button">
-                    <input id="navbar-button-undeployed" value="paramNavbarButtonUndeployed" type="checkbox">
-                    <span class="slider"></span>
-                </label>
-                <span class="param-name">Navbar button undeployed</span>
-            </div>
 
-            <div class="param">
-                <label id="param-button" class="switch param-button">
-                    <input id="navbar-button-undeployed" value="paramNavbarButtonDeployed" type="checkbox">
-                    <span class="slider"></span>
-                </label>
-                <span class="param-name">Navbar button deployed</span>
-            </div>
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/header.css" />
+    <link rel="stylesheet" href="/css/container.css" />
+</head>
 
-
-
+<body>
+    <header class="head">
+        <div class="head__left">
+            <img class="head__left-icon" src="../images/icon-128.png" alt="ShortRemoverIcon" />
+            <h1 class="head__left-name">ShortRemover</h1>
+        </div>
+        <div class="head__right">
             
+            <button class="refresh-button" title="Reload current page">
+                <span id="refresh" class="fa-icon">
+                    <svg class="fa-icon_refresh" viewBox="0 0 1536 1536">
+                        <path d="m 1511,928 q 0,5 -1,7 -64,268 -268,434.5 Q 1038,1536 764,1536 618,1536 481.5,1481 345,1426 238,1324 l -129,129 q -19,19 -45,19 -26,0 -45,-19 Q 0,1434 0,1408 L 0,960 q 0,-26 19,-45 19,-19 45,-19 l 448,0 q 26,0 45,19 19,19 19,45 0,26 -19,45 l -137,137 q 71,66 161,102 90,36 187,36 134,0 250,-65 116,-65 186,-179 11,-17 53,-117 8,-23 30,-23 l 192,0 q 13,0 22.5,9.5 9.5,9.5 9.5,22.5 z m 25,-800 0,448 q 0,26 -19,45 -19,19 -45,19 l -448,0 q -26,0 -45,-19 -19,-19 -19,-45 0,-26 19,-45 L 1117,393 Q 969,256 768,256 q -134,0 -250,65 -116,65 -186,179 -11,17 -53,117 -8,23 -30,23 L 50,640 Q 37,640 27.5,630.5 18,621 18,608 l 0,-7 Q 83,333 288,166.5 493,0 768,0 914,0 1052,55.5 1190,111 1297,212 L 1427,83 q 19,-19 45,-19 26,0 45,19 19,19 19,45 z"></path>
+                    </svg>
+                </span>
+            </button>
+
+            <label class="switch main_button" title="Enable / disable ShortRemover for youtube">
+                <input id="main-button" type="checkbox" />
+                <span class="slider"></span>
+            </label>
+
+
+        </div>
+    </header>
+    <div class="param-container">
+        <div class="disable-params"></div>
+        <div class="param">
+            <label id="param-button" class="switch param-button">
+                <input id="navbar-button-undeployed" value="paramNavbarButtonUndeployed" type="checkbox" />
+                <span class="slider"></span>
+            </label>
+            <span class="param-name">Navbar button undeployed</span>
         </div>
 
+        <div class="param">
+            <label id="param-button" class="switch param-button">
+                <input id="navbar-button-undeployed" value="paramNavbarButtonDeployed" type="checkbox" />
+                <span class="slider"></span>
+            </label>
+            <span class="param-name">Navbar button deployed</span>
+        </div>
+    </div>
 
-        <script src="/scripts/popup.js"></script>
-    </body>
+    <script src="/scripts/popup.js"></script>
+</body>
+
 </html>

@@ -14,6 +14,7 @@ function disableParams(element) {
 document.addEventListener('DOMContentLoaded', function () {
     var toggleCheckbox = document.getElementById('main-button')
     var paramButtons = document.querySelectorAll('.param-button input');
+    var refreshButton = document.querySelector('.refresh-button');
 
     chrome.storage.local.get('extensionIsActive', function (result) {
         toggleCheckbox.checked = result.extensionIsActive !== undefined ? result.extensionIsActive : true;  
@@ -29,11 +30,22 @@ document.addEventListener('DOMContentLoaded', function () {
     document.addEventListener("change", (event) => {
         if (event.target.type == 'checkbox' && event.target.id != 'main-button') {
             chrome.runtime.sendMessage({ command: event.target.value, value: event.target.checked });
+            refreshButton.style.display = 'block';
         }
     });
     
     toggleCheckbox.addEventListener('change', () => {
         chrome.runtime.sendMessage({ command: 'toggleExtension', value: toggleCheckbox.checked });
         disableParams(toggleCheckbox.checked);
+        refreshButton.style.display = 'block';
+    });
+
+    refreshButton.addEventListener('click', () => {
+        if (refreshButton.style.display == 'none') return;
+        
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            chrome.tabs.reload(tabs[0].id);
+        });
+        refreshButton.style.display = 'none';
     });
 });

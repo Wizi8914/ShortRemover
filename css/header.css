@@ -19,9 +19,27 @@
 }
 .head__right {
   margin-left: auto;
+  display: flex;
+  align-items: center;
 }
 .head__right .main_button {
   margin-right: 10px;
+}
+.head__right .refresh-button {
+  padding: 13px;
+  border-radius: 5px;
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: #cacaca;
+  border: none;
+  transition-duration: 0.2s;
+  display: none;
+}
+.head__right .refresh-button:hover {
+  background-color: #c2c2c2;
+}
+.head__right .refresh-button .fa-icon_refresh {
+  height: 17px;
 }
 
 .switch {

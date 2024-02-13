@@ -1,6 +1,8 @@
 $slider-color: #6c0ebe;
 $slider-backround: #ccc;
 $header-background: #dddddd;
+$button-background: #cacaca;
+$button-hover: #c2c2c2;
 
 .head {
     display: flex;
@@ -26,9 +28,30 @@ $header-background: #dddddd;
 
     &__right {
         margin-left: auto;
+        display: flex;
+        align-items: center;
 
         .main_button {
             margin-right: 10px;
+        }
+
+        .refresh-button {
+            padding: 13px;
+            border-radius: 5px;
+            margin-right: 10px;
+            cursor: pointer;
+            background-color: $button-background;
+            border: none;
+            transition-duration: .2s;
+            display: none;
+
+            &:hover {
+                background-color: $button-hover;
+            }
+
+            .fa-icon_refresh {
+                height: 17px;
+            }
         }
     }
 }
