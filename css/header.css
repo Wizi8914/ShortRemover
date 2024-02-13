@@ -1,18 +1,8 @@
-body {
-  font-family: "Arial", sans-serif;
-  margin: 0;
-  padding: 0;
-}
-
-.popup-container {
-  width: 350px;
-}
-
 .head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f2f2f2;
+  background-color: #dddddd;
 }
 .head__left {
   display: flex;
@@ -79,4 +69,4 @@ input:focus + .slider {
 
 input:checked + .slider:before {
   transform: translateX(17px);
-}/*# sourceMappingURL=popup.css.map */
+}/*# sourceMappingURL=header.css.map */

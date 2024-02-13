@@ -1,23 +1,47 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="/css/popup.css">
+        <link rel="stylesheet" href="/css/header.css">
+        <link rel="stylesheet" href="/css/container.css">
     </head>
     <body>
-        <div class="popup-container">
-            <header class="head">
-                <div class="head__left">
-                  <img class="head__left-icon" src="../images/icon-128.png" alt="ShortRemoverIcon">
-                  <h1 class="head__left-name">ShortRemover</h1>
-                </div>
-                <div class="head__right">
-                    <label class="switch main_button">
-                        <input id="main-button" type="checkbox" checked>
-                        <span class="slider"></span>
-                      </label>
-                </div>
-              </header>
+        <header class="head">
+            <div class="head__left">
+                <img class="head__left-icon" src="../images/icon-128.png" alt="ShortRemoverIcon">
+                <h1 class="head__left-name">ShortRemover</h1>
             </div>
+            <div class="head__right">
+                <label class="switch main_button">
+                    <input id="main-button" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </header>
+        <div class="param-container">
+            <div class="param">
+                <label id="param-button" class="switch param-button">
+                    <input id="navbar-button-undeployed" value="paramNavbarButtonUndeployed" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+
+                <span class="param-name">Navbar button undeployed</span>
+            </div>
+
+
+            <div class="param">
+                <label id="param-button" class="switch param-button">
+                    <input id="navbar-button-undeployed" value="paramNavbarButtonDeployed" type="checkbox">
+                    <span class="slider"></span>
+                </label>
+
+                <span class="param-name">Navbar button deployed</span>
+            </div>
+
+
+
+            
+        </div>
+
 
         <script src="/scripts/popup.js"></script>
     </body>

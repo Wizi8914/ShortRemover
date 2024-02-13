@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
     "name": "ShortRemover",
-    "version": "0.1",
+    "version": "0.2",
     "description": "Remove short videos from YouTube for a distraction-free experience.",
     "icons": {
         "16": "images/icon-16.png",
@@ -17,9 +17,7 @@
     "permissions": [
         "storage",
         "activeTab",
-        "declarativeContent",
-        "scripting",
-        "tabs"
+        "scripting"
     ],
     "content_scripts": [
         {

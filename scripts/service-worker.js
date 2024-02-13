@@ -1,17 +1,32 @@
 const GREEN_COLOR = '#2db552';
 const GRAY_COLOR = '#828282';
 
-chrome.action.setBadgeText({ text: 'ON' });
-chrome.action.setBadgeBackgroundColor({ color: GREEN_COLOR });
+chrome.runtime.onInstalled.addListener(function() {
+  getExtensionState(function (extensionIsActive) {
+    updateBadge(extensionIsActive);
+  });
+});
 
-let extensionIsActive = true;
-
-function toggleExtension() {
-  extensionIsActive = !extensionIsActive;
-  updateBadge();
+function getExtensionState(callback) {
+  chrome.storage.local.get('extensionIsActive', function (result) {
+    const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
+    callback(extensionIsActive);
+  });
 }
 
-function updateBadge() {
+function setExtensionState(extensionIsActive) {
+  chrome.storage.local.set({ 'extensionIsActive': extensionIsActive });
+}
+
+function toggleExtension() {
+  getExtensionState(function (extensionIsActive) {
+    extensionIsActive = !extensionIsActive;
+    setExtensionState(extensionIsActive);
+    updateBadge(extensionIsActive);
+  });
+}
+
+function updateBadge(extensionIsActive) {
   const badgeText = extensionIsActive ? 'ON' : 'OFF';
   const badgeColor = extensionIsActive ? GREEN_COLOR : GRAY_COLOR;
 
@@ -19,17 +34,43 @@ function updateBadge() {
   chrome.action.setBadgeBackgroundColor({ color: badgeColor });
 }
 
-
-function notifyContentScripts() {
-  chrome.tabs.query({}, function (tabs) {
-    tabs.forEach(function (tab) {
-      chrome.tabs.sendMessage(tab.id, { command: 'updateExtensionState', isActive: extensionIsActive });
-    });
+function getParamState(callback, paramName) {
+  chrome.storage.local.get(paramName, function (result) {
+    const param = result[paramName] !== undefined ? result[paramName] : true;
+    callback(param);
   });
 }
+
+function setParamState(paramIsActive, paramName) {
+
+  let obj = {};
+  obj[paramName] = paramIsActive;
+  chrome.storage.local.set(obj);
+
+  chrome.storage.local.get(paramName, function (result) {
+    console.log(result);
+  });
+
+  
+}
+
+function toggleParams(paramName) {
+  getParamState(function (param) {
+    param = !param;    
+    setParamState(param, paramName);
+  }, paramName);
+}
+
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.command === 'toggleExtension') {
     toggleExtension();
+  } else {
+    toggleParams(request.command);
   }
+});
+
+// Initial call to update the badge on extension startup
+getExtensionState(function (extensionIsActive) {
+    updateBadge(extensionIsActive);
 });

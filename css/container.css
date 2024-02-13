@@ -1,0 +1,26 @@
+body {
+  font-family: "Arial", sans-serif;
+  margin: 0;
+  padding: 0;
+  width: 350px;
+}
+
+.param-container {
+  background-color: #f1f1f1;
+}
+.param-container .param {
+  display: flex;
+  align-items: center;
+  padding: 7px;
+}
+.param-container .param-button {
+  margin-right: 10px;
+}
+.param-container .param-name {
+  font-size: 15px;
+  margin: 0;
+}
+
+.param-button input[type=checkbox] {
+  color: aqua;
+}/*# sourceMappingURL=container.css.map */

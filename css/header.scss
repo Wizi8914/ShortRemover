@@ -1,21 +1,12 @@
 $slider-color: #6c0ebe;
 $slider-backround: #ccc;
-
-body {
-    font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .popup-container {
-    width: 350px;
-  }
+$header-background: #dddddd;
 
 .head {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #f2f2f2;
+    background-color: $header-background;
 
     &__left {
         display: flex;
@@ -75,22 +66,21 @@ body {
         left: 2px;
         bottom: 2px;
         background-color: white;
-        -webkit-transition: .4s;
         transition: .4s;
         border-radius: 50%;
       }
 }
   
-  input:checked + .slider {
+input:checked + .slider {
     background-color: $slider-color;
-  }
+}
   
-  input:focus + .slider {
+input:focus + .slider {
     box-shadow: 0 0 1px $slider-color;
-  }
+}
   
-  input:checked + .slider:before {
+input:checked + .slider:before {
     -webkit-transform: translateX(17px);
     -ms-transform: translateX(17px);
     transform: translateX(17px);
-  }
+}
