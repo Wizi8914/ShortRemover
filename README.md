@@ -3,3 +3,6 @@
 <p/>
 
 <h1 align="center">ShortRemover<h1/>
+
+
+The first version is not yet available, but this repository is still public if people want to support my work 
