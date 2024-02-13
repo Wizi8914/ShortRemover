@@ -1,9 +1,23 @@
+function disableParams(element) {
+    var paramContainer = document.querySelector('.param-container');
+    var disableLayer = document.querySelector('.disable-params');
+
+    if (element) {
+        paramContainer.style.opacity = 1;
+        disableLayer.style.display = 'none';
+    } else {
+        paramContainer.style.opacity = 0.3;
+        disableLayer.style.display = 'block';
+    }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
     var toggleCheckbox = document.getElementById('main-button')
     var paramButtons = document.querySelectorAll('.param-button input');
 
     chrome.storage.local.get('extensionIsActive', function (result) {
-        toggleCheckbox.checked = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
+        toggleCheckbox.checked = result.extensionIsActive !== undefined ? result.extensionIsActive : true;  
+        disableParams(toggleCheckbox.checked);
     });
 
     paramButtons.forEach((button) => {
@@ -20,6 +34,6 @@ document.addEventListener('DOMContentLoaded', function () {
     
     toggleCheckbox.addEventListener('change', () => {
         chrome.runtime.sendMessage({ command: 'toggleExtension', value: toggleCheckbox.checked });
+        disableParams(toggleCheckbox.checked);
     });
-    
 });
