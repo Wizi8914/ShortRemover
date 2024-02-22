@@ -37,7 +37,7 @@ ShortRemover is a browser extension that removes short videos on youtube. It's u
 
 ## ✨ Contributors
 
-Want to **contribute** and appear here ? Open a [Pull Request](https://github.com/Marviuz/tower-of-funtasy-discordbot/pulls)
+Want to **contribute** and appear here ? Open a [Pull Request](https://github.com/Wizi8914/ShortRemover/pulls)
 
 <a href="https://github.com/Wizi8914/ShortRemover/graphs/contributors">
   <img src="https://contributors-img.web.app/image?repo=Wizi8914/ShortRemover" />
