@@ -69,7 +69,6 @@ chrome.storage.local.get('extensionIsActive', function (result) {
                 });
             }
         }, 'paramChannelTab');
-
         
     }
 });

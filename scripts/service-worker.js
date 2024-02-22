@@ -1,11 +1,19 @@
 const GREEN_COLOR = '#2db552';
 const GRAY_COLOR = '#828282';
 
-chrome.runtime.onInstalled.addListener(function() {
+chrome.runtime.onInstalled.addListener(function () {
+  initializeExtension()
+});
+
+chrome.runtime.onStartup.addListener(function () {
+  initializeExtension()
+});
+
+function initializeExtension() {
   getExtensionState(function (extensionIsActive) {
     updateBadge(extensionIsActive);
   });
-});
+}
 
 function getExtensionState(callback) {
   chrome.storage.local.get('extensionIsActive', function (result) {
@@ -70,7 +78,4 @@ chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   }
 });
 
-// Initial call to update the badge on extension startup
-getExtensionState(function (extensionIsActive) {
-    updateBadge(extensionIsActive);
-});
+
