@@ -20,7 +20,28 @@
   <a href="./manifest.json" traget="_blank">
     <img alt="Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FWizi8914%2FShortRemover%2Fmain%2Fmanifest.json&query=version&label=version&color=orange">
   </a>
-
 </div>
 
-The first version is not yet available, but this repository is still public if people want to support my work 
+
+# 📜 About
+ShortRemover is a browser extension that removes short videos on youtube. It's useful for people who don't like shorts, or to limit distraction on youtube.
+> **Note:** The extension may not work if youtube modifies its pages. In this case, please wait for a corrective update.
+
+
+## ✨ Contributors
+
+Want to **contribute** and appear here ? Open a [Pull Request](https://github.com/Marviuz/tower-of-funtasy-discordbot/pulls)
+
+<a href="https://github.com/Marviuz/tower-of-funtasy-discordbot/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=Marviuz/tower-of-funtasy-discordbot" />
+</a>
+
+Made with ❤️ and JavaScript!
+
+
+# 📥 Installation
+
+- Use `git clone https://github.com/Wizi8914/ShortRemover.git` or **download** the **.zip file**
+- Go to your **extension management page** and activate **developer mode**
+- Click on **Load Unpacked** and select the **ShortRemover folder**
+- The extension will be **installed** now
