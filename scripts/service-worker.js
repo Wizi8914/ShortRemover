@@ -50,16 +50,13 @@ function getParamState(callback, paramName) {
 }
 
 function setParamState(paramIsActive, paramName) {
-
   let obj = {};
   obj[paramName] = paramIsActive;
   chrome.storage.local.set(obj);
 
   chrome.storage.local.get(paramName, function (result) {
     console.log(result);
-  });
-
-  
+  }); 
 }
 
 function toggleParams(paramName) {
@@ -68,7 +65,6 @@ function toggleParams(paramName) {
     setParamState(param, paramName);
   }, paramName);
 }
-
 
 chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
   if (request.command === 'toggleExtension') {

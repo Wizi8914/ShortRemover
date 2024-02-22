@@ -22,11 +22,11 @@ function waitForElement(selector, callback) {
 // Permanent element observer
 function observeElement(selector, callback) {
     const observer = new MutationObserver(mutations => {
-        const targetElement = document.querySelector(selector);
-        if (targetElement) {
-            callback(targetElement);
+        const targetElements = document.querySelectorAll(selector);
+        if (targetElements.length > 0) {
+          callback(targetElements);
         }
-    });
+      });
 
     observer.observe(document.documentElement, {
         childList: true,
@@ -47,7 +47,7 @@ chrome.storage.local.get('extensionIsActive', function (result) {
     if (extensionIsActive) {
         getParamState(function (param) {
             if (param && !document.URL.includes('youtube.com/watch')) {
-                waitForElement('.ytd-mini-guide-renderer:nth-child(2)', function (navBarButtonUndeployed) {
+                waitForElement('.ytd-mini-guide-renderer:nth-child(2)', navBarButtonUndeployed => {
                     navBarButtonUndeployed.remove();
                 });
             }
@@ -55,7 +55,7 @@ chrome.storage.local.get('extensionIsActive', function (result) {
 
         getParamState(function (param) {
             if (param) {
-                waitForElement('ytd-guide-entry-renderer:nth-child(2)', function (navbarButtonDeployed) {
+                waitForElement('ytd-guide-entry-renderer:nth-child(2)', navbarButtonDeployed => {
                     navbarButtonDeployed.remove();
                 });
             }
@@ -64,12 +64,27 @@ chrome.storage.local.get('extensionIsActive', function (result) {
 
         getParamState(function (param) {
             if (param && (document.URL.includes('youtube.com/channel') || document.URL.includes('youtube.com/@')) && !document.URL.includes('/shorts') ) { 
-                waitForElement('.yt-tab-shape-wiz:nth-child(3)', function (channelTab) {
+                waitForElement('.yt-tab-shape-wiz:nth-child(3)', channelTab => {
                     channelTab.style.display = 'none';
                 });
             }
         }, 'paramChannelTab');
-        
+
+        getParamState(function (param) {
+            if (param && !document.URL.includes('youtube.com/channel') && !document.URL.includes('youtube.com/@') && !document.URL.includes('youtube.com/watch')) { 
+                observeElement('ytd-rich-section-renderer', homeRecommendedShort => {
+                    homeRecommendedShort.forEach(element => element.remove());
+                });
+            }
+        }, 'paramHomeRecommendedShort');
+
+        getParamState(function (param) {
+            if (param && document.URL.includes("youtube.com/results")) {
+                observeElement('ytd-reel-shelf-renderer', shortSearchResult => {
+                    shortSearchResult.forEach(element => element.remove());
+                });
+            }
+        }, 'paramShortSearchResult');
     }
 });
 

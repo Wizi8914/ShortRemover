@@ -1,11 +1,9 @@
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <link rel="stylesheet" href="/css/header.css" />
-    <link rel="stylesheet" href="/css/container.css" />
-</head>
-
+    <head>
+        <meta charset="UTF-8" />
+        <link rel="stylesheet" href="/css/header.css" />
+        <link rel="stylesheet" href="/css/container.css" />
+    </head>
 <body>
     <header class="head">
         <div class="head__left">
@@ -55,6 +53,23 @@
             </label>
             <span class="param-name">Channel short tab</span>
         </div>
+
+        <div class="param">
+            <label id="param-button" class="switch param-button">
+                <input id="home-recommended-short" value="paramHomeRecommendedShort" type="checkbox" />
+                <span class="slider"></span>
+            </label>
+            <span class="param-name">Home page recommended short</span>
+        </div>
+
+        <div class="param">
+            <label id="param-button" class="switch param-button">
+                <input id="short-search-result" value="paramShortSearchResult" type="checkbox" />
+                <span class="slider"></span>
+            </label>
+            <span class="param-name">Short in search result</span>
+        </div>
+
     </div>
 
     <script src="/scripts/popup.js"></script>
