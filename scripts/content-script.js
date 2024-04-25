@@ -34,7 +34,7 @@ function observeElement(selector, callback) {
     });
 }
 
-function getParamState(callback, paramName) {
+function getParamState(paramName, callback) {
     chrome.storage.local.get(paramName, function (result) {
         const param = result[paramName] !== undefined ? result[paramName] : true;
         callback(param);
@@ -44,47 +44,89 @@ function getParamState(callback, paramName) {
 
 chrome.storage.local.get('extensionIsActive', function (result) {
     const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
-    if (extensionIsActive) {
-        getParamState(function (param) {
-            if (param && !document.URL.includes('youtube.com/watch')) {
-                waitForElement('.ytd-mini-guide-renderer:nth-child(2)', navBarButtonUndeployed => {
-                    navBarButtonUndeployed.remove();
+    if (!extensionIsActive) return;
+
+    getParamState('paramNavbarButtonUndeployed', isActive => {
+        if (!isActive && !document.URL.includes('youtube.com/watch')) return;
+        
+        waitForElement('.ytd-mini-guide-renderer:nth-child(2)', navBarButtonUndeployed => {
+            navBarButtonUndeployed.remove();
+            console.log('[Youtube Short Remover] Removed navbar undeployed button');
+        });
+        
+    });
+
+    getParamState('paramNavbarButtonDeployed', isActive => {
+        if (!isActive) return;
+
+        waitForElement('ytd-guide-entry-renderer:nth-child(2)', navbarButtonDeployed => {
+            navbarButtonDeployed.remove();
+            console.log('[Youtube Short Remover] Removed navbar deployed button');
+        });
+        
+    });
+
+    // Listen for URL changes
+    window.addEventListener("yt-navigate-finish", event => {
+        let URL = event.detail.response.url;
+        console.log("Changed to: " + URL);
+        
+        if (URL.includes("/@") || URL.includes("/channel/")) {
+            getParamState('paramChannelTab', (isActive) => {
+                if (!isActive) return;
+                
+                waitForElementElement('.yt-tab-shape-wiz:nth-child(3)', channelTab => {
+                    channelTab.remove();
+                    console.log('[Youtube Short Remover] Removed channel tab');
                 });
-            }
-        }, 'paramNavbarButtonUndeployed');
-
-        getParamState(function (param) {
-            if (param) {
-                waitForElement('ytd-guide-entry-renderer:nth-child(2)', navbarButtonDeployed => {
-                    navbarButtonDeployed.remove();
-                });
-            }
-        }, 'paramNavbarButtonDeployed');
+            });
+        }
 
 
-        getParamState(function (param) {
-            if (param && (document.URL.includes('youtube.com/channel') || document.URL.includes('youtube.com/@')) && !document.URL.includes('/shorts') ) { 
-                waitForElement('.yt-tab-shape-wiz:nth-child(3)', channelTab => {
-                    channelTab.style.display = 'none';
-                });
-            }
-        }, 'paramChannelTab');
+        if (URL == "/") {
+            getParamState('paramHomeRecommendedShort', isctive => {
+                if (!isActive) return;
 
-        getParamState(function (param) {
-            if (param && !document.URL.includes('youtube.com/channel') && !document.URL.includes('youtube.com/@') && !document.URL.includes('youtube.com/watch')) { 
                 observeElement('ytd-rich-section-renderer', homeRecommendedShort => {
                     homeRecommendedShort.forEach(element => element.remove());
+                    console.log('[Youtube Short Remover] Removed home recommended short');
                 });
-            }
-        }, 'paramHomeRecommendedShort');
+            });
+        }
 
-        getParamState(function (param) {
-            if (param && document.URL.includes("youtube.com/results")) {
+        if (URL.includes("/results?search_query")) {
+            getParamState('paramShortSearchResult', isValid => {
+                if (!isValid && document.URL.includes("youtube.com/results")) return;
+        
                 observeElement('ytd-reel-shelf-renderer', shortSearchResult => {
                     shortSearchResult.forEach(element => element.remove());
+                    console.log('[Youtube Short Remover] Removed short search result');
                 });
-            }
-        }, 'paramShortSearchResult');
-    }
+                
+            });
+        }
+
+        if (URL.includes("/watch?v=")) {
+            getParamState('paramVideoPlayerRecomendedShort', isActive => {
+                if (!isActive) return;
+
+                waitForElement('ytd-reel-shelf-renderer.ytd-item-section-renderer', video => {
+                    video.remove();
+                    console.log('[Youtube Short Remover] Removed video player recommended short');
+                });
+            });
+        }
+
+        if (URL.includes("/feed/subscriptions")) {
+            getParamState('paramSubscriptionShort', isActive => {
+                if (!isActive) return;
+
+                waitForElement('ytd-rich-shelf-renderer', subscriptions => {
+                    subscriptions.remove();
+                    console.log('[Youtube Short Remover] Removed subscriptions');
+                });
+            });
+        }
+    });
 });
 
