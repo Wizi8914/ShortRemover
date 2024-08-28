@@ -1,3 +1,63 @@
+const youtubeElements = {
+    navbarUndeployed: ".ytd-mini-guide-renderer:nth-child(2)",
+    navbarDeployed: "ytd-guide-entry-renderer:nth-child(2)",
+    videoPlayerRecommended: "ytd-reel-shelf-renderer.ytd-item-section-renderer",
+    recommendedShort: 
+        `#player-shorts-container,
+        .ytd-shorts,
+        yt-chip-cloud-chip-renderer:has(yt-formatted-string[title="Shorts"]),
+        yt-tab-shape[tab-title="Shorts"],
+        ytd-compact-video-renderer:has(a[href*="/shorts/"]),
+        ytd-notification-renderer:has(> a[href^="/shorts/"]),
+        ytd-reel-shelf-renderer,
+        ytd-rich-grid-renderer[is-shorts-grid],
+        ytd-rich-item-renderer:has(a[href*="/shorts/"]),
+        ytd-rich-shelf-renderer[is-shorts],
+        ytd-video-renderer:has(a[href*="/shorts/"]),
+        ytm-reel-shelf-renderer,
+        ytm-rich-grid-renderer.is_shorts,
+        ytm-video-with-context-renderer:has(a[href*="/shorts/"])`
+};
+
+function logger(message) {
+    console.log(`[Youtube Short Remover] ${message}`);
+}
+
+const observers = [];
+
+/**
+ * Observes elements and triggers a callback when found.
+ * @param {string} selector
+ * @param {function(NodeList): void} callback
+ * @returns {MutationObserver}
+ */
+
+function observeElement(selector, callback) {
+    const observer = new MutationObserver(mutations => {
+        const targetElements = document.querySelectorAll(selector);
+
+        if (targetElements.length > 0) {
+            callback(targetElements);
+        }
+    });
+
+    observer.observe(document.documentElement, {
+        childList: true,
+        subtree: true,
+    });
+
+    observers.push(observer);
+    return observer;
+}
+
+function disconnectAllObservers() {
+    if (observers.length === 0) return;
+
+    observers.forEach(observer => observer.disconnect());
+    observers.length = 0;
+    logger('Disconnected all observers');
+}
+
 function waitForElement(selector, callback) {
     const element = document.querySelector(selector);
 
@@ -19,21 +79,6 @@ function waitForElement(selector, callback) {
     }
 }
 
-// Permanent element observer
-function observeElement(selector, callback) {
-    const observer = new MutationObserver(mutations => {
-        const targetElements = document.querySelectorAll(selector);
-        if (targetElements.length > 0) {
-          callback(targetElements);
-        }
-      });
-
-    observer.observe(document.documentElement, {
-        childList: true,
-        subtree: true,
-    });
-}
-
 function getParamState(paramName, callback) {
     chrome.storage.local.get(paramName, function (result) {
         const param = result[paramName] !== undefined ? result[paramName] : true;
@@ -45,13 +90,13 @@ function getParamState(paramName, callback) {
 chrome.storage.local.get('extensionIsActive', function (result) {
     const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
     if (!extensionIsActive) return;
-
+    
     getParamState('paramNavbarButtonUndeployed', isActive => {
         if (!isActive && !document.URL.includes('youtube.com/watch')) return;
         
-        waitForElement('.ytd-mini-guide-renderer:nth-child(2)', navBarButtonUndeployed => {
+        waitForElement(youtubeElements.navbarUndeployed, navBarButtonUndeployed => {
             navBarButtonUndeployed.remove();
-            console.log('[Youtube Short Remover] Removed navbar undeployed button');
+            logger('Removed navbar undeployed button');
         });
         
     });
@@ -59,9 +104,9 @@ chrome.storage.local.get('extensionIsActive', function (result) {
     getParamState('paramNavbarButtonDeployed', isActive => {
         if (!isActive) return;
 
-        waitForElement('ytd-guide-entry-renderer:nth-child(2)', navbarButtonDeployed => {
+        waitForElement(youtubeElements.navbarDeployed, navbarButtonDeployed => {
             navbarButtonDeployed.remove();
-            console.log('[Youtube Short Remover] Removed navbar deployed button');
+            logger('Removed navbar deployed button');
         });
         
     });
@@ -69,38 +114,40 @@ chrome.storage.local.get('extensionIsActive', function (result) {
     // Listen for URL changes
     window.addEventListener("yt-navigate-finish", event => {
         let URL = event.detail.response.url;
-        console.log("Changed to: " + URL);
-        
+        logger(`Changed to: ${URL}`);
+
+        disconnectAllObservers();
+
         if (URL.includes("/@") || URL.includes("/channel/")) {
             getParamState('paramChannelTab', (isActive) => {
                 if (!isActive) return;
-                
-                waitForElementElement('.yt-tab-shape-wiz:nth-child(3)', channelTab => {
-                    channelTab.remove();
-                    console.log('[Youtube Short Remover] Removed channel tab');
+    
+                document.querySelectorAll('.yt-tab-shape-wiz--host-clickable').forEach(tabElement => {
+                    tabElement.children[0].innerHTML.toLowerCase().includes('shorts') ? tabElement.remove() : null;
                 });
             });
         }
 
-
+        
         if (URL == "/") {
-            getParamState('paramHomeRecommendedShort', isctive => {
+            getParamState('paramHomeRecommendedShort', isActive => {
                 if (!isActive) return;
 
-                observeElement('ytd-rich-section-renderer', homeRecommendedShort => {
+                observeElement(youtubeElements.recommendedShort, homeRecommendedShort => {
                     homeRecommendedShort.forEach(element => element.remove());
-                    console.log('[Youtube Short Remover] Removed home recommended short');
+                    logger('Removed home recommended short');
                 });
             });
         }
+            
 
         if (URL.includes("/results?search_query")) {
             getParamState('paramShortSearchResult', isValid => {
                 if (!isValid && document.URL.includes("youtube.com/results")) return;
         
-                observeElement('ytd-reel-shelf-renderer', shortSearchResult => {
+                observeElement(youtubeElements.recommendedShort, shortSearchResult => {
                     shortSearchResult.forEach(element => element.remove());
-                    console.log('[Youtube Short Remover] Removed short search result');
+                    logger('Removed short search result');
                 });
                 
             });
@@ -110,9 +157,9 @@ chrome.storage.local.get('extensionIsActive', function (result) {
             getParamState('paramVideoPlayerRecomendedShort', isActive => {
                 if (!isActive) return;
 
-                waitForElement('ytd-reel-shelf-renderer.ytd-item-section-renderer', video => {
+                waitForElement(youtubeElements.videoPlayerRecommended, video => {
                     video.remove();
-                    console.log('[Youtube Short Remover] Removed video player recommended short');
+                    logger('Removed video player recommended short');
                 });
             });
         }
@@ -121,9 +168,9 @@ chrome.storage.local.get('extensionIsActive', function (result) {
             getParamState('paramSubscriptionShort', isActive => {
                 if (!isActive) return;
 
-                waitForElement('ytd-rich-shelf-renderer', subscriptions => {
+                waitForElement(youtubeElements.recommendedShort, subscriptions => {
                     subscriptions.remove();
-                    console.log('[Youtube Short Remover] Removed subscriptions');
+                    logger('Removed subscriptions Shorts');
                 });
             });
         }

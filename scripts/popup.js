@@ -6,7 +6,7 @@ function disableParams(element) {
         paramContainer.style.opacity = 1;
         disableLayer.style.display = 'none';
     } else {
-        paramContainer.style.opacity = 0.3;
+        paramContainer.style.opacity = 0.5;
         disableLayer.style.display = 'block';
     }
 }
