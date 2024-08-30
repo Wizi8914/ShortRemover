@@ -49,3 +49,23 @@ document.addEventListener('DOMContentLoaded', function () {
         refreshButton.style.display = 'none';
     });
 });
+
+chrome.storage.local.get('theme', function (result) {
+    const theme = result.theme !== undefined ? result.theme : 'dark';
+    document.body.classList.toggle('light-theme', theme === 'light');
+});
+
+chrome.storage.local.get('colorTheme', function (result) {
+    const colorTheme = result.colorTheme !== undefined ? result.colorTheme : 1;
+    document.body.classList.add(`theme-${colorTheme}`);
+});
+
+window.addEventListener('load', function() {
+    var styleTag = document.getElementById('disable-transitions');
+
+    setTimeout(() => {
+        if (styleTag) {
+            styleTag.parentNode.removeChild(styleTag);
+        }
+    }, 50);
+});

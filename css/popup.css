@@ -21,7 +21,7 @@ body {
   margin: 5px;
 }
 .head__left-name {
-  font-size: 20px;
+  font-size: 22px;
   margin: 0;
 }
 .head__right {
@@ -71,7 +71,7 @@ body {
 .param-container .param-name {
   font-size: 15px;
   margin: 0;
-  color: var(--color-text-dark);
+  color: var(--color-text);
 }
 
 .switch {
@@ -144,12 +144,12 @@ input:checked + .slider .slider-thumb {
   height: 20px;
   width: 20px;
   background: transparent;
-  fill: var(--color-text-dark);
+  fill: var(--color-text);
   cursor: pointer;
   transition-duration: 0.3s;
 }
 .footer-container__left--button:hover {
-  fill: var(--color-text-dark-hover);
+  fill: var(--color-text-hover);
 }
 .footer-container__right {
   display: flex;
@@ -158,11 +158,11 @@ input:checked + .slider .slider-thumb {
   height: 20px;
   width: 20px;
   background: transparent;
-  fill: var(--color-text-dark);
+  fill: var(--color-text);
   cursor: pointer;
   transition: 0.5s ease-in-out;
 }
 .footer-container__right--button:hover {
   rotate: 360deg;
-  fill: var(--color-text-dark-hover);
+  fill: var(--color-text-hover);
 }/*# sourceMappingURL=popup.css.map */

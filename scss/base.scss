@@ -6,6 +6,7 @@
     --color-footer: #031b34;
     --color-blog: #042c54;
     --color-text: #f5faff;
+    --color-text-hover: #d6d6d6;
     --color-subtext: #ff8a71;
 
     --slider-background: linear-gradient(114deg, #9b96a1e6 -13.86%, #838383e6 99.55%);
@@ -13,10 +14,117 @@
 
     --refresh-background: #868686e6;
     --refresh-hover: #707070e6;
-
-    --color-text-dark: #f3f3f3;    
-    --color-text-dark-hover: #d6d6d6;
 }
+
+.light-theme {
+    --color-bg: #f7fcff;
+    --color-footer: #f5faff;
+    --color-blog: #f5faff;
+    --color-text: #040c18;
+    --color-text-hover: #141418;
+    --color-subtext: #ff8a71;
+
+    --slider-thumb: #f5faff;
+
+    --refresh-background: #868686e6;
+    --refresh-hover: #707070e6;
+}
+
+.theme-1 {
+    --gradient-color: linear-gradient(89.97deg,#ae67fa 1.84%,#f49867 102.67%);
+}
+
+.theme-2 {
+    --gradient-color: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+}
+
+.theme-3 {
+    --gradient-color: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);
+}
+
+.theme-4 {
+    --gradient-color: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+}
+
+.theme-5 {
+    --gradient-color: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+}
+
+.theme-6 {
+    --gradient-color: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
+    
+}
+
+.theme-7 {
+    --gradient-color: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+    
+}
+
+.theme-8 {
+    --gradient-color: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+}
+
+.theme-9 {
+    --gradient-color: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+}
+
+.theme-10 {
+    --gradient-color: linear-gradient(to right, #22c1c3, #fdbb2d);
+}
+
+.theme-11 {
+    --gradient-color: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
+}
+
+.theme-12 {
+    --gradient-color: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+}
+
+.theme-13 {
+    --gradient-color: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+}
+
+.theme-14 {
+    --gradient-color: linear-gradient(to top, #7028e4 0%, #e5b2ca 100%);
+}
+
+.theme-15 {
+    --gradient-color: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+}
+
+.theme-16 {
+    --gradient-color: linear-gradient(to top, #09203f 0%, #537895 100%);
+}
+
+.theme-17 {
+    --gradient-color: linear-gradient(to top, #b3ffab 0%, #12fff7 100%);
+}
+
+.theme-18 {
+    --gradient-color: linear-gradient(-225deg, #65379B 0%, #886AEA 53%, #6457C6 100%);
+}
+
+.theme-19 {
+    --gradient-color: linear-gradient(-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%);
+}
+
+.theme-20 {
+    --gradient-color: linear-gradient(to right, #636363, #a2ab58);
+}
+
+.theme-21 {
+    --gradient-color: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+}
+
+.theme-22 {
+    --gradient-color: linear-gradient(to right, #00b09b, #96c93d);
+}
+
+.theme-23 {
+    --gradient-color: linear-gradient(to right, #3c3b3f, #605c3c);
+}
+
+
 
 * {
     margin: 0;
@@ -26,6 +134,7 @@
     list-style: none;
     box-sizing: border-box;
 }
+
 
 .gradient__text {
     -webkit-text-fill-color: transparent;

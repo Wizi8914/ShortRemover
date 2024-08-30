@@ -1,5 +1,6 @@
 const checkbox = document.querySelectorAll('.param-button input');
 const params = document.querySelectorAll('.param');
+const themeButton = document.querySelector('.header-right__theme');
 
 checkbox.forEach((box, i) => {
     chrome.storage.local.get(box.value, function (result) {
@@ -13,4 +14,57 @@ checkbox.forEach((box, i) => {
         chrome.runtime.sendMessage({ command: event.target.value, value: event.target.checked });
         params[i].classList.toggle('active');
     });
+});
+
+
+// Theme //
+
+const themes = document.querySelectorAll('.themes__container--item');
+
+themes.forEach((theme, i) => {
+    theme.addEventListener('click', () => {
+        document.body.classList.forEach((item) => {
+            if (item.startsWith('theme-')) {
+                document.body.classList.remove(item);
+            }
+        });
+
+        document.body.classList.add(`theme-${i+1}`);
+        chrome.storage.local.set({ colorTheme: i+1 });
+    });
+});
+
+chrome.storage.local.get('colorTheme', function (result) {
+    const colorTheme = result.colorTheme !== undefined ? result.colorTheme : 1;
+    document.body.classList.add(`theme-${colorTheme}`);
+});
+
+
+// Dark and Light Theme //
+
+const lightTheme = document.querySelector('.header-right__theme--light');
+const darkTheme = document.querySelector('.header-right__theme--dark');
+
+themeButton.addEventListener('click', () => {
+    document.body.classList.toggle('light-theme');
+
+    chrome.storage.local.get('theme', function (result) {
+        const theme = result.theme !== undefined ? result.theme : 'dark';
+        chrome.storage.local.set({ theme: theme === 'dark' ? 'light' : 'dark' });
+    });
+});
+
+chrome.storage.local.get('theme', function (result) {
+    const theme = result.theme !== undefined ? result.theme : 'dark';
+    document.body.classList.toggle('light-theme', theme === 'light');
+});
+
+window.addEventListener('load', function() {
+    var styleTag = document.getElementById('disable-transitions');
+
+    setTimeout(() => {
+        if (styleTag) {
+            styleTag.parentNode.removeChild(styleTag);
+        }
+    }, 50);
 });

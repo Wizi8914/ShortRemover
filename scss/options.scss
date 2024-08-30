@@ -2,6 +2,22 @@ body {
     font-family: var(--font-family);
     background-color: var(--color-bg);
     color: var(--color-text);
+    transition: .4s;
+}
+
+.section {
+    margin: 80px 40px 30px;
+    
+    &__separator {
+        background: var(--gradient-color);
+        height: 4px;
+        margin-bottom: .25rem;
+        width: 50px;
+    }
+
+    &__title {
+        font-size: 40px;
+    }
 }
 
 header {
@@ -31,14 +47,14 @@ header {
         &-right {
             &__theme {
                 background-color: transparent;
-                fill: var(--color-text-dark);
+                fill: var(--color-text);
                 width: 35px;
                 height: 35px;
                 cursor: pointer;
                 transition-duration: .3s;
 
                 &:hover {
-                    fill: #b6b6b6;
+                    fill: var(--color-text-hover);
                 }
                 
             }
@@ -84,6 +100,134 @@ header {
             &-name {
                 font-size: 23px;
                 z-index: 1;
+            }
+        }
+    }
+}
+
+
+
+.themes {
+    margin-top: 130px;
+
+    &__container {
+        display: grid;
+        margin: 40px;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-gap: 1.5rem;
+
+        &--item {
+            background: var(--gradient-bar);
+            padding: 3px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            border: 3px solid var(--color-text);
+            cursor: pointer;
+            transition-duration: .4s;
+
+
+            &::before {
+              content: "";
+              display: block;
+              padding-bottom: 100%;
+              grid-area: 1 / 1 / 2 / 2;
+            }
+
+            &:hover {
+                filter: brightness(0.6);
+            }
+
+            &:nth-child(1) {
+                background: linear-gradient(89.97deg,#ae67fa 1.84%,#f49867 102.67%);;
+            }
+
+            &:nth-child(2) {
+                background: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);;
+            }
+
+            &:nth-child(3) {
+                background: linear-gradient(45deg, #FA8BFF 0%, #2BD2FF 52%, #2BFF88 90%);;
+            }
+
+            &:nth-child(4) {
+                background: linear-gradient(0deg, #FFDEE9 0%, #B5FFFC 100%);
+            }
+
+            &:nth-child(5) {
+                background: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
+            }
+            
+            &:nth-child(6) {
+                background: linear-gradient(132deg, #F4D03F 0%, #16A085 100%);
+            }
+
+            &:nth-child(7) {
+                background: linear-gradient(147deg, #FFE53B 0%, #FF2525 74%);
+            }
+
+            &:nth-child(8) {
+                background: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+            }
+
+            &:nth-child(9) {
+                background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+            }
+
+            &:nth-child(10) {
+                background: linear-gradient(to right, #22c1c3, #fdbb2d);
+            }
+            
+            &:nth-child(11) {
+                background: linear-gradient(89.97deg,#ae67fa 1.84%,#f49867 102.67%);
+            }
+
+            &:nth-child(12) {
+                background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
+            }
+
+            &:nth-child(13) {
+                background: linear-gradient(to right, #6a11cb 0%, #2575fc 100%);
+            }
+
+            &:nth-child(14) {
+                background: linear-gradient(to top, #7028e4 0%, #e5b2ca 100%);
+            }
+
+            &:nth-child(15) {
+                background: linear-gradient(-20deg, #b721ff 0%, #21d4fd 100%);
+            }
+
+            &:nth-child(16) {
+                background: linear-gradient(to top, #09203f 0%, #537895 100%);
+            }
+
+            &:nth-child(17) {
+                background: linear-gradient(to top, #b3ffab 0%, #12fff7 100%);
+            }
+
+            &:nth-child(18) {
+                background: linear-gradient(-225deg, #65379B 0%, #886AEA 53%, #6457C6 100%);
+            }
+
+            &:nth-child(19) {
+                background: linear-gradient(-225deg, #FF057C 0%, #8D0B93 50%, #321575 100%);
+            }
+
+            &:nth-child(20) {
+                background: linear-gradient(to right, #636363, #a2ab58);
+            }
+
+            &:nth-child(21) {
+                background: linear-gradient(to right, #40e0d0, #ff8c00, #ff0080);
+            }
+
+            &:nth-child(22) {
+                background: linear-gradient(to right, #00b09b, #96c93d);
+            }
+
+            &:nth-child(23) {
+                background: linear-gradient(to right, #3c3b3f, #605c3c);
             }
         }
     }
