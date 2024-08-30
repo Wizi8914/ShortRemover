@@ -33,7 +33,7 @@ const observers = [];
  */
 
 function observeElement(selector, callback) {
-    const observer = new MutationObserver(mutations => {
+    const observer = new MutationObserver(() => {
         const targetElements = document.querySelectorAll(selector);
 
         if (targetElements.length > 0) {
@@ -64,7 +64,7 @@ function waitForElement(selector, callback) {
     if (element) {
         callback(element);
     } else {
-        const observer = new MutationObserver(mutations => {
+        const observer = new MutationObserver(() => {
             const targetElement = document.querySelector(selector);
             if (targetElement) {
                 observer.disconnect();
@@ -142,8 +142,8 @@ chrome.storage.local.get('extensionIsActive', function (result) {
             
 
         if (URL.includes("/results?search_query")) {
-            getParamState('paramShortSearchResult', isValid => {
-                if (!isValid && document.URL.includes("youtube.com/results")) return;
+            getParamState('paramShortSearchResult', isActive => {
+                if (!isActive && document.URL.includes("youtube.com/results")) return;
         
                 observeElement(youtubeElements.recommendedShort, shortSearchResult => {
                     shortSearchResult.forEach(element => element.remove());

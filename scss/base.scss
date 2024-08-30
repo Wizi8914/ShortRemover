@@ -1,0 +1,35 @@
+:root {
+    --font-family: "Manrope", sans-serif;
+    --gradient-color: linear-gradient(89.97deg,#ae67fa 1.84%,#f49867 102.67%);
+    --gradient-bar: linear-gradient(103.22deg,#ae67fa -13.86%,#f49867 99.55%);
+    --color-bg: #040c18;
+    --color-footer: #031b34;
+    --color-blog: #042c54;
+    --color-text: #f5faff;
+    --color-subtext: #ff8a71;
+
+    --slider-background: linear-gradient(114deg, #9b96a1e6 -13.86%, #838383e6 99.55%);
+    --slider-thumb: #040c18;
+
+    --refresh-background: #868686e6;
+    --refresh-hover: #707070e6;
+
+    --color-text-dark: #f3f3f3;    
+    --color-text-dark-hover: #d6d6d6;
+}
+
+* {
+    margin: 0;
+	padding: 0;
+	border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+.gradient__text {
+    -webkit-text-fill-color: transparent;
+    background: var(--gradient-color);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
