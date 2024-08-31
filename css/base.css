@@ -10,6 +10,9 @@
   --color-subtext: #ff8a71;
   --slider-background: linear-gradient(114deg, #9b96a1e6 -13.86%, #838383e6 99.55%);
   --slider-thumb: #040c18;
+  --scrollbar-thumb: #09213a;
+  --scrollbar-thumb-hover: #0d2c4a;
+  --scrollbar-background: #040c18;
   --refresh-background: #868686e6;
   --refresh-hover: #707070e6;
 }
@@ -22,6 +25,9 @@
   --color-text-hover: #141418;
   --color-subtext: #ff8a71;
   --slider-thumb: #f5faff;
+  --scrollbar-thumb: #e1e2e3;
+  --scrollbar-thumb-hover: #cfcfcf;
+  --scrollbar-background: #efefef;
   --refresh-background: #868686e6;
   --refresh-hover: #707070e6;
 }
@@ -132,4 +138,19 @@
   background: var(--gradient-color);
   background-clip: text;
   -webkit-background-clip: text;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: var(--scrollbar-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--scrollbar-thumb);
+  -webkit-transition: 0.35s;
+  transition: 0.35s;
+  cursor: pointer;
+}
+::-webkit-scrollbar-thumb:hover {
+  opacity: var(--scrollbar-thumb-hover);
 }/*# sourceMappingURL=base.css.map */

@@ -1,0 +1,53 @@
+{
+    "extension_name": {
+        "message": "ShportRemover"
+    },
+
+    "extension_description": {
+        "message": "Remove Short videos from YouTube for a distraction-free experience."
+    },
+
+    "options_name": {
+        "message": "Settings"
+    },
+
+    "options_parameters": {
+        "message": "Parameters"
+    },
+
+    "options_themes": {
+        "message": "Themes"
+    },
+
+    "options_languages": {
+        "message": "Languages"
+    },
+
+    "param_NavbarButtonUndeployed": {
+        "message": "Navbar button undeployed"
+    },
+
+    "param_NavbarButtonDeployed": {
+        "message": "Navbar button deployed"
+    },
+
+    "param_ChannelTab": {
+        "message": "Channel short tab"
+    },
+
+    "param_HomePageRecommendedShort": {
+        "message": "Home page recommended Short"
+    },
+
+    "param_ShortInSearchResult": {
+        "message": "Short in search result"
+    },
+
+    "param_VideoPlayerRecommendedShort": {
+        "message": "Video Player recommended Short"
+    },
+
+    "param_SubscriptionShort": {
+        "message": "Subscription Short"
+    }
+}

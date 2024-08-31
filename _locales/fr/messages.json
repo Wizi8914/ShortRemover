@@ -1,0 +1,53 @@
+{
+    "extension_name": {
+        "message": "ShortRemover"
+    },
+
+    "extension_description": {
+        "message": "Supprimez les videos Short de YouTube pour une expérience sans distraction."
+    },
+
+    "options_name": {
+        "message": "Paramètres"
+    },
+
+    "options_parameters": {
+        "message": "Paramètres"
+    },
+
+    "options_themes": {
+        "message": "Thèmes"
+    },
+
+    "options_languages": {
+        "message": "Langues"
+    },
+
+    "param_NavbarButtonUndeployed": {
+        "message": "Bouton navbar replié"
+    },
+
+    "param_NavbarButtonDeployed": {
+        "message": "Bouton navbar déployé"
+    },
+
+    "param_ChannelTab": {
+        "message": "Onglet short des chaînes"
+    },
+
+    "param_HomePageRecommendedShort": {
+        "message": "Short recommandé dans l'accueil"
+    },
+
+    "param_ShortInSearchResult": {
+        "message": "Short dans les recherches"
+    },
+
+    "param_VideoPlayerRecommendedShort": {
+        "message": "Short recommandé dans le lecteur"
+    },
+
+    "param_SubscriptionShort": {
+        "message": "Short dans les abonnements"
+    }
+}

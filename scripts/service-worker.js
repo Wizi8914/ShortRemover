@@ -53,10 +53,6 @@ function setParamState(paramIsActive, paramName) {
   let obj = {};
   obj[paramName] = paramIsActive;
   chrome.storage.local.set(obj);
-
-  chrome.storage.local.get(paramName, function (result) {
-    console.log(result);
-  }); 
 }
 
 function toggleParams(paramName) {

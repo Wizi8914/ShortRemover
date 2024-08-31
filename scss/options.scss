@@ -105,15 +105,13 @@ header {
     }
 }
 
-
-
 .themes {
     margin-top: 130px;
 
     &__container {
         display: grid;
         margin: 40px;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
         grid-gap: 1.5rem;
 
         &--item {
@@ -132,10 +130,27 @@ header {
               display: block;
               padding-bottom: 100%;
               grid-area: 1 / 1 / 2 / 2;
+
             }
 
             &:hover {
-                filter: brightness(0.6);
+                filter: brightness(.8);
+            }
+
+            svg {
+                position: absolute;
+                z-index: 2;
+                height: 100px;
+                width: 100px;
+                fill: var(--color-text);
+                display: none;
+            }
+
+
+            &.active {
+                svg {
+                    display: block;
+                }
             }
 
             &:nth-child(1) {
@@ -228,6 +243,66 @@ header {
 
             &:nth-child(23) {
                 background: linear-gradient(to right, #3c3b3f, #605c3c);
+            }
+        }
+    }
+}
+
+.languages {
+    margin-top: 130px;
+
+    &__container {
+        display: grid;
+        margin: 40px;
+        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        grid-gap: 1.5rem;
+
+        &--item {
+            padding: 3px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            border: 3px solid var(--color-text);
+            cursor: pointer;
+            transition-duration: .4s;
+            overflow: hidden;
+
+
+            
+            &::before {
+              content: "";
+              display: block;
+              grid-area: 1 / 1 / 2 / 2;
+
+            }
+
+            &:hover {
+                filter: brightness(.8);
+            }
+            
+
+            img {
+                width: calc(100% + 10px);
+                height: calc(100% + 10px);
+                z-index: -1;
+                -o-object-fit: cover;
+                object-fit: cover;
+            }
+
+            svg {
+                position: absolute;
+                z-index: 2;
+                height: 100px;
+                width: 100px;
+                fill: var(--color-text);
+                display: none;
+            }
+
+
+            &.active {
+                svg {
+                    display: block;
+                }
             }
         }
     }

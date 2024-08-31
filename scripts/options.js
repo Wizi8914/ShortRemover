@@ -17,6 +17,7 @@ checkbox.forEach((box, i) => {
 });
 
 
+
 // Theme //
 
 const themes = document.querySelectorAll('.themes__container--item');
@@ -31,12 +32,20 @@ themes.forEach((theme, i) => {
 
         document.body.classList.add(`theme-${i+1}`);
         chrome.storage.local.set({ colorTheme: i+1 });
+        
+        themes.forEach((theme) => {
+            theme.classList.remove('active');
+        });
+
+        theme.classList.add('active');
     });
 });
 
 chrome.storage.local.get('colorTheme', function (result) {
     const colorTheme = result.colorTheme !== undefined ? result.colorTheme : 1;
     document.body.classList.add(`theme-${colorTheme}`);
+    
+    themes[colorTheme-1].classList.add('active');
 });
 
 
@@ -67,4 +76,29 @@ window.addEventListener('load', function() {
             styleTag.parentNode.removeChild(styleTag);
         }
     }, 50);
+});
+
+
+// Language //
+
+const language = document.querySelectorAll('.languages__container--item');
+
+
+language.forEach((lang, i) => {
+    lang.addEventListener('click', () => {
+        language.forEach((lang) => {
+            lang.classList.remove('active');
+        });
+
+        lang.classList.add('active');
+        chrome.storage.local.set({ language: lang.getAttribute('lang-data') });
+
+        changeLanguage(); // This function is defined in translation.js
+    });
+
+    chrome.storage.local.get('language', function (result) {
+        if (lang.getAttribute('lang-data') == result.language) {
+            lang.classList.add('active');
+        }
+    });
 });
