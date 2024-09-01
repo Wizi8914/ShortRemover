@@ -1,10 +1,10 @@
 {
     "extension_name": {
-        "message": "ShportRemover"
+        "message": "ShortRemover"
     },
 
     "extension_description": {
-        "message": "Remove Short videos from YouTube for a distraction-free experience."
+        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
 
     "options_name": {
@@ -24,30 +24,62 @@
     },
 
     "param_NavbarButtonUndeployed": {
-        "message": "Navbar button undeployed"
+        "message": "Collapsed navbar button"
     },
 
     "param_NavbarButtonDeployed": {
-        "message": "Navbar button deployed"
+        "message": "Expanded navbar button"
     },
 
     "param_ChannelTab": {
-        "message": "Channel short tab"
+        "message": "Channel Shorts tab"
     },
 
     "param_HomePageRecommendedShort": {
-        "message": "Home page recommended Short"
+        "message": "Home page recommended Shorts"
     },
 
-    "param_ShortInSearchResult": {
-        "message": "Short in search result"
+    "param_ShortSearchResult": {
+        "message": "Shorts in search results"
     },
 
     "param_VideoPlayerRecommendedShort": {
-        "message": "Video Player recommended Short"
+        "message": "Video player recommended Shorts"
     },
 
     "param_SubscriptionShort": {
-        "message": "Subscription Short"
+        "message": "Subscription Shorts"
+    },
+
+    "log_DisconnectOberserver": {
+        "message": "Disconnected all observers"
+    },
+
+    "log_ChangeTo": {
+        "message": "Changed to:"
+    },
+
+    "log_NavbarButtonUndeployed": {
+        "message": "Removed collapsed navbar button"
+    },
+
+    "log_NavbarButtonDeployed": {
+        "message": "Removed expanded navbar button"
+    },
+
+    "log_HomeRecommendedShort": {
+        "message": "Removed home page recommended Shorts"
+    },
+
+    "log_ShortSearchResult": {
+        "message": "Removed Shorts from search results"
+    },
+
+    "log_VideoPlayerRecommendedShort": {
+        "message": "Removed video player recommended Shorts"
+    },
+
+    "log_SubscriptionShort": {
+        "message": "Removed subscription Shorts"
     }
 }

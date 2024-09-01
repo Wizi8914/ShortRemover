@@ -111,7 +111,7 @@ header {
     &__container {
         display: grid;
         margin: 40px;
-        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         grid-gap: 1.5rem;
 
         &--item {
@@ -254,7 +254,7 @@ header {
     &__container {
         display: grid;
         margin: 40px;
-        grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         grid-gap: 1.5rem;
 
         &--item {

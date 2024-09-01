@@ -69,3 +69,9 @@ window.addEventListener('load', function() {
         }
     }, 50);
 });
+
+// Translation
+
+document.addEventListener('DOMContentLoaded', () => {
+    changeLanguage();
+});

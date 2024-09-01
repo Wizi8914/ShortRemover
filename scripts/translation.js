@@ -1,9 +1,5 @@
-const availableLanguages = ['en', 'fr'];
+const availableLanguages = ["en", "fr", "es", "de", "it", "ru", "ja", "ko", "sa", "zh"];
 const defaultLanguage = navigator.language.split('-')[0];
-
-document.addEventListener('DOMContentLoaded', () => {
-    changeLanguage();
-});
 
 async function changeLanguage () {
     const elements = document.querySelectorAll('[i18n-data]');
@@ -21,7 +17,6 @@ function getLanguage() {
         chrome.storage.local.get('language', function (result) {
             let lang;
             
-                
             if (availableLanguages.includes(defaultLanguage)) {
                 lang = result.language !== undefined ? result.language : defaultLanguage;
             } else {
@@ -33,6 +28,7 @@ function getLanguage() {
         });
     });
 }
+
 
 function setMessage(element, messageKey, language) {    
     fetch(`../_locales/${language}/messages.json`)
@@ -46,10 +42,5 @@ function setMessage(element, messageKey, language) {
         });
 }
 
-async function getMessage(messageKey) {
-    const language = await getLanguage();
-    const response = await fetch(`../_locales/${language}/messages.json`);
-    const json = await response.json();
 
-    return json[messageKey]['message'];
-}
+    

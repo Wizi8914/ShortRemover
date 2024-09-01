@@ -91,7 +91,7 @@ header .header-right__theme:hover {
 .themes__container {
   display: grid;
   margin: 40px;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 1.5rem;
 }
 .themes__container--item {
@@ -200,7 +200,7 @@ header .header-right__theme:hover {
 .languages__container {
   display: grid;
   margin: 40px;
-  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   grid-gap: 1.5rem;
 }
 .languages__container--item {

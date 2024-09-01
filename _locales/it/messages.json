@@ -1,0 +1,85 @@
+{
+    "extension_name": {
+        "message": "ShortRemover"
+    },
+
+    "extension_description": {
+        "message": "Rimuovi gli Shorts da YouTube per un'esperienza senza distrazioni."
+    },
+
+    "options_name": {
+        "message": "Impostazioni"
+    },
+
+    "options_parameters": {
+        "message": "Impostazioni"
+    },
+
+    "options_themes": {
+        "message": "Temi"
+    },
+
+    "options_languages": {
+        "message": "Lingue"
+    },
+
+    "param_NavbarButtonUndeployed": {
+        "message": "Bottone della barra di navigazione ridotto"
+    },
+
+    "param_NavbarButtonDeployed": {
+        "message": "Bottone della barra di navigazione espanso"
+    },
+
+    "param_ChannelTab": {
+        "message": "Scheda degli Shorts nei canali"
+    },
+
+    "param_HomePageRecommendedShort": {
+        "message": "Shorts consigliati nella home page"
+    },
+
+    "param_ShortSearchResult": {
+        "message": "Shorts nei risultati di ricerca"
+    },
+
+    "param_VideoPlayerRecommendedShort": {
+        "message": "Shorts consigliati nel lettore video"
+    },
+
+    "param_SubscriptionShort": {
+        "message": "Shorts negli abbonamenti"
+    },
+
+    "log_DisconnectOberserver": {
+        "message": "Disconnessione di tutti gli osservatori"
+    },
+
+    "log_ChangeTo": {
+        "message": "Cambiamento a:"
+    },
+
+    "log_NavbarButtonUndeployed": {
+        "message": "Bottone degli Shorts ridotto nella barra di navigazione rimosso"
+    },
+
+    "log_NavbarButtonDeployed": {
+        "message": "Bottone degli Shorts espanso nella barra di navigazione rimosso"
+    },
+
+    "log_HomeRecommendedShort": {
+        "message": "Shorts consigliati nella home page rimossi"
+    },
+
+    "log_ShortSearchResult": {
+        "message": "Shorts rimossi dai risultati di ricerca"
+    },
+
+    "log_VideoPlayerRecommendedShort": {
+        "message": "Shorts consigliati nel lettore video rimossi"
+    },
+
+    "log_SubscriptionShort": {
+        "message": "Shorts dagli abbonamenti rimossi"
+    }  
+}

@@ -39,7 +39,7 @@
         "message": "Short recommandé dans l'accueil"
     },
 
-    "param_ShortInSearchResult": {
+    "param_ShortSearchResult": {
         "message": "Short dans les recherches"
     },
 
@@ -49,5 +49,37 @@
 
     "param_SubscriptionShort": {
         "message": "Short dans les abonnements"
-    }
+    },
+
+    "log_DisconnectOberserver": {
+        "message": "Déconnection de tous les observers"
+    },
+
+    "log_ChangeTo": {
+        "message": "Changement sur :"
+    },
+
+    "log_NavbarButtonUndeployed": {
+        "message": "Bouton Short non déployé de la barre de navigation supprimé"
+    },
+
+    "log_NavbarButtonDeployed": {
+        "message": "Bouton Short déployé de la barre de navigation supprimé"
+    },
+
+    "log_HomeRecommendedShort": {
+        "message": "Short recommandée sur la page d'accueil supprimée"
+    },
+
+    "log_ShortSearchResult": {
+        "message": "Short supprimée dans le résultat de recherche"
+    },
+
+    "log_VideoPlayerRecommendedShort": {
+        "message": "Short recommandée dans le lecteur vidéo supprimée"
+    },
+
+    "log_SubscriptionShort": {
+        "message": "Shorts des abonnements supprimés"
+    }  
 }

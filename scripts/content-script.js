@@ -19,8 +19,26 @@ const youtubeElements = {
         ytm-video-with-context-renderer:has(a[href*="/shorts/"])`
 };
 
-function logger(message) {
-    console.log(`[Youtube Short Remover] ${message}`);
+
+function fetchMessageFromBackground(messageKey) {
+    return new Promise((resolve, reject) => {
+        chrome.runtime.sendMessage({ action: "log", messageKey }, (response) => {
+            if (response.error) {
+                reject(new Error('Erreur : ' + response.error));
+            } else {
+                resolve(response.message);
+            }
+        });
+    });
+}
+
+function logger(messageKey, suplement = "") {    
+    fetchMessageFromBackground(messageKey)
+        .then(message => {
+            console.log(`[Youtube Short Remover] ${message}${suplement}`);
+        })
+        .catch(error => console.error('Erreur lors de la récupération du message:', error.message));
+    
 }
 
 const observers = [];
@@ -55,7 +73,8 @@ function disconnectAllObservers() {
 
     observers.forEach(observer => observer.disconnect());
     observers.length = 0;
-    logger('Disconnected all observers');
+
+    logger('log_DisconnectOberserver');
 }
 
 function waitForElement(selector, callback) {
@@ -96,7 +115,7 @@ chrome.storage.local.get('extensionIsActive', function (result) {
         
         waitForElement(youtubeElements.navbarUndeployed, navBarButtonUndeployed => {
             navBarButtonUndeployed.remove();
-            logger('Removed navbar undeployed button');
+            logger('log_NavbarButtonUndeployed');
         });
         
     });
@@ -106,7 +125,7 @@ chrome.storage.local.get('extensionIsActive', function (result) {
 
         waitForElement(youtubeElements.navbarDeployed, navbarButtonDeployed => {
             navbarButtonDeployed.remove();
-            logger('Removed navbar deployed button');
+            logger('log_NavbarButtonDeployed');
         });
         
     });
@@ -114,7 +133,7 @@ chrome.storage.local.get('extensionIsActive', function (result) {
     // Listen for URL changes
     window.addEventListener("yt-navigate-finish", event => {
         let URL = event.detail.response.url;
-        logger(`Changed to: ${URL}`);
+        logger(`log_ChangeTo`, ` ${URL}` );
 
         disconnectAllObservers();
 
@@ -135,7 +154,7 @@ chrome.storage.local.get('extensionIsActive', function (result) {
 
                 observeElement(youtubeElements.recommendedShort, homeRecommendedShort => {
                     homeRecommendedShort.forEach(element => element.remove());
-                    logger('Removed home recommended short');
+                    logger('log_HomeRecommendedShort');
                 });
             });
         }
@@ -147,19 +166,19 @@ chrome.storage.local.get('extensionIsActive', function (result) {
         
                 observeElement(youtubeElements.recommendedShort, shortSearchResult => {
                     shortSearchResult.forEach(element => element.remove());
-                    logger('Removed short search result');
+                    logger('log_ShortSearchResult');
                 });
                 
             });
         }
 
         if (URL.includes("/watch?v=")) {
-            getParamState('paramVideoPlayerRecomendedShort', isActive => {
+            getParamState('paramVideoPlayerRecommendedShort', isActive => {
                 if (!isActive) return;
 
                 waitForElement(youtubeElements.videoPlayerRecommended, video => {
                     video.remove();
-                    logger('Removed video player recommended short');
+                    logger('log_VideoPlayerRecommendedShort');
                 });
             });
         }
@@ -170,7 +189,7 @@ chrome.storage.local.get('extensionIsActive', function (result) {
 
                 waitForElement(youtubeElements.recommendedShort, subscriptions => {
                     subscriptions.remove();
-                    logger('Removed subscriptions Shorts');
+                    logger('log_SubscriptionShort');
                 });
             });
         }

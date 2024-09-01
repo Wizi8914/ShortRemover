@@ -1,0 +1,85 @@
+{
+    "extension_name": {
+        "message": "ShortRemover"
+    },
+
+    "extension_description": {
+        "message": "YouTube에서 숏을 제거하여 방해 없는 경험을 제공합니다."
+    },
+
+    "options_name": {
+        "message": "설정"
+    },
+
+    "options_parameters": {
+        "message": "설정"
+    },
+
+    "options_themes": {
+        "message": "테마"
+    },
+
+    "options_languages": {
+        "message": "언어"
+    },
+
+    "param_NavbarButtonUndeployed": {
+        "message": "접힌 네비게이션 바 버튼"
+    },
+
+    "param_NavbarButtonDeployed": {
+        "message": "펼쳐진 네비게이션 바 버튼"
+    },
+
+    "param_ChannelTab": {
+        "message": "채널의 숏 탭"
+    },
+
+    "param_HomePageRecommendedShort": {
+        "message": "홈 페이지의 추천 숏"
+    },
+
+    "param_ShortSearchResult": {
+        "message": "검색 결과의 숏"
+    },
+
+    "param_VideoPlayerRecommendedShort": {
+        "message": "비디오 플레이어의 추천 숏"
+    },
+
+    "param_SubscriptionShort": {
+        "message": "구독의 숏"
+    },
+
+    "log_DisconnectOberserver": {
+        "message": "모든 관찰자 연결 해제"
+    },
+
+    "log_ChangeTo": {
+        "message": "변경됨:"
+    },
+
+    "log_NavbarButtonUndeployed": {
+        "message": "접힌 숏 버튼이 네비게이션 바에서 제거되었습니다"
+    },
+
+    "log_NavbarButtonDeployed": {
+        "message": "펼쳐진 숏 버튼이 네비게이션 바에서 제거되었습니다"
+    },
+
+    "log_HomeRecommendedShort": {
+        "message": "홈 페이지의 추천 숏이 제거되었습니다"
+    },
+
+    "log_ShortSearchResult": {
+        "message": "검색 결과에서 숏이 제거되었습니다"
+    },
+
+    "log_VideoPlayerRecommendedShort": {
+        "message": "비디오 플레이어의 추천 숏이 제거되었습니다"
+    },
+
+    "log_SubscriptionShort": {
+        "message": "구독에서 숏이 제거되었습니다"
+    }  
+}

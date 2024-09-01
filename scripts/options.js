@@ -83,7 +83,6 @@ window.addEventListener('load', function() {
 
 const language = document.querySelectorAll('.languages__container--item');
 
-
 language.forEach((lang, i) => {
     lang.addEventListener('click', () => {
         language.forEach((lang) => {
@@ -101,4 +100,8 @@ language.forEach((lang, i) => {
             lang.classList.add('active');
         }
     });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    changeLanguage();
 });

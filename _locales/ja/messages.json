@@ -1,0 +1,85 @@
+{
+    "extension_name": {
+        "message": "ショートリムーバー"
+    },
+
+    "extension_description": {
+        "message": "YouTubeからショートを削除して、気を散らさない体験を提供します。"
+    },
+
+    "options_name": {
+        "message": "設定"
+    },
+
+    "options_parameters": {
+        "message": "設定"
+    },
+
+    "options_themes": {
+        "message": "テーマ"
+    },
+
+    "options_languages": {
+        "message": "言語"
+    },
+
+    "param_NavbarButtonUndeployed": {
+        "message": "折りたたみ式ナビゲーションバーのボタン"
+    },
+
+    "param_NavbarButtonDeployed": {
+        "message": "展開されたナビゲーションバーのボタン"
+    },
+
+    "param_ChannelTab": {
+        "message": "チャンネルのショートタブ"
+    },
+
+    "param_HomePageRecommendedShort": {
+        "message": "ホームページのおすすめショート"
+    },
+
+    "param_ShortSearchResult": {
+        "message": "検索結果のショート"
+    },
+
+    "param_VideoPlayerRecommendedShort": {
+        "message": "ビデオプレーヤーのおすすめショート"
+    },
+
+    "param_SubscriptionShort": {
+        "message": "登録チャンネルのショート"
+    },
+
+    "log_DisconnectOberserver": {
+        "message": "すべてのオブザーバーを切断しました"
+    },
+
+    "log_ChangeTo": {
+        "message": "変更先："
+    },
+
+    "log_NavbarButtonUndeployed": {
+        "message": "ナビゲーションバーの折りたたみ式ショートボタンを削除しました"
+    },
+
+    "log_NavbarButtonDeployed": {
+        "message": "ナビゲーションバーの展開されたショートボタンを削除しました"
+    },
+
+    "log_HomeRecommendedShort": {
+        "message": "ホームページのおすすめショートを削除しました"
+    },
+
+    "log_ShortSearchResult": {
+        "message": "検索結果からショートを削除しました"
+    },
+
+    "log_VideoPlayerRecommendedShort": {
+        "message": "ビデオプレーヤーのおすすめショートを削除しました"
+    },
+
+    "log_SubscriptionShort": {
+        "message": "登録チャンネルのショートを削除しました"
+    }  
+}
