@@ -20,6 +20,9 @@
   <a href="./manifest.json" traget="_blank">
     <img alt="Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FWizi8914%2FShortRemover%2Fmain%2Fmanifest.json&query=version&label=version&color=orange">
   </a>
+  <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shortremover">
+    <img src="https://badges.crowdin.net/shortremover/localized.svg">
+  </a>
 </div>
 
 
