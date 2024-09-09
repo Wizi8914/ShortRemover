@@ -111,7 +111,7 @@ header .header-right__theme:hover {
   grid-area: 1/1/2/2;
 }
 .themes__container--item:hover {
-  filter: brightness(0.8);
+  transform: scale(1.05);
 }
 .themes__container--item svg {
   position: absolute;
@@ -219,7 +219,7 @@ header .header-right__theme:hover {
   grid-area: 1/1/2/2;
 }
 .languages__container--item:hover {
-  filter: brightness(0.8);
+  transform: scale(1.05);
 }
 .languages__container--item img {
   width: calc(100% + 10px);

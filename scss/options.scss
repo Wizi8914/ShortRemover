@@ -134,7 +134,7 @@ header {
             }
 
             &:hover {
-                filter: brightness(.8);
+                transform: scale(1.05);
             }
 
             svg {
@@ -277,7 +277,7 @@ header {
             }
 
             &:hover {
-                filter: brightness(.8);
+                transform: scale(1.05);
             }
             
 
