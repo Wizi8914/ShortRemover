@@ -39,7 +39,7 @@
             .then(message => {
                 console.log(`[Youtube Short Remover] ${message}${suplement}`);
             })
-            .catch(error => console.error('Erreur lors de la récupération du message:', error.message));
+            .catch(error => console.error(`Erreur lors de la récupération du message (${messageKey}):`, error.message));
         
     }
     
@@ -106,6 +106,20 @@
             callback(param);
         });
     }
+    
+
+    function addToStatistics(dataKey) {
+        chrome.storage.local.get(dataKey, function(result) {
+            let currentCount = result[dataKey] || 0; // If the key doesn't exist, the count is 0
+            currentCount++;
+
+            let obj = {};
+            obj[dataKey] = currentCount;
+
+            chrome.storage.local.set(obj);
+        });
+    }
+
     
     
     chrome.storage.local.get('extensionIsActive', function (result) {

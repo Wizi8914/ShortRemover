@@ -18,7 +18,14 @@
         });
     });
     
-    
+    // Statistics //
+
+    function getStatistics(dataKey, callback) {
+        chrome.storage.local.get(dataKey, function(result) {
+            const count = result[dataKey] || 0;
+            callback(count);
+        })
+    }
     
     // Theme //
     
