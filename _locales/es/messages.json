@@ -2,84 +2,64 @@
     "extension_name": {
         "message": "ShortRemover"
     },
-
     "extension_description": {
         "message": "Elimina los Shorts de YouTube para una experiencia sin distracciones."
     },
-
     "options_name": {
         "message": "Configuración"
     },
-
     "options_parameters": {
         "message": "Configuración"
     },
-
     "options_themes": {
         "message": "Temas"
     },
-
     "options_languages": {
         "message": "Idiomas"
     },
-
     "param_NavbarButtonUndeployed": {
         "message": "Botón de la barra de navegación plegado"
     },
-
     "param_NavbarButtonDeployed": {
         "message": "Botón de la barra de navegación desplegado"
     },
-
     "param_ChannelTab": {
         "message": "Pestaña de Shorts en los canales"
     },
-
     "param_HomePageRecommendedShort": {
         "message": "Shorts recomendados en la página principal"
     },
-
     "param_ShortSearchResult": {
         "message": "Shorts en los resultados de búsqueda"
     },
-
     "param_VideoPlayerRecommendedShort": {
         "message": "Shorts recomendados en el reproductor"
     },
-
     "param_SubscriptionShort": {
         "message": "Shorts en las suscripciones"
     },
-
     "log_DisconnectOberserver": {
         "message": "Desconexión de todos los observadores"
     },
-
     "log_ChangeTo": {
         "message": "Cambio en:"
     },
-
     "log_NavbarButtonUndeployed": {
         "message": "Botón de Shorts no desplegado de la barra de navegación eliminado"
     },
-
     "log_NavbarButtonDeployed": {
         "message": "Botón de Shorts desplegado de la barra de navegación eliminado"
     },
-
     "log_HomeRecommendedShort": {
         "message": "Shorts recomendados en la página de inicio eliminados"
     },
-
     "log_ShortSearchResult": {
         "message": "Shorts eliminados en los resultados de búsqueda"
     },
-
     "log_VideoPlayerRecommendedShort": {
         "message": "Shorts recomendados en el reproductor eliminados"
     },
-
     "log_SubscriptionShort": {
         "message": "Shorts de las suscripciones eliminados"
-    }  
+    }
 }
