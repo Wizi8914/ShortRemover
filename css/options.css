@@ -50,6 +50,22 @@ header .header-right__theme:hover {
   fill: var(--color-text-hover);
 }
 
+.statistics__container_element {
+  margin: 40px;
+  padding: 15px;
+  position: relative;
+}
+.statistics__container_element::before {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box, var(--gradient-color) border-box;
+  border-radius: 15px;
+  z-index: -1;
+  border: 2px solid transparent;
+  transition-duration: 0.4s;
+}
+
 .parameters_container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

@@ -34,7 +34,9 @@
         });
     }
     
-    function logger(messageKey, suplement = "") {    
+    function logger(messageKey, suplement = "") {   
+        console.log(`[Youtube Short Remover] ${messageKey}${suplement}`);
+        
         fetchMessageFromBackground(messageKey)
             .then(message => {
                 console.log(`[Youtube Short Remover] ${message}${suplement}`);
@@ -117,6 +119,8 @@
             obj[dataKey] = currentCount;
 
             chrome.storage.local.set(obj);
+
+            console.log(`[Youtube Short Remover] Statistiques: ${dataKey} = ${currentCount}`);
         });
     }
 
@@ -171,6 +175,7 @@
                     observeElement(youtubeElements.recommendedShort, homeRecommendedShort => {
                         homeRecommendedShort.forEach(element => element.remove());
                         logger('log_HomeRecommendedShort');
+                        addToStatistics('blockedShorts');
                     });
                 });
             }
@@ -183,6 +188,7 @@
                     observeElement(youtubeElements.recommendedShort, shortSearchResult => {
                         shortSearchResult.forEach(element => element.remove());
                         logger('log_ShortSearchResult');
+                        addToStatistics('blockedShorts');
                     });
                     
                 });
@@ -195,6 +201,7 @@
                     waitForElement(youtubeElements.videoPlayerRecommended, video => {
                         video.remove();
                         logger('log_VideoPlayerRecommendedShort');
+                        addToStatistics('blockedShorts');
                     });
                 });
             }
@@ -206,6 +213,7 @@
                     waitForElement(youtubeElements.recommendedShort, subscriptions => {
                         subscriptions.remove();
                         logger('log_SubscriptionShort');
+                        addToStatistics('blockedShorts');
                     });
                 });
             }
