@@ -5,6 +5,12 @@
     "extension_description": {
         "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
+    "minute_label": {
+        "message": "minutes"
+    },
+    "hour_label": {
+        "message": "heurs"
+    },
     "options_name": {
         "message": "Settings"
     },
