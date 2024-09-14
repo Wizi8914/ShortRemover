@@ -1,0 +1,65 @@
+{
+    "extension_name": {
+        "message": "ShortRemover"
+    },
+    "extension_description": {
+        "message": "Entfernen Sie Shorts von YouTube für ein ablenkungsfreies Erlebnis."
+    },
+    "options_name": {
+        "message": "Einstellungen"
+    },
+    "options_parameters": {
+        "message": "Einstellungen"
+    },
+    "options_themes": {
+        "message": "Themen"
+    },
+    "options_languages": {
+        "message": "Sprachen"
+    },
+    "param_NavbarButtonUndeployed": {
+        "message": "Eingeklappter Navbar-Button"
+    },
+    "param_NavbarButtonDeployed": {
+        "message": "Ausgeklappter Navbar-Button"
+    },
+    "param_ChannelTab": {
+        "message": "Shorts-Tab in Kanälen"
+    },
+    "param_HomePageRecommendedShort": {
+        "message": "Empfohlene Shorts auf der Startseite"
+    },
+    "param_ShortSearchResult": {
+        "message": "Shorts in den Suchergebnissen"
+    },
+    "param_VideoPlayerRecommendedShort": {
+        "message": "Empfohlene Shorts im Videoplayer"
+    },
+    "param_SubscriptionShort": {
+        "message": "Shorts in den Abonnements"
+    },
+    "log_DisconnectOberserver": {
+        "message": "Trennung aller Beobachter"
+    },
+    "log_ChangeTo": {
+        "message": "Änderung auf:"
+    },
+    "log_NavbarButtonUndeployed": {
+        "message": "Eingeklappter Shorts-Button in der Navigationsleiste entfernt"
+    },
+    "log_NavbarButtonDeployed": {
+        "message": "Ausgeklappter Shorts-Button in der Navigationsleiste entfernt"
+    },
+    "log_HomeRecommendedShort": {
+        "message": "Empfohlene Shorts auf der Startseite entfernt"
+    },
+    "log_ShortSearchResult": {
+        "message": "Shorts aus den Suchergebnissen entfernt"
+    },
+    "log_VideoPlayerRecommendedShort": {
+        "message": "Empfohlene Shorts im Videoplayer entfernt"
+    },
+    "log_SubscriptionShort": {
+        "message": "Shorts aus den Abonnements entfernt"
+    }
+}
