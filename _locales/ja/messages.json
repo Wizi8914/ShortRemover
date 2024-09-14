@@ -1,65 +1,65 @@
 {
     "extension_name": {
-        "message": "ショートリムーバー"
+        "message": "ShortRemover"
     },
     "extension_description": {
-        "message": "YouTubeからショートを削除して、気を散らさない体験を提供します。"
+        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
     "options_name": {
-        "message": "設定"
+        "message": "Settings"
     },
     "options_parameters": {
-        "message": "設定"
+        "message": "Parameters"
     },
     "options_themes": {
-        "message": "テーマ"
+        "message": "Themes"
     },
     "options_languages": {
-        "message": "言語"
+        "message": "Languages"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "折りたたみ式ナビゲーションバーのボタン"
+        "message": "Collapsed navbar button"
     },
     "param_NavbarButtonDeployed": {
-        "message": "展開されたナビゲーションバーのボタン"
+        "message": "Expanded navbar button"
     },
     "param_ChannelTab": {
-        "message": "チャンネルのショートタブ"
+        "message": "Channel Shorts tab"
     },
     "param_HomePageRecommendedShort": {
-        "message": "ホームページのおすすめショート"
+        "message": "Home page recommended Shorts"
     },
     "param_ShortSearchResult": {
-        "message": "検索結果のショート"
+        "message": "Shorts in search results"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "ビデオプレーヤーのおすすめショート"
+        "message": "Video player recommended Shorts"
     },
     "param_SubscriptionShort": {
-        "message": "登録チャンネルのショート"
+        "message": "Subscription Shorts"
     },
     "log_DisconnectOberserver": {
-        "message": "すべてのオブザーバーを切断しました"
+        "message": "Disconnected all observers"
     },
     "log_ChangeTo": {
-        "message": "変更先："
+        "message": "Changed to:"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "ナビゲーションバーの折りたたみ式ショートボタンを削除しました"
+        "message": "Removed collapsed navbar button"
     },
     "log_NavbarButtonDeployed": {
-        "message": "ナビゲーションバーの展開されたショートボタンを削除しました"
+        "message": "Removed expanded navbar button"
     },
     "log_HomeRecommendedShort": {
-        "message": "ホームページのおすすめショートを削除しました"
+        "message": "Removed home page recommended Shorts"
     },
     "log_ShortSearchResult": {
-        "message": "検索結果からショートを削除しました"
+        "message": "Removed Shorts from search results"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "ビデオプレーヤーのおすすめショートを削除しました"
+        "message": "Removed video player recommended Shorts"
     },
     "log_SubscriptionShort": {
-        "message": "登録チャンネルのショートを削除しました"
+        "message": "Removed subscription Shorts"
     }
 }

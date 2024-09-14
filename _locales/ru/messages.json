@@ -3,63 +3,63 @@
         "message": "ShortRemover"
     },
     "extension_description": {
-        "message": "Удаляет Shorts с YouTube для бесперебойного просмотра."
+        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
     "options_name": {
-        "message": "Настройки"
+        "message": "Settings"
     },
     "options_parameters": {
-        "message": "Настройки"
+        "message": "Parameters"
     },
     "options_themes": {
-        "message": "Темы"
+        "message": "Themes"
     },
     "options_languages": {
-        "message": "Языки"
+        "message": "Languages"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "Свернутый кнопка навигационной панели"
+        "message": "Collapsed navbar button"
     },
     "param_NavbarButtonDeployed": {
-        "message": "Развернутый кнопка навигационной панели"
+        "message": "Expanded navbar button"
     },
     "param_ChannelTab": {
-        "message": "Вкладка Shorts на каналах"
+        "message": "Channel Shorts tab"
     },
     "param_HomePageRecommendedShort": {
-        "message": "Рекомендуемые Shorts на главной странице"
+        "message": "Home page recommended Shorts"
     },
     "param_ShortSearchResult": {
-        "message": "Shorts в результатах поиска"
+        "message": "Shorts in search results"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "Рекомендуемые Shorts в плеере"
+        "message": "Video player recommended Shorts"
     },
     "param_SubscriptionShort": {
-        "message": "Shorts в подписках"
+        "message": "Subscription Shorts"
     },
     "log_DisconnectOberserver": {
-        "message": "Отключение всех наблюдателей"
+        "message": "Disconnected all observers"
     },
     "log_ChangeTo": {
-        "message": "Изменение на:"
+        "message": "Changed to:"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "Удален свернутый кнопка Shorts на навигационной панели"
+        "message": "Removed collapsed navbar button"
     },
     "log_NavbarButtonDeployed": {
-        "message": "Удален развернутый кнопка Shorts на навигационной панели"
+        "message": "Removed expanded navbar button"
     },
     "log_HomeRecommendedShort": {
-        "message": "Удалены рекомендуемые Shorts на главной странице"
+        "message": "Removed home page recommended Shorts"
     },
     "log_ShortSearchResult": {
-        "message": "Удалены Shorts из результатов поиска"
+        "message": "Removed Shorts from search results"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "Удалены рекомендуемые Shorts из плеера"
+        "message": "Removed video player recommended Shorts"
     },
     "log_SubscriptionShort": {
-        "message": "Удалены Shorts из подписок"
+        "message": "Removed subscription Shorts"
     }
 }

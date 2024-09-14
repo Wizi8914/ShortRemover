@@ -3,63 +3,63 @@
         "message": "ShortRemover"
     },
     "extension_description": {
-        "message": "قم بإزالة شورت من YouTube لتجربة خالية من التشتت."
+        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
     "options_name": {
-        "message": "الإعدادات"
+        "message": "Settings"
     },
     "options_parameters": {
-        "message": "الإعدادات"
+        "message": "Parameters"
     },
     "options_themes": {
-        "message": "الثيمات"
+        "message": "Themes"
     },
     "options_languages": {
-        "message": "اللغات"
+        "message": "Languages"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "زر شريط التنقل المطوي"
+        "message": "Collapsed navbar button"
     },
     "param_NavbarButtonDeployed": {
-        "message": "زر شريط التنقل الموسع"
+        "message": "Expanded navbar button"
     },
     "param_ChannelTab": {
-        "message": "علامة التبويب شورت في القنوات"
+        "message": "Channel Shorts tab"
     },
     "param_HomePageRecommendedShort": {
-        "message": "شورت موصى به في الصفحة الرئيسية"
+        "message": "Home page recommended Shorts"
     },
     "param_ShortSearchResult": {
-        "message": "شورت في نتائج البحث"
+        "message": "Shorts in search results"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "شورت موصى به في مشغل الفيديو"
+        "message": "Video player recommended Shorts"
     },
     "param_SubscriptionShort": {
-        "message": "شورت في الاشتراكات"
+        "message": "Subscription Shorts"
     },
     "log_DisconnectOberserver": {
-        "message": "فصل جميع المراقبين"
+        "message": "Disconnected all observers"
     },
     "log_ChangeTo": {
-        "message": "تغيير إلى:"
+        "message": "Changed to:"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "تمت إزالة زر شورت المطوي من شريط التنقل"
+        "message": "Removed collapsed navbar button"
     },
     "log_NavbarButtonDeployed": {
-        "message": "تمت إزالة زر شورت الموسع من شريط التنقل"
+        "message": "Removed expanded navbar button"
     },
     "log_HomeRecommendedShort": {
-        "message": "تمت إزالة شورت الموصى به من الصفحة الرئيسية"
+        "message": "Removed home page recommended Shorts"
     },
     "log_ShortSearchResult": {
-        "message": "تمت إزالة شورت من نتائج البحث"
+        "message": "Removed Shorts from search results"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "تمت إزالة شورت الموصى به من مشغل الفيديو"
+        "message": "Removed video player recommended Shorts"
     },
     "log_SubscriptionShort": {
-        "message": "تمت إزالة شورت من الاشتراكات"
+        "message": "Removed subscription Shorts"
     }
 }
