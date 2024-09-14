@@ -50,43 +50,6 @@ header .header-right__theme:hover {
   fill: var(--color-text-hover);
 }
 
-.statistics__container {
-  display: flex;
-  margin: 40px;
-  gap: 20px;
-}
-.statistics__container_element {
-  width: 100%;
-  padding: 30px;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-.statistics__container_element svg {
-  fill: var(--color-text);
-  width: 5em;
-}
-.statistics__container_element--value {
-  margin-top: 5px;
-  font-size: 3.5em;
-  font-weight: 600;
-}
-.statistics__container_element--title {
-  color: var(--color-text-hover);
-  font-size: 1.5em;
-}
-.statistics__container_element::before {
-  content: "";
-  position: absolute;
-  inset: 0px;
-  background: linear-gradient(var(--color-bg), var(--color-bg)) padding-box, var(--gradient-color) border-box;
-  border-radius: 15px;
-  z-index: -1;
-  border: 2px solid transparent;
-  transition-duration: 0.4s;
-}
-
 .parameters_container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -281,7 +244,6 @@ header .header-right__theme:hover {
   position: relative;
   display: flex;
   width: 50px;
-  min-width: 50px;
   height: 28px;
 }
 .switch input {

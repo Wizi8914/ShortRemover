@@ -41,23 +41,3 @@ function setMessage(element, messageKey, language) {
             console.error('Error:', error);
         });
 }
-
-async function getMessage(messageKey) {
-    const language = await getLanguage();
-    const pageURL = chrome.runtime.getURL(`_locales/${language}/messages.json`);
-
-    const response = await fetch(pageURL);
-
-    if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const json = await response.json();
-    const message = json[messageKey]['message'];
-    
-    return message;
-}
-
-
-
-
