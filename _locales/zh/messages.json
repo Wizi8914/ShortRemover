@@ -3,63 +3,63 @@
         "message": "ShortRemover"
     },
     "extension_description": {
-        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
+        "message": "从 YouTube 中删除短视频，提供无干扰的观看体验。"
     },
     "options_name": {
-        "message": "Settings"
+        "message": "设置"
     },
     "options_parameters": {
-        "message": "Parameters"
+        "message": "设置"
     },
     "options_themes": {
-        "message": "Themes"
+        "message": "主题"
     },
     "options_languages": {
-        "message": "Languages"
+        "message": "语言"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "Collapsed navbar button"
+        "message": "折叠的导航栏按钮"
     },
     "param_NavbarButtonDeployed": {
-        "message": "Expanded navbar button"
+        "message": "展开的导航栏按钮"
     },
     "param_ChannelTab": {
-        "message": "Channel Shorts tab"
+        "message": "频道中的短视频标签"
     },
     "param_HomePageRecommendedShort": {
-        "message": "Home page recommended Shorts"
+        "message": "主页推荐的短视频"
     },
     "param_ShortSearchResult": {
-        "message": "Shorts in search results"
+        "message": "搜索结果中的短视频"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "Video player recommended Shorts"
+        "message": "视频播放器中的推荐短视频"
     },
     "param_SubscriptionShort": {
-        "message": "Subscription Shorts"
+        "message": "订阅中的短视频"
     },
     "log_DisconnectOberserver": {
-        "message": "Disconnected all observers"
+        "message": "断开所有观察者"
     },
     "log_ChangeTo": {
-        "message": "Changed to:"
+        "message": "更改为："
     },
     "log_NavbarButtonUndeployed": {
-        "message": "Removed collapsed navbar button"
+        "message": "折叠的短视频按钮从导航栏中删除"
     },
     "log_NavbarButtonDeployed": {
-        "message": "Removed expanded navbar button"
+        "message": "展开的短视频按钮从导航栏中删除"
     },
     "log_HomeRecommendedShort": {
-        "message": "Removed home page recommended Shorts"
+        "message": "主页上的推荐短视频已被删除"
     },
     "log_ShortSearchResult": {
-        "message": "Removed Shorts from search results"
+        "message": "搜索结果中的短视频已被删除"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "Removed video player recommended Shorts"
+        "message": "视频播放器中的推荐短视频已被删除"
     },
     "log_SubscriptionShort": {
-        "message": "Removed subscription Shorts"
+        "message": "订阅中的短视频已被删除"
     }
 }
