@@ -7,6 +7,14 @@
         "message": "Supprimez les videos Short de YouTube pour une expérience sans distraction."
     },
 
+    "minute_label": {
+        "message": "minutes"
+    },
+
+    "hour_label": {
+        "message": "heurs"
+    },
+
     "options_name": {
         "message": "Paramètres"
     },
@@ -14,7 +22,7 @@
     "options_parameters": {
         "message": "Paramètres"
     },
-
+    
     "options_themes": {
         "message": "Thèmes"
     },

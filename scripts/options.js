@@ -18,7 +18,7 @@ checkbox.forEach((box, i) => {
 
 // Statistics //
 
-const statistics = document.querySelectorAll('.statistics__container--item');
+const statistics = document.querySelectorAll('.statistics__container_element--value');
 
 function getStatistics(dataKey, callback) {
     chrome.storage.local.get(dataKey, function(result) {
@@ -28,14 +28,31 @@ function getStatistics(dataKey, callback) {
 }
 
 
-statistics.forEach((stat, i) => {
-
-    console.log(stat.getAttribute('data-key'));
-
-    getStatistics(stat.getAttribute('data-key'), (count) => {
-        stat.children[0].textContent = count;
+statistics.forEach((stat, i)=> {
+    getStatistics(stat.getAttribute('data-key'), async (count) => {
+        if (stat.getAttribute('data-key') === 'timeSaved') {
+            count = await formatTime(count);
+        }
+        
+        stat.textContent = count;
     });
 });
+
+async function formatTime (minutes) {
+
+    if (minutes < 60) {
+        const minutesLabel = await getMessage('minute_label');
+
+        return `${minutes} ${minutesLabel}`;
+    }
+
+    let hours = minutes / 60;
+    hours = Number.isInteger(hours) ? hours : hours.toFixed(1);
+    
+    const hourLabel = await getMessage('hour_label');
+
+    return `${hours} ${hourLabel}`;
+}
 
 // Theme //
 

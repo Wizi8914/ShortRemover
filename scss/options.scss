@@ -65,10 +65,35 @@ header {
 .statistics{
 
     &__container {
+        display: flex;
+        margin: 40px;
+        gap: 20px;
+
+        
+
         &_element {
-            margin: 40px;
-            padding: 15px;
+            width: 100%;
+            padding: 30px;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            svg {
+                fill: var(--color-text);
+                width: 5em;
+            }
+
+            &--value {
+                margin-top: 5px;
+                font-size: 3.5em;
+                font-weight: 600;
+            }
+
+            &--title {
+                color: var(--color-text-hover);
+                font-size: 1.5em;
+            }
 
             &::before {
                 content: "";
@@ -334,6 +359,7 @@ header {
     position: relative;
     display: flex;
     width: 50px;
+    min-width: 50px;
     height: 28px;
 
     input { 

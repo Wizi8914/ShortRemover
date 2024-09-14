@@ -7,6 +7,14 @@
         "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
 
+    "minute_label": {
+        "message": "minutes"
+    },
+
+    "hour_label": {
+        "message": "hours"
+    },
+
     "options_name": {
         "message": "Settings"
     },

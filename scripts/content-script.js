@@ -4,6 +4,8 @@
         navbarUndeployed: ".ytd-mini-guide-renderer:nth-child(2)",
         navbarDeployed: "ytd-guide-entry-renderer:nth-child(2)",
         videoPlayerRecommended: "ytd-reel-shelf-renderer.ytd-item-section-renderer",
+        searchAndPlayerShortContainer: "#scroll-container > .yt-horizontal-list-renderer",
+        homeAndSubShortContainer: ".ytd-rich-shelf-renderer > #contents",
         recommendedShort: 
             `#player-shorts-container,
             .ytd-shorts,
@@ -18,7 +20,7 @@
             ytd-video-renderer:has(a[href*="/shorts/"]),
             ytm-reel-shelf-renderer,
             ytm-rich-grid-renderer.is_shorts,
-            ytm-video-with-context-renderer:has(a[href*="/shorts/"])`
+            ytm-video-with-context-renderer:has(a[href*="/shorts/"])`,
     };
     
     
@@ -110,18 +112,32 @@
     }
     
 
-    function addToStatistics(dataKey) {
+    function addToStatistics(dataKey, increment = 1) {
         chrome.storage.local.get(dataKey, function(result) {
             let currentCount = result[dataKey] || 0; // If the key doesn't exist, the count is 0
-            currentCount++;
+            currentCount += increment;
 
             let obj = {};
             obj[dataKey] = currentCount;
 
             chrome.storage.local.set(obj);
-
-            console.log(`[Youtube Short Remover] Statistiques: ${dataKey} = ${currentCount}`);
         });
+    }
+
+    function countShorts(element) {
+        let shortCount = 0;
+
+        try {
+            shortCount = document.querySelector(element).childElementCount;
+            estimateTimeSaved(shortCount);
+            addToStatistics('blockedShorts', shortCount);
+        } catch (error) {}
+    }
+
+    function estimateTimeSaved(shortCount) {
+        let timeSaved = Math.floor(shortCount / 5); 
+
+        addToStatistics('timeSaved', timeSaved);
     }
 
     
@@ -173,9 +189,10 @@
                     if (!isActive) return;
     
                     observeElement(youtubeElements.recommendedShort, homeRecommendedShort => {
+                        countShorts(youtubeElements.homeAndSubShortContainer);
+                        
                         homeRecommendedShort.forEach(element => element.remove());
                         logger('log_HomeRecommendedShort');
-                        addToStatistics('blockedShorts');
                     });
                 });
             }
@@ -185,10 +202,11 @@
                 getParamState('paramShortSearchResult', isActive => {
                     if (!isActive && document.URL.includes("youtube.com/results")) return;
             
-                    observeElement(youtubeElements.recommendedShort, shortSearchResult => {
+                    observeElement(youtubeElements.recommendedShort, shortSearchResult => {                   
+                        countShorts(youtubeElements.searchAndPlayerShortContainer);
+
                         shortSearchResult.forEach(element => element.remove());
                         logger('log_ShortSearchResult');
-                        addToStatistics('blockedShorts');
                     });
                     
                 });
@@ -198,10 +216,11 @@
                 getParamState('paramVideoPlayerRecommendedShort', isActive => {
                     if (!isActive) return;
     
-                    waitForElement(youtubeElements.videoPlayerRecommended, video => {
-                        video.remove();
+                    waitForElement(youtubeElements.videoPlayerRecommended, playerRecommendedShort => {
+                        countShorts(youtubeElements.searchAndPlayerShortContainer);
+
+                        playerRecommendedShort.remove();
                         logger('log_VideoPlayerRecommendedShort');
-                        addToStatistics('blockedShorts');
                     });
                 });
             }
@@ -210,13 +229,16 @@
                 getParamState('paramSubscriptionShort', isActive => {
                     if (!isActive) return;
     
-                    waitForElement(youtubeElements.recommendedShort, subscriptions => {
-                        subscriptions.remove();
+                    waitForElement(youtubeElements.recommendedShort, subscriptionsShorts => {
+                        countShorts(youtubeElements.homeAndSubShortContainer);
+                        
+                        subscriptionsShorts.remove();
                         logger('log_SubscriptionShort');
-                        addToStatistics('blockedShorts');
                     });
                 });
             }
+
+            addToStatistics('cleanedPage');
         });
     });
 
