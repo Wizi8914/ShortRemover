@@ -5,6 +5,12 @@
     "extension_description": {
         "message": "Удалите короткие видео с YouTube, чтобы не отвлекаться."
     },
+    "minute_label": {
+        "message": "minutes"
+    },
+    "hour_label": {
+        "message": "hours"
+    },
     "options_name": {
         "message": "Настройки"
     },
