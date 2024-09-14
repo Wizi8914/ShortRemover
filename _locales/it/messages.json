@@ -3,63 +3,63 @@
         "message": "ShortRemover"
     },
     "extension_description": {
-        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
+        "message": "Rimuovi gli Shorts da YouTube per un'esperienza senza distrazioni."
     },
     "options_name": {
-        "message": "Settings"
+        "message": "Impostazioni"
     },
     "options_parameters": {
-        "message": "Parameters"
+        "message": "Impostazioni"
     },
     "options_themes": {
-        "message": "Themes"
+        "message": "Temi"
     },
     "options_languages": {
-        "message": "Languages"
+        "message": "Lingue"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "Collapsed navbar button"
+        "message": "Bottone della barra di navigazione ridotto"
     },
     "param_NavbarButtonDeployed": {
-        "message": "Expanded navbar button"
+        "message": "Bottone della barra di navigazione espanso"
     },
     "param_ChannelTab": {
-        "message": "Channel Shorts tab"
+        "message": "Scheda degli Shorts nei canali"
     },
     "param_HomePageRecommendedShort": {
-        "message": "Home page recommended Shorts"
+        "message": "Shorts consigliati nella home page"
     },
     "param_ShortSearchResult": {
-        "message": "Shorts in search results"
+        "message": "Shorts nei risultati di ricerca"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "Video player recommended Shorts"
+        "message": "Shorts consigliati nel lettore video"
     },
     "param_SubscriptionShort": {
-        "message": "Subscription Shorts"
+        "message": "Shorts negli abbonamenti"
     },
     "log_DisconnectOberserver": {
-        "message": "Disconnected all observers"
+        "message": "Disconnessione di tutti gli osservatori"
     },
     "log_ChangeTo": {
-        "message": "Changed to:"
+        "message": "Cambiamento a:"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "Removed collapsed navbar button"
+        "message": "Bottone degli Shorts ridotto nella barra di navigazione rimosso"
     },
     "log_NavbarButtonDeployed": {
-        "message": "Removed expanded navbar button"
+        "message": "Bottone degli Shorts espanso nella barra di navigazione rimosso"
     },
     "log_HomeRecommendedShort": {
-        "message": "Removed home page recommended Shorts"
+        "message": "Shorts consigliati nella home page rimossi"
     },
     "log_ShortSearchResult": {
-        "message": "Removed Shorts from search results"
+        "message": "Shorts rimossi dai risultati di ricerca"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "Removed video player recommended Shorts"
+        "message": "Shorts consigliati nel lettore video rimossi"
     },
     "log_SubscriptionShort": {
-        "message": "Removed subscription Shorts"
+        "message": "Shorts dagli abbonamenti rimossi"
     }
 }
