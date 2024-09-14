@@ -1,0 +1,65 @@
+{
+    "extension_name": {
+        "message": "Удаление коротких видео"
+    },
+    "extension_description": {
+        "message": "Удалите короткие видео с YouTube, чтобы не отвлекаться."
+    },
+    "options_name": {
+        "message": "Настройки"
+    },
+    "options_parameters": {
+        "message": "Параметры"
+    },
+    "options_themes": {
+        "message": "Темы"
+    },
+    "options_languages": {
+        "message": "Языки"
+    },
+    "param_NavbarButtonUndeployed": {
+        "message": "Свёрнутая кнопка навигационной панели"
+    },
+    "param_NavbarButtonDeployed": {
+        "message": "Расширенная кнопка навигационной панели"
+    },
+    "param_ChannelTab": {
+        "message": "Вкладка коротких видео на каналах"
+    },
+    "param_HomePageRecommendedShort": {
+        "message": "Домашняя страница с рекомендованными короткими видео"
+    },
+    "param_ShortSearchResult": {
+        "message": "Короткие видео в результатах поиска"
+    },
+    "param_VideoPlayerRecommendedShort": {
+        "message": "Рекомендуемые короткие видео в видео плеере"
+    },
+    "param_SubscriptionShort": {
+        "message": "Короткие видео в подписках"
+    },
+    "log_DisconnectOberserver": {
+        "message": "Отключение всех наблюдателей"
+    },
+    "log_ChangeTo": {
+        "message": "Изменено на:"
+    },
+    "log_NavbarButtonUndeployed": {
+        "message": "Убрана кнопка свёрнутой навигационной панели"
+    },
+    "log_NavbarButtonDeployed": {
+        "message": "Убрана кнопка расширенной панели навигации"
+    },
+    "log_HomeRecommendedShort": {
+        "message": "Убраны рекомендуемые короткие видео с домашней страницы"
+    },
+    "log_ShortSearchResult": {
+        "message": "Убраны короткие видео из результатов поиска"
+    },
+    "log_VideoPlayerRecommendedShort": {
+        "message": "Убраны рекомендуемые короткие видео из видео плеера"
+    },
+    "log_SubscriptionShort": {
+        "message": "Убраны короткие видео из подписок"
+    }
+}
