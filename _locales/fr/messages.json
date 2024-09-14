@@ -3,63 +3,63 @@
         "message": "ShortRemover"
     },
     "extension_description": {
-        "message": "Supprimez les vidéos Short de YouTube pour une expérience sans distraction."
+        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
     "options_name": {
-        "message": "Réglages"
+        "message": "Settings"
     },
     "options_parameters": {
-        "message": "Paramètres"
+        "message": "Parameters"
     },
     "options_themes": {
-        "message": "Thèmes"
+        "message": "Themes"
     },
     "options_languages": {
-        "message": "Langues"
+        "message": "Languages"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "Bouton de barre de navigation réduit"
+        "message": "Collapsed navbar button"
     },
     "param_NavbarButtonDeployed": {
-        "message": "Bouton de barre de navigation déployé"
+        "message": "Expanded navbar button"
     },
     "param_ChannelTab": {
-        "message": "Onglet Shorts des chaînes"
+        "message": "Channel Shorts tab"
     },
     "param_HomePageRecommendedShort": {
-        "message": "Shorts recommandés dans l'accueil"
+        "message": "Home page recommended Shorts"
     },
     "param_ShortSearchResult": {
-        "message": "Shorts dans les résultats de recherche"
+        "message": "Shorts in search results"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "Shorts recommandés dans le lecteur"
+        "message": "Video player recommended Shorts"
     },
     "param_SubscriptionShort": {
-        "message": "Shorts dans les abonnements"
+        "message": "Subscription Shorts"
     },
     "log_DisconnectOberserver": {
-        "message": "Déconnexion de tous les observateurs"
+        "message": "Disconnected all observers"
     },
     "log_ChangeTo": {
-        "message": "Changement sur :"
+        "message": "Changed to:"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "Bouton Shorts de la barre de navigation réduit supprimé"
+        "message": "Removed collapsed navbar button"
     },
     "log_NavbarButtonDeployed": {
-        "message": "Bouton Shorts de la barre de navigation étendue supprimé"
+        "message": "Removed expanded navbar button"
     },
     "log_HomeRecommendedShort": {
-        "message": "Shorts recommandés sur la page d'accueil supprimée"
+        "message": "Removed home page recommended Shorts"
     },
     "log_ShortSearchResult": {
-        "message": "Shorts supprimés dans le résultat de recherche"
+        "message": "Removed Shorts from search results"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "Shorts recommandés dans le lecteur vidéo supprimé"
+        "message": "Removed video player recommended Shorts"
     },
     "log_SubscriptionShort": {
-        "message": "Shorts dans les abonnements supprimés"
+        "message": "Removed subscription Shorts"
     }
 }
