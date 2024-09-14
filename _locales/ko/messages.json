@@ -1,65 +1,65 @@
 {
     "extension_name": {
-        "message": "쇼츠삭제"
+        "message": "ShortRemover"
     },
     "extension_description": {
-        "message": "방해받지 않는 경험을 위해 YouTube에서 쇼츠 동영상을 제거하세요."
+        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
     "options_name": {
-        "message": "설정"
+        "message": "Settings"
     },
     "options_parameters": {
-        "message": "매개변수"
+        "message": "Parameters"
     },
     "options_themes": {
-        "message": "테마"
+        "message": "Themes"
     },
     "options_languages": {
-        "message": "언어"
+        "message": "Languages"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "탐색 바 버튼 축소"
+        "message": "Collapsed navbar button"
     },
     "param_NavbarButtonDeployed": {
-        "message": "탐색 바 버튼 확장"
+        "message": "Expanded navbar button"
     },
     "param_ChannelTab": {
-        "message": "채널 쇼츠 탭"
+        "message": "Channel Shorts tab"
     },
     "param_HomePageRecommendedShort": {
-        "message": "홈 페이지에서의 추천 쇼츠"
+        "message": "Home page recommended Shorts"
     },
     "param_ShortSearchResult": {
-        "message": "검색 결과에서의 쇼츠"
+        "message": "Shorts in search results"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "동영상 플레이어에서의 추천 쇼츠"
+        "message": "Video player recommended Shorts"
     },
     "param_SubscriptionShort": {
-        "message": "구독에서의 쇼츠"
+        "message": "Subscription Shorts"
     },
     "log_DisconnectOberserver": {
-        "message": "모든 관측기 연결 해제"
+        "message": "Disconnected all observers"
     },
     "log_ChangeTo": {
-        "message": "다음으로 변경:"
+        "message": "Changed to:"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "탐색 바 버튼 축소 제거 완료"
+        "message": "Removed collapsed navbar button"
     },
     "log_NavbarButtonDeployed": {
-        "message": "탐색 바 버튼 확장 제거 완료"
+        "message": "Removed expanded navbar button"
     },
     "log_HomeRecommendedShort": {
-        "message": "홈 페이지에서의 추천 쇼츠 제거 완료"
+        "message": "Removed home page recommended Shorts"
     },
     "log_ShortSearchResult": {
-        "message": "검색 결과에서의 쇼츠 제거 완료"
+        "message": "Removed Shorts from search results"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "동영상 플레이어에서의 추천 쇼츠 제거 완료"
+        "message": "Removed video player recommended Shorts"
     },
     "log_SubscriptionShort": {
-        "message": "구독에서의 쇼츠 제거 완료"
+        "message": "Removed subscription Shorts"
     }
 }
