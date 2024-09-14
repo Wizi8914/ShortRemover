@@ -1,65 +1,65 @@
 {
     "extension_name": {
-        "message": "ShortRemover"
+        "message": "Удаление коротких видео"
     },
     "extension_description": {
-        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
+        "message": "Удалите короткие видео с YouTube, чтобы не отвлекаться."
     },
     "options_name": {
-        "message": "Settings"
+        "message": "Настройки"
     },
     "options_parameters": {
-        "message": "Parameters"
+        "message": "Параметры"
     },
     "options_themes": {
-        "message": "Themes"
+        "message": "Темы"
     },
     "options_languages": {
-        "message": "Languages"
+        "message": "Языки"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "Collapsed navbar button"
+        "message": "Свёрнутая кнопка навигационной панели"
     },
     "param_NavbarButtonDeployed": {
-        "message": "Expanded navbar button"
+        "message": "Расширенная кнопка навигационной панели"
     },
     "param_ChannelTab": {
-        "message": "Channel Shorts tab"
+        "message": "Вкладка коротких видео на каналах"
     },
     "param_HomePageRecommendedShort": {
-        "message": "Home page recommended Shorts"
+        "message": "Домашняя страница с рекомендованными короткими видео"
     },
     "param_ShortSearchResult": {
-        "message": "Shorts in search results"
+        "message": "Короткие видео в результатах поиска"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "Video player recommended Shorts"
+        "message": "Рекомендуемые короткие видео в видео плеере"
     },
     "param_SubscriptionShort": {
-        "message": "Subscription Shorts"
+        "message": "Короткие видео в подписках"
     },
     "log_DisconnectOberserver": {
-        "message": "Disconnected all observers"
+        "message": "Отключение всех наблюдателей"
     },
     "log_ChangeTo": {
-        "message": "Changed to:"
+        "message": "Изменено на:"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "Removed collapsed navbar button"
+        "message": "Убрана кнопка свёрнутой навигационной панели"
     },
     "log_NavbarButtonDeployed": {
-        "message": "Removed expanded navbar button"
+        "message": "Убрана кнопка расширенной панели навигации"
     },
     "log_HomeRecommendedShort": {
-        "message": "Removed home page recommended Shorts"
+        "message": "Убраны рекомендуемые короткие видео с домашней страницы"
     },
     "log_ShortSearchResult": {
-        "message": "Removed Shorts from search results"
+        "message": "Убраны короткие видео из результатов поиска"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "Removed video player recommended Shorts"
+        "message": "Убраны рекомендуемые короткие видео из видео плеера"
     },
     "log_SubscriptionShort": {
-        "message": "Removed subscription Shorts"
+        "message": "Убраны короткие видео из подписок"
     }
 }
