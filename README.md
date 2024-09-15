@@ -48,9 +48,8 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
 
 # Crowdin Contributor
 
-<!-- CROWDIN-CONTRIBUTORS-START -->
+<!-- CROWDIN-CONTRIBUTORS-LIST:START -->
 
-<!-- CROWDIN-CONTRIBUTORS-END -->
-
+<!-- CROWDIN-CONTRIBUTORS-LIST:END -->
 
 Made with ❤️ and JavaScript!
