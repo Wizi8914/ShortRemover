@@ -52,7 +52,7 @@ header .header-right__theme:hover {
 
 .statistics__container {
   display: flex;
-  margin: 40px;
+  margin: 70px 40px;
   gap: 20px;
 }
 .statistics__container_element {
@@ -87,6 +87,9 @@ header .header-right__theme:hover {
   transition-duration: 0.4s;
 }
 
+.parameters {
+  margin-top: 130px;
+}
 .parameters_container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

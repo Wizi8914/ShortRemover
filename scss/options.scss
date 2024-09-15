@@ -66,7 +66,7 @@ header {
 
     &__container {
         display: flex;
-        margin: 40px;
+        margin: 70px 40px;
         gap: 20px;
 
         
@@ -110,6 +110,8 @@ header {
 }
 
 .parameters {
+    margin-top: 130px;
+
     &_container {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
