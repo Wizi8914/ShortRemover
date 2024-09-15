@@ -21,13 +21,14 @@ jobs:
     - name: Generate Crowdin Contributors table
       uses: andrii-bodnar/action-crowdin-contributors@v2
       with:
-        contributors_per_line: 5
-        max_contributors: 32
-        image_size: 64
-        min_words_contributed: 20
-        include_languages: true
-        placeholder_start: '<!-- CROWDIN-CONTRIBUTORS-START -->'
-        placeholder_end: '<!-- CROWDIN-CONTRIBUTORS-END -->'
+          contributors_per_line: 5
+          max_contributors: 10000
+          image_size: 100
+          min_words_contributed: 1
+          include_languages: true
+          placeholder_start: <!-- CROWDIN-CONTRIBUTORS-LIST:START -->
+          placeholder_end: <!-- CROWDIN-CONTRIBUTORS-LIST:END -->
+          crowdin_project_link: https://crowdin.com/project/shortremover
       env:
         CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
         CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
