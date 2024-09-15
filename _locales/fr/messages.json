@@ -11,6 +11,18 @@
     "hour_label": {
         "message": "heurs"
     },
+    "statistics_blockedshort": {
+        "message": "Shorts bloqués"
+    },
+    "statistics_cleanedpages": {
+        "message": "Pages nettoyées"
+    },
+    "statistics_shortswatched": {
+        "message": "Shorts vus"
+    },
+    "statistics_timesaved": {
+        "message": "Temps gagné"
+    },
     "options_name": {
         "message": "Réglages"
     },
