@@ -28,6 +28,13 @@ function getStatistics(dataKey, callback) {
 }
 
 
+function resetStatistics() { // Development function
+    statistics.forEach((stat) => {
+        chrome.storage.local.set({ [stat.getAttribute('data-key')]: 0 });
+    });
+}
+
+
 statistics.forEach((stat, i)=> {
     getStatistics(stat.getAttribute('data-key'), async (count) => {
         if (stat.getAttribute('data-key') === 'timeSaved') {

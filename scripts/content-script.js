@@ -36,15 +36,12 @@
         });
     }
     
-    function logger(messageKey, suplement = "") {   
-        console.log(`[Youtube Short Remover] ${messageKey}${suplement}`);
-        
+    function logger(messageKey, suplement = "") {           
         fetchMessageFromBackground(messageKey)
             .then(message => {
                 console.log(`[Youtube Short Remover] ${message}${suplement}`);
             })
             .catch(error => console.error(`Erreur lors de la récupération du message (${messageKey}):`, error.message));
-        
     }
     
     const observers = [];
@@ -135,7 +132,7 @@
     }
 
     function estimateTimeSaved(shortCount) {
-        let timeSaved = Math.floor(shortCount / 5); 
+        let timeSaved = Math.floor(shortCount / 4); 
 
         addToStatistics('timeSaved', timeSaved);
     }
@@ -236,6 +233,11 @@
                         logger('log_SubscriptionShort');
                     });
                 });
+            }
+
+
+            if (URL.includes("/shorts/")) {
+                addToStatistics('shortsWatched');
             }
 
             addToStatistics('cleanedPage');
