@@ -46,4 +46,11 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
   <img src="https://contributors-img.web.app/image?repo=Wizi8914/ShortRemover" />
 </a>
 
+# Crowdin Contributor
+
+<!-- CROWDIN-CONTRIBUTORS-START -->
+
+<!-- CROWDIN-CONTRIBUTORS-END -->
+
+
 Made with ❤️ and JavaScript!
