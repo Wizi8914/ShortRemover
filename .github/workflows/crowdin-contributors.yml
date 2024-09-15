@@ -24,8 +24,9 @@ jobs:
         contributors_per_line: 8
         max_contributors: 32
         image_size: 64
-        min_words_contributed: 256
         include_languages: true
+        placeholder_start: '<!-- CROWDIN-CONTRIBUTORS-START -->'
+        placeholder_end: '<!-- CROWDIN-CONTRIBUTORS-END -->'
       env:
         CROWDIN_PROJECT_ID: ${{ secrets.CROWDIN_PROJECT_ID }}
         CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
