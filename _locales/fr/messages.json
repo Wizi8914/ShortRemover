@@ -12,16 +12,16 @@
         "message": "heurs"
     },
     "statistics_blockedshort": {
-        "message": "Blocked Shorts"
+        "message": "Shorts bloqués"
     },
     "statistics_cleanedpages": {
-        "message": "Cleaned pages"
+        "message": "Pages nettoyées"
     },
     "statistics_shortswatched": {
-        "message": "Shorts watched"
+        "message": "Shorts vus"
     },
     "statistics_timesaved": {
-        "message": "Time saved"
+        "message": "Temps gagné"
     },
     "options_name": {
         "message": "Réglages"
