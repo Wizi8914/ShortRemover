@@ -1,65 +1,83 @@
 {
     "extension_name": {
-        "message": "ShortRemover"
+        "message": "쇼츠삭제"
     },
     "extension_description": {
-        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
+        "message": "방해받지 않는 경험을 위해 YouTube에서 쇼츠 동영상을 제거하세요."
+    },
+    "minute_label": {
+        "message": "minutes"
+    },
+    "hour_label": {
+        "message": "hours"
+    },
+    "statistics_blockedshort": {
+        "message": "Blocked Shorts"
+    },
+    "statistics_cleanedpages": {
+        "message": "Cleaned pages"
+    },
+    "statistics_shortswatched": {
+        "message": "Shorts watched"
+    },
+    "statistics_timesaved": {
+        "message": "Time saved"
     },
     "options_name": {
-        "message": "Settings"
+        "message": "설정"
     },
     "options_parameters": {
-        "message": "Parameters"
+        "message": "매개변수"
     },
     "options_themes": {
-        "message": "Themes"
+        "message": "테마"
     },
     "options_languages": {
-        "message": "Languages"
+        "message": "언어"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "Collapsed navbar button"
+        "message": "탐색 바 버튼 축소"
     },
     "param_NavbarButtonDeployed": {
-        "message": "Expanded navbar button"
+        "message": "탐색 바 버튼 확장"
     },
     "param_ChannelTab": {
-        "message": "Channel Shorts tab"
+        "message": "채널 쇼츠 탭"
     },
     "param_HomePageRecommendedShort": {
-        "message": "Home page recommended Shorts"
+        "message": "홈 페이지에서의 추천 쇼츠"
     },
     "param_ShortSearchResult": {
-        "message": "Shorts in search results"
+        "message": "검색 결과에서의 쇼츠"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "Video player recommended Shorts"
+        "message": "동영상 플레이어에서의 추천 쇼츠"
     },
     "param_SubscriptionShort": {
-        "message": "Subscription Shorts"
+        "message": "구독에서의 쇼츠"
     },
     "log_DisconnectOberserver": {
-        "message": "Disconnected all observers"
+        "message": "모든 관측기 연결 해제"
     },
     "log_ChangeTo": {
-        "message": "Changed to:"
+        "message": "다음으로 변경:"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "Removed collapsed navbar button"
+        "message": "탐색 바 버튼 축소 제거 완료"
     },
     "log_NavbarButtonDeployed": {
-        "message": "Removed expanded navbar button"
+        "message": "탐색 바 버튼 확장 제거 완료"
     },
     "log_HomeRecommendedShort": {
-        "message": "Removed home page recommended Shorts"
+        "message": "홈 페이지에서의 추천 쇼츠 제거 완료"
     },
     "log_ShortSearchResult": {
-        "message": "Removed Shorts from search results"
+        "message": "검색 결과에서의 쇼츠 제거 완료"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "Removed video player recommended Shorts"
+        "message": "동영상 플레이어에서의 추천 쇼츠 제거 완료"
     },
     "log_SubscriptionShort": {
-        "message": "Removed subscription Shorts"
+        "message": "구독에서의 쇼츠 제거 완료"
     }
 }

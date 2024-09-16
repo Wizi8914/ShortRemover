@@ -3,7 +3,7 @@
         "message": "ShortRemover"
     },
     "extension_description": {
-        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
+        "message": "Supprimez les vidéos Short de YouTube pour une expérience sans distraction."
     },
     "minute_label": {
         "message": "minutes"
@@ -11,61 +11,73 @@
     "hour_label": {
         "message": "heurs"
     },
+    "statistics_blockedshort": {
+        "message": "Shorts bloqués"
+    },
+    "statistics_cleanedpages": {
+        "message": "Pages nettoyées"
+    },
+    "statistics_shortswatched": {
+        "message": "Shorts vus"
+    },
+    "statistics_timesaved": {
+        "message": "Temps gagné"
+    },
     "options_name": {
-        "message": "Settings"
+        "message": "Réglages"
     },
     "options_parameters": {
-        "message": "Parameters"
+        "message": "Paramètres"
     },
     "options_themes": {
-        "message": "Themes"
+        "message": "Thèmes"
     },
     "options_languages": {
-        "message": "Languages"
+        "message": "Langues"
     },
     "param_NavbarButtonUndeployed": {
-        "message": "Collapsed navbar button"
+        "message": "Bouton de barre de navigation réduit"
     },
     "param_NavbarButtonDeployed": {
-        "message": "Expanded navbar button"
+        "message": "Bouton de barre de navigation déployé"
     },
     "param_ChannelTab": {
-        "message": "Channel Shorts tab"
+        "message": "Onglet Shorts des chaînes"
     },
     "param_HomePageRecommendedShort": {
-        "message": "Home page recommended Shorts"
+        "message": "Shorts recommandés dans l'accueil"
     },
     "param_ShortSearchResult": {
-        "message": "Shorts in search results"
+        "message": "Shorts dans les résultats de recherche"
     },
     "param_VideoPlayerRecommendedShort": {
-        "message": "Video player recommended Shorts"
+        "message": "Shorts recommandés dans le lecteur"
     },
     "param_SubscriptionShort": {
-        "message": "Subscription Shorts"
+        "message": "Shorts dans les abonnements"
     },
     "log_DisconnectOberserver": {
-        "message": "Disconnected all observers"
+        "message": "Déconnexion de tous les observateurs"
     },
     "log_ChangeTo": {
-        "message": "Changed to:"
+        "message": "Changement sur :"
     },
     "log_NavbarButtonUndeployed": {
-        "message": "Removed collapsed navbar button"
+        "message": "Bouton Shorts de la barre de navigation réduit supprimé"
     },
     "log_NavbarButtonDeployed": {
-        "message": "Removed expanded navbar button"
+        "message": "Bouton Shorts de la barre de navigation étendue supprimé"
     },
     "log_HomeRecommendedShort": {
-        "message": "Removed home page recommended Shorts"
+        "message": "Shorts recommandés sur la page d'accueil supprimée"
     },
     "log_ShortSearchResult": {
-        "message": "Removed Shorts from search results"
+        "message": "Shorts supprimés dans le résultat de recherche"
     },
     "log_VideoPlayerRecommendedShort": {
-        "message": "Removed video player recommended Shorts"
+        "message": "Shorts recommandés dans le lecteur vidéo supprimé"
     },
     "log_SubscriptionShort": {
-        "message": "Removed subscription Shorts"
+        "message": "Shorts dans les abonnements supprimés"
     }
 }

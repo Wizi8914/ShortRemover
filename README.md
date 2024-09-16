@@ -38,7 +38,7 @@ ShortRemover is a browser extension that removes short videos on youtube. It's u
 - Click on **Load Unpacked** and select the **ShortRemover folder**
 - The extension will be **installed** now
 
-## ✨ Contributors
+# ✨ Contributors
 
 Want to **contribute** and appear here ? Open a [Pull Request](https://github.com/Wizi8914/ShortRemover/pulls)
 
@@ -46,4 +46,40 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
   <img src="https://contributors-img.web.app/image?repo=Wizi8914/ShortRemover" />
 </a>
 
+## 🌎 Translation Contributors
+
+<!-- CROWDIN-CONTRIBUTORS-LIST:START -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top">
+        <a href="https://crowdin.com/profile/Wizi_89"><img alt="logo" style="width: 100px" src="https://crowdin-static.downloads.crowdin.com/avatar/14347604/medium/e701175b22ffc24fa16982e85e893666.jpg" />
+          <br />
+          <sub><b>Wizi_89</b></sub></a>
+        <br />
+        <sub><b>829 words</b></sub>
+        <br /><sub><b><code title="Arabic">ar</code></b>, <b><code title="Chinese Traditional">zh-TW</code></b>, <b><code title="French">fr</code></b>, <b><code title="German">de</code></b>, <b><code title="Italian">it</code></b>, <b><code title="Japanese">ja</code></b>, <b><code title="Korean">ko</code></b>, <b><code title="Russian">ru</code></b>, <b><code title="Spanish">es-ES</code></b></sub>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://crowdin.com/profile/Mirnyang"><img alt="logo" style="width: 100px" src="https://crowdin-static.downloads.crowdin.com/avatar/14153733/medium/9a2fe282298d66026016c71086cc6d6e.png" />
+          <br />
+          <sub><b>미르냥 (Mirnyang)</b></sub></a>
+        <br />
+        <sub><b>68 words</b></sub>
+        <br /><sub><b><code title="Korean">ko</code></b></sub>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://crowdin.com/profile/Ronner231"><img alt="logo" style="width: 100px" src="https://crowdin-static.downloads.crowdin.com/avatar/16021342/medium/7734d550df2de5a2fec2ffff33e7024c.jpeg" />
+          <br />
+          <sub><b>Ronner (Ronner231)</b></sub></a>
+        <br />
+        <sub><b>68 words</b></sub>
+        <br /><sub><b><code title="Russian">ru</code></b></sub>
+      </td>
+    </tr>
+  </tbody>
+</table><a href="https://crowdin.com/project/shortremover" target="_blank">Translate in Crowdin 🚀</a>
+<!-- CROWDIN-CONTRIBUTORS-LIST:END -->
+
+___
 Made with ❤️ and JavaScript!

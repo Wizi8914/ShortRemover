@@ -5,6 +5,24 @@
     "extension_description": {
         "message": "Remove Shorts videos from YouTube for a distraction-free experience."
     },
+    "minute_label": {
+        "message": "minutes"
+    },
+    "hour_label": {
+        "message": "hours"
+    },
+    "statistics_blockedshort": {
+        "message": "Blocked Shorts"
+    },
+    "statistics_cleanedpages": {
+        "message": "Cleaned pages"
+    },
+    "statistics_shortswatched": {
+        "message": "Shorts watched"
+    },
+    "statistics_timesaved": {
+        "message": "Time saved"
+    },
     "options_name": {
         "message": "Settings"
     },
