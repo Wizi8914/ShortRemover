@@ -65,16 +65,16 @@ header .header-right__theme:hover {
 }
 .statistics__container_element svg {
   fill: var(--color-text);
-  width: 5em;
+  width: 5.5em;
 }
 .statistics__container_element--value {
   margin-top: 5px;
-  font-size: 3.5em;
+  font-size: 4em;
   font-weight: 600;
 }
 .statistics__container_element--title {
   color: var(--color-text-hover);
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 .statistics__container_element::before {
   content: "";

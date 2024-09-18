@@ -88,7 +88,6 @@
     }
   });
   
-  
   async function getMessage(messageKey) {
     const language = await getLanguage();
       const pageURL = chrome.runtime.getURL(`_locales/${language}/messages.json`);

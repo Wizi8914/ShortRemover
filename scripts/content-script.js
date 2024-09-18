@@ -23,7 +23,6 @@
             ytm-video-with-context-renderer:has(a[href*="/shorts/"])`,
     };
     
-    
     function fetchMessageFromBackground(messageKey) {
         return new Promise((resolve, reject) => {
             chrome.runtime.sendMessage({ action: "log", messageKey }, (response) => {
@@ -137,8 +136,6 @@
         addToStatistics('timeSaved', timeSaved);
     }
 
-    
-    
     chrome.storage.local.get('extensionIsActive', function (result) {
         const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
         if (!extensionIsActive) return;
@@ -179,9 +176,8 @@
                     });
                 });
             }
-    
             
-            if (URL == "/") {
+            if (URL == "/" || URL == "/?sttick=0" || URL.toLowerCase() == "/?bp=wguceae%3d") { // Home Page & Supecific URL
                 getParamState('paramHomeRecommendedShort', isActive => {
                     if (!isActive) return;
     
@@ -193,7 +189,6 @@
                     });
                 });
             }
-                
     
             if (URL.includes("/results?search_query")) {
                 getParamState('paramShortSearchResult', isActive => {
@@ -243,7 +238,6 @@
             addToStatistics('cleanedPage');
         });
     });
-
 })();
 
 

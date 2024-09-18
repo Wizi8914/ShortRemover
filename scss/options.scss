@@ -63,13 +63,10 @@ header {
 }
 
 .statistics{
-
     &__container {
         display: flex;
         margin: 70px 40px;
         gap: 20px;
-
-        
 
         &_element {
             width: 100%;
@@ -81,18 +78,18 @@ header {
 
             svg {
                 fill: var(--color-text);
-                width: 5em;
+                width: 5.5em;
             }
 
             &--value {
                 margin-top: 5px;
-                font-size: 3.5em;
+                font-size: 4em;
                 font-weight: 600;
             }
 
             &--title {
                 color: var(--color-text-hover);
-                font-size: 1.5em;
+                font-size: 1.7em;
             }
 
             &::before {
