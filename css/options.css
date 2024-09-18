@@ -195,7 +195,7 @@ header .header-right__theme:hover {
   background: linear-gradient(to right, #22c1c3, #fdbb2d);
 }
 .themes__container--item:nth-child(11) {
-  background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+  background: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
 }
 .themes__container--item:nth-child(12) {
   background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
