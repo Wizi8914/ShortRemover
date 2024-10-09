@@ -40,7 +40,7 @@
             .then(message => {
                 console.log(`[Youtube Short Remover] ${message}${suplement}`);
             })
-            .catch(error => console.error(`Erreur lors de la récupération du message (${messageKey}):`, error.message));
+            .catch(error => console.error(`Error retrieving message (${messageKey}):`, error.message));
     }
     
     const observers = [];
@@ -131,7 +131,7 @@
     }
 
     function estimateTimeSaved(shortCount) {
-        let timeSaved = Math.floor(shortCount / 4); 
+        let timeSaved = Math.floor(shortCount / 3); 
 
         addToStatistics('timeSaved', timeSaved);
     }

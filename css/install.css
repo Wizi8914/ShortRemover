@@ -1,0 +1,76 @@
+body {
+  background-color: var(--color-bg);
+  font-family: "Open Sans", sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  margin: 0;
+  padding: 0;
+  color: var(--color-text);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 10rem;
+}
+.container__top {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container__top--title {
+  font-size: 7rem;
+}
+.container__top--subtitle {
+  font-size: 2.3rem;
+  position: relative;
+  letter-spacing: 4px;
+  background: linear-gradient(90deg, #000, #fff, #000);
+  background-repeat: no-repeat;
+  background-size: 80%;
+  animation: animate 3s linear infinite;
+  -webkit-background-clip: text;
+          background-clip: text;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0);
+}
+.container__bottom {
+  display: flex;
+  margin-top: 4em;
+  gap: 3rem;
+}
+.container__bottom--button {
+  padding: 20px 30px;
+  font-size: 1.8em;
+  border-radius: 20px;
+  background-color: var(--color-blog);
+  color: var(--color-text);
+}
+.container__bottom--button:hover {
+  filter: brightness(1.2);
+  transition-duration: 0.5s;
+}
+
+.footer {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
+}
+.footer__text {
+  font-size: 1.2em;
+}
+
+@keyframes animate {
+  0% {
+    background-position: -500%;
+  }
+  100% {
+    background-position: 500%;
+  }
+}/*# sourceMappingURL=install.css.map */
