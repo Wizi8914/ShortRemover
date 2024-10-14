@@ -49,7 +49,7 @@ ShortRemover is a browser extension that removes short videos on youtube. It's u
   <img width="700" align="center" src="https://i.imgur.com/707e1cd.gif" alt="demo"/>
 </p>
 
-
+<br/>
 
 # 📥 Installation
 
