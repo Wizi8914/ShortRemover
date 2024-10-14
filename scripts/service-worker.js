@@ -2,10 +2,19 @@
 (() => {
   const GREEN_COLOR = '#2db552';
   const GRAY_COLOR = '#828282';
+
+  const installURL = 'https://www.youtube.com';
+  const uninstallURL = 'https://www.google.com';
   
-  chrome.runtime.onInstalled.addListener(function () {
+  chrome.runtime.onInstalled.addListener(function (details) {
+    if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+      chrome.tabs.create({ url: installURL });
+    }
+
     initializeExtension()
   });
+
+  chrome.runtime.setUninstallURL(uninstallURL);
   
   chrome.runtime.onStartup.addListener(function () {
     initializeExtension()

@@ -45,7 +45,7 @@ statistics.forEach((stat, i)=> {
     });
 });
 
-async function formatTime (minutes) {
+async function formatTime(minutes) {
 
     if (minutes < 60) {
         const minutesLabel = await getMessage('minute_label');

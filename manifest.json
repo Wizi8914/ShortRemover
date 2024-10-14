@@ -35,6 +35,5 @@
             "matches": ["*://*.youtube.com/*"],
             "run_at": "document_start"
         }
-    ],
-    "key": "dbacfcfndghenkcjhfflilgnebcgodlk"
+    ]
 }
