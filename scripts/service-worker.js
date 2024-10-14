@@ -3,8 +3,8 @@
   const GREEN_COLOR = '#2db552';
   const GRAY_COLOR = '#828282';
 
-  const installURL = 'https://www.youtube.com';
-  const uninstallURL = 'https://www.google.com';
+  const installURL = 'https://wizi8914.github.io/ShortRemover/pages/static/install.html';
+  const uninstallURL = 'https://wizi8914.github.io/ShortRemover/pages/static/uninstall.html';
   
   chrome.runtime.onInstalled.addListener(function (details) {
     if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
