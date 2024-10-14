@@ -28,18 +28,43 @@
   </a>
 </div>
 
-
 # 📜 About
 ShortRemover is a browser extension that removes short videos on youtube. It's useful for people who don't like shorts, or to limit distraction on youtube.
 > **Note:** The extension may not work if youtube modifies its pages. In this case, please wait for a corrective update.
 
 
+## ✨ Demo
+
+`ShortRemover` comes with a choice of settings to organize `YouTube Shorts` to your liking.
+
+<p align="center">
+  <img width="700" align="center" src="https://i.imgur.com/lKzs20a.gif" alt="demo"/>
+</p>
+
+<br/>
+
+#### 💄 Fully customizable 
+
+<p align="center">
+  <img width="700" align="center" src="https://i.imgur.com/707e1cd.gif" alt="demo"/>
+</p>
+
+
+
 # 📥 Installation
+
+<p align="center">
+  <img width="700" align="center" src="https://i.imgur.com/tKeSjMx.gif" alt="installation"/>
+</p>
+
+
 
 - Use `git clone https://github.com/Wizi8914/ShortRemover.git` or **download** the **.zip file**
 - Go to your **extension management page** and activate **developer mode**
 - Click on **Load Unpacked** and select the **ShortRemover folder**
 - The extension will be **installed** now
+
+> **Note:** The installation process is almost identical on all other browsers 
 
 # ✨ Contributors
 

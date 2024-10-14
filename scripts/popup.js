@@ -5,10 +5,10 @@
         var disableLayer = document.querySelector('.disable-params');
     
         if (element) {
-            paramContainer.style.opacity = 1;
+            paramContainer.style.filter = "brightness(1)";
             disableLayer.style.display = 'none';
         } else {
-            paramContainer.style.opacity = 0.5;
+            paramContainer.style.filter = "brightness(0.5)";
             disableLayer.style.display = 'block';
         }
     }
