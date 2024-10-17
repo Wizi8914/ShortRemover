@@ -22,6 +22,10 @@
             ytm-rich-grid-renderer.is_shorts,
             ytm-video-with-context-renderer:has(a[href*="/shorts/"])`,
     };
+
+    const ytPlayerAppRegex = /^\/watch\?app=(desktop|mobile|tv|tablet|ios|android)&v=[\w-]+$/
+
+
     
     function fetchMessageFromBackground(messageKey) {
         return new Promise((resolve, reject) => {
@@ -203,8 +207,8 @@
                     
                 });
             }
-    
-            if (URL.includes("/watch?v=")) {
+
+            if (URL.includes("/watch?v=") || ytPlayerAppRegex.test(URL)) {
                 getParamState('paramVideoPlayerRecommendedShort', isActive => {
                     if (!isActive) return;
     
