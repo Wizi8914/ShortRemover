@@ -14,6 +14,8 @@
     }
     
     document.addEventListener('DOMContentLoaded', function () {
+        const manifest = chrome.runtime.getManifest();
+        const extensionVersionLabel = document.querySelector('.footer-version--text');
         var toggleCheckbox = document.getElementById('main-button')
         var paramButtons = document.querySelectorAll('.param-button input');
         var refreshButton = document.querySelector('.refresh-button');
@@ -50,6 +52,9 @@
             });
             refreshButton.style.display = 'none';
         });
+
+        extensionVersionLabel.textContent = `v${manifest.version}`;
+
     });
     
     chrome.storage.local.get('theme', function (result) {
