@@ -2,9 +2,9 @@
 ![Header](https://github.com/user-attachments/assets/44959d91-1d9d-4ae0-83e7-047fdd53d3e2)
 
 
-<div align="center">
+<p align="center">
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-    <img src="https://img.shields.io/badge/Language-Javascript-yellow" alt="Language">
+    <img src="https://img.shields.io/badge/Language-Javascript-yellow?style=flat-square" alt="Language">
   </a>
   <a href="./manifest.json" target="_blank">
     <img alt="Manifest Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FWizi8914%2FShortRemover%2Fmain%2Fmanifest.json&query=manifest_version&label=Manifest%20Version&color=purple">
@@ -24,7 +24,23 @@
   <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shortremover">
     <img src="https://badges.crowdin.net/shortremover/localized.svg">
   </a>
-</div>
+</p>
+
+<p align="center">
+  <a href="#-about">About</a>
+  •
+  <a href="#-demo">Demo</a>
+  •
+  <a href="#-installation">Installation</a>
+  •
+  <a href="#-key-features">Features</a>
+  •
+  <a href="#-privacy-commitment">Privacy</a>
+  •
+  <a href="#-contributors">Contributors</a>
+  •
+  <a href="#-translation-contributors">Translation</a>
+</p>
 
 # 📜 About
 ShortRemover is a browser extension that removes short videos on youtube. It's useful for people who don't like shorts, or to limit distraction on youtube.
@@ -66,7 +82,7 @@ ShortRemover is a browser extension that removes short videos on youtube. It's u
 
 
 
-## 🔑 Key Features:
+## 🔑 Key Features
 - 🚫 **Automatic Removal:** Block YouTube Shorts with one click.
 - 🎥 **Optimized Focus:** Stay focused on the content you care about.
 - 🌐 **Smoother Navigation:** Browse without interruptions.
@@ -77,7 +93,7 @@ ShortRemover is a browser extension that removes short videos on youtube. It's u
 
 <br/>
 
-## 🔐 Privacy Commitment:
+## 🔐 Privacy Commitment
 - 🚫 No ads
 - 🚫 No tracking
 - 🚫 No data selling
