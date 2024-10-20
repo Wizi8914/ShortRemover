@@ -1,8 +1,6 @@
-<p align="center">
-  <img src="https://github.com/Wizi8914/ShortRemover/blob/main/images/icon-128.png" />
-<p/>
 
-<h1 align="center">ShortRemover<h1/>
+![Header](https://github.com/user-attachments/assets/44959d91-1d9d-4ae0-83e7-047fdd53d3e2)
+
 
 <div align="center">
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
@@ -65,6 +63,24 @@ ShortRemover is a browser extension that removes short videos on youtube. It's u
 - The extension will be **installed** now
 
 > **Note:** The installation process is almost identical on all other browsers 
+
+
+
+## 🔑 Key Features:
+- 🚫 **Automatic Removal:** Block YouTube Shorts with one click.
+- 🎥 **Optimized Focus:** Stay focused on the content you care about.
+- 🌐 **Smoother Navigation:** Browse without interruptions.
+- ⚙️ **Customization:** Choose when and where to block Shorts.
+- 🌍 **Multilingual Support:** Available in multiple languages.
+- ⚡ **Quick Activation:** Enable or disable with one click.
+- 💻 **Lightweight & Fast:** Works seamlessly in the background.
+
+<br/>
+
+## 🔐 Privacy Commitment:
+- 🚫 No ads
+- 🚫 No tracking
+- 🚫 No data selling
 
 <br/>
 
