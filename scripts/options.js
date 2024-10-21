@@ -27,16 +27,16 @@ function getStatistics(dataKey, callback) {
     })
 }
 
-
 function resetStatistics() { // Development function
     statistics.forEach((stat) => {
         chrome.storage.local.set({ [stat.getAttribute('data-key')]: 0 });
     });
 }
 
-
 statistics.forEach((stat, i)=> {
     getStatistics(stat.getAttribute('data-key'), async (count) => {
+        stat.setAttribute('data-value', count);
+
         if (stat.getAttribute('data-key') === 'timeSaved') {
             count = await formatTime(count);
         }
@@ -45,7 +45,7 @@ statistics.forEach((stat, i)=> {
     });
 });
 
-async function formatTime (minutes) {
+async function formatTime(minutes) {
 
     if (minutes < 60) {
         const minutesLabel = await getMessage('minute_label');
@@ -124,18 +124,23 @@ window.addEventListener('load', function() {
 
 // Language //
 
+
 const language = document.querySelectorAll('.languages__container--item');
 
 language.forEach((lang, i) => {
-    lang.addEventListener('click', () => {
+    lang.addEventListener('click', async () => {
         language.forEach((lang) => {
             lang.classList.remove('active');
         });
 
+        
         lang.classList.add('active');
         chrome.storage.local.set({ language: lang.getAttribute('lang-data') });
-
+        
         changeLanguage(); // This function is defined in translation.js
+
+        let timeSaved = document.querySelector('.statistics__container_element--value[data-key="timeSaved"]'); // Exeption for time saved Statistics
+        timeSaved.textContent = await formatTime(timeSaved.getAttribute('data-value'));
     });
 
     chrome.storage.local.get('language', function (result) {

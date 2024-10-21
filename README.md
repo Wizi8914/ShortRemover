@@ -1,12 +1,10 @@
+
+![Header](https://github.com/user-attachments/assets/44959d91-1d9d-4ae0-83e7-047fdd53d3e2)
+
+
 <p align="center">
-  <img src="https://github.com/Wizi8914/ShortRemover/blob/main/images/icon-128.png" />
-<p/>
-
-<h1 align="center">ShortRemover<h1/>
-
-<div align="center">
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-    <img src="https://img.shields.io/badge/Language-Javascript-yellow" alt="Language">
+    <img src="https://img.shields.io/badge/Language-Javascript-yellow?style=flat-square" alt="Language">
   </a>
   <a href="./manifest.json" target="_blank">
     <img alt="Manifest Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FWizi8914%2FShortRemover%2Fmain%2Fmanifest.json&query=manifest_version&label=Manifest%20Version&color=purple">
@@ -20,23 +18,87 @@
   <a href="./manifest.json" traget="_blank">
     <img alt="Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FWizi8914%2FShortRemover%2Fmain%2Fmanifest.json&query=version&label=version&color=orange">
   </a>
+  <a href="https://github.com/Wizi8914/ShortRemover/releases" target="_blank">
+    <img alt="GitHub Release" src="https://img.shields.io/github/v/release/Wizi8914/ShortRemover">
+  </a>
   <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shortremover">
     <img src="https://badges.crowdin.net/shortremover/localized.svg">
   </a>
-</div>
+</p>
 
+<p align="center">
+  <a href="#-about">About</a>
+  •
+  <a href="#-demo">Demo</a>
+  •
+  <a href="#-installation">Installation</a>
+  •
+  <a href="#-key-features">Features</a>
+  •
+  <a href="#-privacy-commitment">Privacy</a>
+  •
+  <a href="#-contributors">Contributors</a>
+  •
+  <a href="#-translation-contributors">Translation</a>
+</p>
 
 # 📜 About
 ShortRemover is a browser extension that removes short videos on youtube. It's useful for people who don't like shorts, or to limit distraction on youtube.
 > **Note:** The extension may not work if youtube modifies its pages. In this case, please wait for a corrective update.
 
 
+## ✨ Demo
+
+`ShortRemover` comes with a choice of settings to organize `YouTube Shorts` to your liking.
+
+<p align="center">
+  <img width="700" align="center" src="https://i.imgur.com/lKzs20a.gif" alt="demo"/>
+</p>
+
+<br/>
+
+### 💄 Fully customizable 
+
+<p align="center">
+  <img width="700" align="center" src="https://i.imgur.com/sEc8dZf.gif" alt="customization"/>
+</p>
+
+<br/>
+
 # 📥 Installation
+
+<p align="center">
+  <img width="700" align="center" src="https://i.imgur.com/QWs6Ra0.gif" alt="installation"/>
+</p>
+
+
 
 - Use `git clone https://github.com/Wizi8914/ShortRemover.git` or **download** the **.zip file**
 - Go to your **extension management page** and activate **developer mode**
 - Click on **Load Unpacked** and select the **ShortRemover folder**
 - The extension will be **installed** now
+
+> **Note:** The installation process is almost identical on all other browsers 
+
+
+
+## 🔑 Key Features
+- 🚫 **Automatic Removal:** Block YouTube Shorts with one click.
+- 🎥 **Optimized Focus:** Stay focused on the content you care about.
+- 🌐 **Smoother Navigation:** Browse without interruptions.
+- ⚙️ **Customization:** Choose when and where to block Shorts.
+- 🌍 **Multilingual Support:** Available in multiple languages.
+- ⚡ **Quick Activation:** Enable or disable with one click.
+- 💻 **Lightweight & Fast:** Works seamlessly in the background.
+
+<br/>
+
+## 🔐 Privacy Commitment
+- 🚫 No ads
+- 🚫 No tracking
+- 🚫 No data selling
+
+<br/>
 
 # ✨ Contributors
 

@@ -23,12 +23,11 @@
             ytm-video-with-context-renderer:has(a[href*="/shorts/"])`,
     };
     
-    
     function fetchMessageFromBackground(messageKey) {
         return new Promise((resolve, reject) => {
             chrome.runtime.sendMessage({ action: "log", messageKey }, (response) => {
                 if (response.error) {
-                    reject(new Error('Erreur : ' + response.error));
+                    reject(new Error('Error : ' + response.error));
                 } else {
                     resolve(response.message);
                 }
@@ -41,7 +40,7 @@
             .then(message => {
                 console.log(`[Youtube Short Remover] ${message}${suplement}`);
             })
-            .catch(error => console.error(`Erreur lors de la récupération du message (${messageKey}):`, error.message));
+            .catch(error => console.error(`Error retrieving message (${messageKey}):`, error.message));
     }
     
     const observers = [];
@@ -132,13 +131,11 @@
     }
 
     function estimateTimeSaved(shortCount) {
-        let timeSaved = Math.floor(shortCount / 4); 
+        let timeSaved = Math.floor(shortCount / 3); 
 
         addToStatistics('timeSaved', timeSaved);
     }
 
-    
-    
     chrome.storage.local.get('extensionIsActive', function (result) {
         const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
         if (!extensionIsActive) return;
@@ -179,9 +176,8 @@
                     });
                 });
             }
-    
             
-            if (URL == "/") {
+            if (URL == "/" || URL == "/?sttick=0" || URL.toLowerCase() == "/?bp=wguceae%3d") { // Home Page & Supecific URL
                 getParamState('paramHomeRecommendedShort', isActive => {
                     if (!isActive) return;
     
@@ -193,7 +189,6 @@
                     });
                 });
             }
-                
     
             if (URL.includes("/results?search_query")) {
                 getParamState('paramShortSearchResult', isActive => {
@@ -243,7 +238,6 @@
             addToStatistics('cleanedPage');
         });
     });
-
 })();
 
 

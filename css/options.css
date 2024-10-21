@@ -65,16 +65,16 @@ header .header-right__theme:hover {
 }
 .statistics__container_element svg {
   fill: var(--color-text);
-  width: 5em;
+  width: 5.5em;
 }
 .statistics__container_element--value {
   margin-top: 5px;
-  font-size: 3.5em;
+  font-size: 4em;
   font-weight: 600;
 }
 .statistics__container_element--title {
   color: var(--color-text-hover);
-  font-size: 1.5em;
+  font-size: 1.7em;
 }
 .statistics__container_element::before {
   content: "";
@@ -195,7 +195,7 @@ header .header-right__theme:hover {
   background: linear-gradient(to right, #22c1c3, #fdbb2d);
 }
 .themes__container--item:nth-child(11) {
-  background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+  background: linear-gradient(to top, #fdcbf1 0%, #fdcbf1 1%, #e6dee9 100%);
 }
 .themes__container--item:nth-child(12) {
   background: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);

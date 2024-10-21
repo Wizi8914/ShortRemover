@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/5991870b6e.js" crossorigin="anonymous"></script>
+    <!-- CSS -->
+    <link rel="stylesheet" href="../../css/base.css">
+    <link rel="stylesheet" href="../../css/external-pages.css">
+    <!-- Favicon -->
+    <link rel="icon" href="../../images/icon-128.png">
+    <title>Uninstall - ShortRemover</title>
+</head>
+    <body>
+        <div class="container">
+            <div class="container__top">
+                <h1 class="container__top--title gradient__text">ShortRemover</h1>
+                <p class="container__top--subtitle">Thank you for using this extension</p>
+            </div>
+            <div class="container__bottom">
+                <a href="https://github.com/Wizi8914/ShortRemover" class="container__bottom--button" target="_blank"><i class="fa-brands fa-github"></i> Report an issues</a>
+                <a href="https://github.com/Wizi8914/ShortRemover" class="container__bottom--button" target="_blank"><i class="fa-brands fa-chrome"></i></i> Rate this extension</a>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <p class="footer__text">Copyright © <span id="currentYear"></span> ShortRemover - All rights reserved</p>
+        </footer>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('currentYear').textContent = new Date().getFullYear();;
+            });
+        </script>
+    </body>
+</html>

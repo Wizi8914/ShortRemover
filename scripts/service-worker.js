@@ -2,10 +2,19 @@
 (() => {
   const GREEN_COLOR = '#2db552';
   const GRAY_COLOR = '#828282';
+
+  const installURL = 'https://wizi8914.github.io/ShortRemover/pages/static/install.html';
+  const uninstallURL = 'https://wizi8914.github.io/ShortRemover/pages/static/uninstall.html';
   
-  chrome.runtime.onInstalled.addListener(function () {
+  chrome.runtime.onInstalled.addListener(function (details) {
+    if (details.reason === chrome.runtime.OnInstalledReason.INSTALL) {
+      chrome.tabs.create({ url: installURL });
+    }
+
     initializeExtension()
   });
+
+  chrome.runtime.setUninstallURL(uninstallURL);
   
   chrome.runtime.onStartup.addListener(function () {
     initializeExtension()
@@ -75,7 +84,7 @@
   
   // LOGGER //
   
-  const availableLanguages = ["en", "fr", "es", "de", "it", "ru", "ja", "ko", "sa", "zh"];
+  const availableLanguages = ["en", "fr", "ru", "ko"];
   const defaultLanguage = navigator.language.split('-')[0];
   
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
@@ -87,7 +96,6 @@
       return true;
     }
   });
-  
   
   async function getMessage(messageKey) {
     const language = await getLanguage();

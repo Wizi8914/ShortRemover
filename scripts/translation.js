@@ -1,4 +1,4 @@
-const availableLanguages = ["en", "fr", "es", "de", "it", "ru", "ja", "ko", "sa", "zh"];
+const availableLanguages = ["en", "fr", "ru", "ko"];
 const defaultLanguage = navigator.language.split('-')[0];
 
 async function changeLanguage () {
