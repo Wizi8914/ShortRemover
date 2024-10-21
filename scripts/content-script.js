@@ -27,7 +27,7 @@
         return new Promise((resolve, reject) => {
             chrome.runtime.sendMessage({ action: "log", messageKey }, (response) => {
                 if (response.error) {
-                    reject(new Error('Erreur : ' + response.error));
+                    reject(new Error('Error : ' + response.error));
                 } else {
                     resolve(response.message);
                 }
