@@ -1,0 +1,83 @@
+{
+    "extension_name": {
+        "message": "ShortRemover"
+    },
+    "extension_description": {
+        "message": "Remove Shorts videos from YouTube for a distraction-free experience."
+    },
+    "minute_label": {
+        "message": "minutes"
+    },
+    "hour_label": {
+        "message": "hours"
+    },
+    "statistics_blockedshort": {
+        "message": "Blocked Shorts"
+    },
+    "statistics_cleanedpages": {
+        "message": "Cleaned pages"
+    },
+    "statistics_shortswatched": {
+        "message": "Shorts watched"
+    },
+    "statistics_timesaved": {
+        "message": "Time saved"
+    },
+    "options_name": {
+        "message": "Settings"
+    },
+    "options_parameters": {
+        "message": "Parameters"
+    },
+    "options_themes": {
+        "message": "Themes"
+    },
+    "options_languages": {
+        "message": "Languages"
+    },
+    "param_NavbarButtonUndeployed": {
+        "message": "Collapsed navbar button"
+    },
+    "param_NavbarButtonDeployed": {
+        "message": "Expanded navbar button"
+    },
+    "param_ChannelTab": {
+        "message": "Channel Shorts tab"
+    },
+    "param_HomePageRecommendedShort": {
+        "message": "Home page recommended Shorts"
+    },
+    "param_ShortSearchResult": {
+        "message": "Shorts in search results"
+    },
+    "param_VideoPlayerRecommendedShort": {
+        "message": "Video player recommended Shorts"
+    },
+    "param_SubscriptionShort": {
+        "message": "Subscription Shorts"
+    },
+    "log_DisconnectOberserver": {
+        "message": "Disconnected all observers"
+    },
+    "log_ChangeTo": {
+        "message": "Changed to:"
+    },
+    "log_NavbarButtonUndeployed": {
+        "message": "Removed collapsed navbar button"
+    },
+    "log_NavbarButtonDeployed": {
+        "message": "Removed expanded navbar button"
+    },
+    "log_HomeRecommendedShort": {
+        "message": "Removed home page recommended Shorts"
+    },
+    "log_ShortSearchResult": {
+        "message": "Removed Shorts from search results"
+    },
+    "log_VideoPlayerRecommendedShort": {
+        "message": "Removed video player recommended Shorts"
+    },
+    "log_SubscriptionShort": {
+        "message": "Removed subscription Shorts"
+    }
+}
