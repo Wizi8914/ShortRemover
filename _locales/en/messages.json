@@ -77,9 +77,6 @@
     "log_VideoPlayerRecommendedShort": {
         "message": "Removed video player recommended Shorts"
     },
-    "log_LivePlayerRecommendedShort": {
-        "message": "Removed live player recommended Shorts"
-    },
     "log_SubscriptionShort": {
         "message": "Removed subscription Shorts"
     }
