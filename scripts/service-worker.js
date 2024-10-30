@@ -83,10 +83,9 @@
   
   
   // LOGGER //
-  
-  const availableLanguages = ["en", "fr", "ru", "ko"];
-  const defaultLanguage = navigator.language.split('-')[0];
-  
+
+  importScripts('../scripts/translation.js'); // Import the translation module (getMessage function)
+    
   chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     if (request.action === "log") {
       getMessage(request.messageKey)
@@ -96,38 +95,4 @@
       return true;
     }
   });
-  
-  async function getMessage(messageKey) {
-    const language = await getLanguage();
-      const pageURL = chrome.runtime.getURL(`_locales/${language}/messages.json`);
-  
-      const response = await fetch(pageURL);
-  
-      if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
-      }
-  
-      const json = await response.json();
-      const message = json[messageKey]['message'];
-      
-      console.log(message);
-      return message;
-  }
-  
-  function getLanguage() {
-    return new Promise((resolve, reject) => {
-        chrome.storage.local.get('language', function (result) {
-            let lang;
-            
-            if (availableLanguages.includes(defaultLanguage)) {
-                lang = result.language !== undefined ? result.language : defaultLanguage;
-            } else {
-                lang = result.language !== undefined ? result.language : 'en';
-            }
-  
-            chrome.storage.local.set({ language: lang });
-            resolve(lang);
-        });
-    });
-  }
 })();

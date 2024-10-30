@@ -177,6 +177,8 @@
                 });
             }
             
+            // Shorts in home page
+
             if (URL == "/" || URL == "/?sttick=0" || URL.toLowerCase() == "/?bp=wguceae%3d") { // Home Page & Supecific URL
                 getParamState('paramHomeRecommendedShort', isActive => {
                     if (!isActive) return;
@@ -190,33 +192,60 @@
                 });
             }
     
+            // Short in search results
+
             if (URL.includes("/results?search_query")) {
                 getParamState('paramShortSearchResult', isActive => {
                     if (!isActive && document.URL.includes("youtube.com/results")) return;
-            
+                    
                     observeElement(youtubeElements.recommendedShort, shortSearchResult => {                   
                         countShorts(youtubeElements.searchAndPlayerShortContainer);
-
+                        
                         shortSearchResult.forEach(element => element.remove());
                         logger('log_ShortSearchResult');
                     });
                     
                 });
             }
-    
-            if (URL.includes("/watch?v=")) {
-                getParamState('paramVideoPlayerRecommendedShort', isActive => {
-                    if (!isActive) return;
-    
-                    waitForElement(youtubeElements.videoPlayerRecommended, playerRecommendedShort => {
-                        countShorts(youtubeElements.searchAndPlayerShortContainer);
 
-                        playerRecommendedShort.remove();
-                        logger('log_VideoPlayerRecommendedShort');
-                    });
-                });
+            // Video & Live player recommended Shorts
+
+            if (URL.includes("/watch?v=") || URL.includes("/live/")) {
+                // Create fallback for page load time
+
+                const [navigation] = performance.getEntriesByType('navigation');
+                let pageLoadTime = navigation.loadEventEnd - navigation.startTime;
+
+                if (!pageLoadTime || pageLoadTime < 0) pageLoadTime = 2000; // Fallback to 2 seconds
+
+                setTimeout(() => {
+                    if (document.getElementById('chat')) {
+                        getParamState('paramLivePlayerRecommendedShort', isActive => {
+                            if (!isActive) return;
+            
+                            waitForElement(youtubeElements.videoPlayerRecommended, livePlayerRecommendedShort => {
+                                countShorts(youtubeElements.searchAndPlayerShortContainer);
+        
+                                livePlayerRecommendedShort.remove();
+                                logger('log_LivePlayerRecommendedShort');
+                            });
+                        })
+                    } else {
+                        getParamState('paramVideoPlayerRecommendedShort', isActive => {
+                            if (!isActive) return;
+            
+                            waitForElement(youtubeElements.videoPlayerRecommended, playerRecommendedShort => {
+                                countShorts(youtubeElements.searchAndPlayerShortContainer);
+        
+                                playerRecommendedShort.remove();
+                                logger('log_VideoPlayerRecommendedShort');
+                            });
+                        });
+                    }
+                }, Math.floor(pageLoadTime / 3)); // Use the page load time to wait for the player to load
             }
     
+
             if (URL.includes("/feed/subscriptions")) {
                 getParamState('paramSubscriptionShort', isActive => {
                     if (!isActive) return;
@@ -239,6 +268,3 @@
         });
     });
 })();
-
-
-
