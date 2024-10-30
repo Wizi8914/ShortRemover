@@ -1,5 +1,7 @@
-skip_untranslated_files: true
-files:
-  - source: /_locales/en/messages.json
-    translation: /_locales/%two_letters_code%/%original_file_name%
-
+"files": [
+  {
+    "source": "/_locales/en/messages.json",
+    "translation": "/_locales/%two_letters_code%/%original_file_name%",
+    "skip_untranslated_files": true
+  }
+]
