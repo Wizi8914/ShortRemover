@@ -1,5 +1,5 @@
-const availableLanguages = ["en", "fr", "ru", "ko"];
 const defaultLanguage = navigator.language.split('-')[0];
+const availableLanguages = ["en", "fr", "ko", "ru"];
 
 async function changeLanguage () {
     const elements = document.querySelectorAll('[i18n-data]');
@@ -10,6 +10,18 @@ async function changeLanguage () {
 
         setMessage(element, messageKey, language);
     });
+}
+
+function getAvailableLanguages() {
+    return new Promise((resolve, reject) => 
+        chrome.runtime.getPackageDirectoryEntry(root => 
+            root.getDirectory('_locales', {}, localesDir => 
+                localesDir.createReader().readEntries(entries => 
+                    resolve(entries.filter(e => e.isDirectory).map(e => e.name))
+                )
+            )
+        )
+    );
 }
 
 function getLanguage() {
@@ -25,6 +37,7 @@ function getLanguage() {
 
             chrome.storage.local.set({ language: lang });
             resolve(lang);
+
         });
     });
 }
@@ -57,7 +70,4 @@ async function getMessage(messageKey) {
     
     return message;
 }
-
-
-
 
