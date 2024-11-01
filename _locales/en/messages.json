@@ -53,6 +53,9 @@
     "param_VideoPlayerRecommendedShort": {
         "message": "Video player recommended Shorts"
     },
+    "param_LivePlayerRecommendedShort": {
+        "message": "Live player recommended Shorts"
+    },
     "param_SubscriptionShort": {
         "message": "Subscription Shorts"
     },
@@ -76,6 +79,9 @@
     },
     "log_VideoPlayerRecommendedShort": {
         "message": "Removed video player recommended Shorts"
+    },
+    "log_LivePlayerRecommendedShort": {
+        "message": "Removed live player recommended Shorts"
     },
     "log_SubscriptionShort": {
         "message": "Removed subscription Shorts"
