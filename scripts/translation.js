@@ -1,7 +1,7 @@
 const defaultLanguage = navigator.language.split('-')[0];
 const availableLanguages = ["en", "fr", "ko", "ru"];
 
-async function changeLanguage () {
+async function changeLanguage() {
     const elements = document.querySelectorAll('[i18n-data]');
     const language = await getLanguage();
 
@@ -9,7 +9,10 @@ async function changeLanguage () {
         let messageKey = element.getAttribute('i18n-data'); 
 
         setMessage(element, messageKey, language);
+
     });
+
+    document.querySelectorAll('.param-name').forEach((element) => console.log(element.textContent));
 }
 
 function getAvailableLanguages() {
@@ -47,7 +50,6 @@ function setMessage(element, messageKey, language) {
     fetch(`../_locales/${language}/messages.json`)
         .then((response) => response.json())
         .then((json) => {
-
             element.textContent = json[messageKey]['message'];
         })
         .catch((error) => {
@@ -71,3 +73,30 @@ async function getMessage(messageKey) {
     return message;
 }
 
+function fitTextSize() {
+    const parameters = document.querySelectorAll('.param-name');
+    const fontSize = Number(window.getComputedStyle(parameters[0]).getPropertyValue('font-size').replace('px', ''));
+    
+    parameters[0].setAttribute('width', "100%");
+
+    console.log(parameters[0])
+
+    const maxWidth = parameters[0].clientWidth;
+
+
+    parameters[0].removeAttribute('width');
+
+
+    parameters.forEach((parameter) => {
+        let parameterFontSize = fontSize;
+
+        console.log(parameter.clientWidth + " " + maxWidth);  
+
+        while (parameter.clientWidth == maxWidth) {
+
+
+            parameterFontSize--;
+            parameter.style.fontSize = `${parameterFontSize}px`;
+        }
+    });
+}

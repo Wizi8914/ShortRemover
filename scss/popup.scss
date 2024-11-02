@@ -83,6 +83,7 @@ body {
             font-size: 15px;
             margin: 0;
             color: var(--color-text);
+            width: 100%;
         }
     }
 }
@@ -91,6 +92,7 @@ body {
     position: relative;
     display: flex;
     width: 39px;
+    min-width: 39px;
     height: 21px;
 
     input { 
