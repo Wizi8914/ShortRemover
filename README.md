@@ -119,15 +119,23 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
           <br />
           <sub><b>Wizi_89</b></sub></a>
         <br />
-        <sub><b>829 words</b></sub>
+        <sub><b>844 words</b></sub>
         <br /><sub><b><code title="Arabic">ar</code></b>, <b><code title="Chinese Traditional">zh-TW</code></b>, <b><code title="French">fr</code></b>, <b><code title="German">de</code></b>, <b><code title="Italian">it</code></b>, <b><code title="Japanese">ja</code></b>, <b><code title="Korean">ko</code></b>, <b><code title="Russian">ru</code></b>, <b><code title="Spanish">es-ES</code></b></sub>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://crowdin.com/profile/Its_Time_OClock"><img alt="logo" style="width: 100px" src="https://crowdin-static.downloads.crowdin.com/avatar/16665449/medium/177953f49c316959fe692b7467290db1.jpeg" />
+          <br />
+          <sub><b>Its Time O'Clock (Its_Time_OClock)</b></sub></a>
+        <br />
+        <sub><b>174 words</b></sub>
+        <br /><sub><b><code title="English">en</code></b>, <b><code title="German">de</code></b></sub>
       </td>
       <td align="center" valign="top">
         <a href="https://crowdin.com/profile/Mirnyang"><img alt="logo" style="width: 100px" src="https://crowdin-static.downloads.crowdin.com/avatar/14153733/medium/9a2fe282298d66026016c71086cc6d6e.png" />
           <br />
           <sub><b>미르냥 (Mirnyang)</b></sub></a>
         <br />
-        <sub><b>68 words</b></sub>
+        <sub><b>90 words</b></sub>
         <br /><sub><b><code title="Korean">ko</code></b></sub>
       </td>
       <td align="center" valign="top">
@@ -137,6 +145,14 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
         <br />
         <sub><b>68 words</b></sub>
         <br /><sub><b><code title="Russian">ru</code></b></sub>
+      </td>
+      <td align="center" valign="top">
+        <a href="https://crowdin.com/profile/kiangiuliano"><img alt="logo" style="width: 100px" src="https://crowdin-static.downloads.crowdin.com/avatar/16666059/medium/7fee7008b6eeeb1cf6eee3a8c4f74e34.jpeg" />
+          <br />
+          <sub><b>Kian (kiangiuliano)</b></sub></a>
+        <br />
+        <sub><b>16 words</b></sub>
+        <br /><sub><b><code title="Spanish">es-ES</code></b></sub>
       </td>
     </tr>
   </tbody>
