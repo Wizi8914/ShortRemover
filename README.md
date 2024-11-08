@@ -4,7 +4,7 @@
 
 <p align="center">
   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-    <img src="https://img.shields.io/badge/Language-Javascript-yellow?style=flat-square" alt="Language">
+    <img src="https://img.shields.io/badge/Language-Javascript-yellow" alt="Language">
   </a>
   <a href="./manifest.json" target="_blank">
     <img alt="Manifest Version" src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2FWizi8914%2FShortRemover%2Fmain%2Fmanifest.json&query=manifest_version&label=Manifest%20Version&color=purple">
