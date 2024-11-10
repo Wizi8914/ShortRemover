@@ -152,4 +152,5 @@ language.forEach((lang, i) => {
 
 document.addEventListener('DOMContentLoaded', () => {
     changeLanguage();
+    
 });
