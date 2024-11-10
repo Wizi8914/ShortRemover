@@ -81,7 +81,6 @@
     }
   });
   
-  
   // LOGGER //
 
   importScripts('../scripts/translation.js'); // Import the translation module (getMessage function)

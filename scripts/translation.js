@@ -9,10 +9,7 @@ async function changeLanguage() {
         let messageKey = element.getAttribute('i18n-data'); 
 
         setMessage(element, messageKey, language);
-
     });
-
-    document.querySelectorAll('.param-name').forEach((element) => console.log(element.textContent));
 }
 
 function getAvailableLanguages() {
@@ -50,7 +47,16 @@ function setMessage(element, messageKey, language) {
     fetch(`../_locales/${language}/messages.json`)
         .then((response) => response.json())
         .then((json) => {
-            element.textContent = json[messageKey]['message'];
+            const lastParam = [...document.querySelectorAll('.param-name')].pop();
+
+            if (json[messageKey] == null && element == lastParam) fitTextSize(), console.log("whomp whomp"); // If the message is not found but it's the last parameter, fit the text size
+            if (json[messageKey] == null) return;
+
+            element.textContent = json[messageKey]['message'] !== null ? json[messageKey]['message'] : messageKey;
+            
+            if (element == lastParam) {
+                fitTextSize();
+            }
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -75,28 +81,21 @@ async function getMessage(messageKey) {
 
 function fitTextSize() {
     const parameters = document.querySelectorAll('.param-name');
+
+    parameters.forEach(e => e.style.fontSize = ""); // Reset the font size
     const fontSize = Number(window.getComputedStyle(parameters[0]).getPropertyValue('font-size').replace('px', ''));
     
-    parameters[0].setAttribute('width', "100%");
-
-    console.log(parameters[0])
-
+    parameters[0].style.width = "100%";
     const maxWidth = parameters[0].clientWidth;
-
-
-    parameters[0].removeAttribute('width');
-
+    parameters[0].style.width = "";
 
     parameters.forEach((parameter) => {
         let parameterFontSize = fontSize;
-
-        console.log(parameter.clientWidth + " " + maxWidth);  
-
-        while (parameter.clientWidth == maxWidth) {
-
-
+        
+        while (parameter.clientWidth >= maxWidth) {
             parameterFontSize--;
             parameter.style.fontSize = `${parameterFontSize}px`;
         }
+            
     });
 }

@@ -1,3 +1,8 @@
+html {
+    max-height: 0; // This is the key to the solution do downscaled the popup after chainging text size
+}
+
+
 body {
     font-family: var(--font-family);
     margin: 0;
@@ -83,7 +88,6 @@ body {
             font-size: 15px;
             margin: 0;
             color: var(--color-text);
-            width: 100%;
         }
     }
 }
