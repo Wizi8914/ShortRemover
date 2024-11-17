@@ -78,6 +78,11 @@
     
         logger('log_DisconnectOberserver');
     }
+
+    function countElement(element) {
+        const count = document.querySelectorAll(element).length;
+        return count;
+    }
     
     function waitForElement(selector, callback) {
         const element = document.querySelector(selector);
@@ -219,7 +224,7 @@
                 if (!pageLoadTime || pageLoadTime < 0) pageLoadTime = 2000; // Fallback to 2 seconds
 
                 setTimeout(() => {
-                    if (document.getElementById('chat')) {
+                    if (document.getElementById('chat') && !document.getElementById('chat').hasAttribute('collapsed')) {
                         getParamState('paramLivePlayerRecommendedShort', isActive => {
                             if (!isActive) return;
             
@@ -241,6 +246,9 @@
                                 logger('log_VideoPlayerRecommendedShort');
                             });
                         });
+
+
+
                     }
                 }, Math.floor(pageLoadTime / 3)); // Use the page load time to wait for the player to load
             }
