@@ -3,7 +3,9 @@
     const youtubeElements = {
         navbarUndeployed: ".ytd-mini-guide-renderer:nth-child(2)",
         navbarDeployed: "ytd-guide-entry-renderer:nth-child(2)",
-        videoPlayerRecommended: "ytd-reel-shelf-renderer.ytd-item-section-renderer",
+        videoPlayerRecommended: "ytd-reel-shelf-renderer.ytd-item-section-renderer:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape)",
+        remixedRecommendedShort: "ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer:not(:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape))",
+        remixedRecommendedShortInDescription: ".style-scope[inline-structured-description] > .style-scope > ytd-reel-shelf-renderer:not(:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape))",
         searchAndPlayerShortContainer: "#scroll-container > .yt-horizontal-list-renderer",
         homeAndSubShortContainer: ".ytd-rich-shelf-renderer > #contents",
         recommendedShort: 
@@ -78,8 +80,21 @@
     
         logger('log_DisconnectOberserver');
     }
+
+    function disconnectObserver(observer) {
+        const index = observers.indexOf(observer);
+        if (index <= -1) return;
+
+        observer.disconnect();
+        observers.splice(index, 1);
+    }
+
+    function countElement(element) {
+        const count = document.querySelectorAll(element).length;
+        return count;
+    }
     
-    function waitForElement(selector, callback) {
+    function waitForElement(selector, callback, timeout = 30000) { // Default timeout is 30 seconds
         const element = document.querySelector(selector);
     
         if (element) {
@@ -89,6 +104,7 @@
                 const targetElement = document.querySelector(selector);
                 if (targetElement) {
                     observer.disconnect();
+                    clearTimeout(timeoutID);
                     callback(targetElement);
                 }
             });
@@ -97,6 +113,10 @@
                 childList: true,
                 subtree: true,
             });
+
+            const timeoutID = setTimeout(() => {
+                observer.disconnect();
+            }, timeout);
         }
     }
     
@@ -136,29 +156,135 @@
         addToStatistics('timeSaved', timeSaved);
     }
 
-    chrome.storage.local.get('extensionIsActive', function (result) {
-        const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
-        if (!extensionIsActive) return;
-        
+    function removeNavbarButtonUndeployed() {
         getParamState('paramNavbarButtonUndeployed', isActive => {
             if (!isActive && !document.URL.includes('youtube.com/watch')) return;
-            
+
             waitForElement(youtubeElements.navbarUndeployed, navBarButtonUndeployed => {
                 navBarButtonUndeployed.remove();
                 logger('log_NavbarButtonUndeployed');
             });
-            
         });
-    
+
+    }
+
+    function removeNavbarButtonDeployed() {
         getParamState('paramNavbarButtonDeployed', isActive => {
             if (!isActive) return;
-    
+
             waitForElement(youtubeElements.navbarDeployed, navbarButtonDeployed => {
                 navbarButtonDeployed.remove();
                 logger('log_NavbarButtonDeployed');
             });
-            
         });
+        
+    }
+    
+    function removeChannelTabShorts() {
+        getParamState('paramChannelTab', (isActive) => {
+            if (!isActive) return;
+
+            document.querySelectorAll('.yt-tab-shape-wiz--host-clickable').forEach(tabElement => {
+                tabElement.children[0].innerHTML.toLowerCase().includes('shorts') ? tabElement.remove() : null;
+            });
+        });
+    }
+
+    function removeHomePageRecommendedShorts() {
+        getParamState('paramHomeRecommendedShort', isActive => {
+            if (!isActive) return;
+
+            observeElement(youtubeElements.recommendedShort, homeRecommendedShort => {
+                countShorts(youtubeElements.homeAndSubShortContainer);
+                
+                homeRecommendedShort.forEach(element => element.remove());
+                logger('log_HomeRecommendedShort');
+            });
+        });
+    }
+
+    function removeShotSearchResult() {
+        getParamState('paramShortSearchResult', isActive => {
+            if (!isActive && document.URL.includes("youtube.com/results")) return;
+            
+            observeElement(youtubeElements.recommendedShort, shortSearchResult => {                   
+                countShorts(youtubeElements.searchAndPlayerShortContainer);
+                
+                shortSearchResult.forEach(element => element.remove());
+                logger('log_ShortSearchResult');
+            });
+        });
+    }
+
+    function removeLivePlayerRecommendedShort() {
+        getParamState('paramLivePlayerRecommendedShort', isActive => {
+            if (!isActive) return;
+
+            observeElement(youtubeElements.videoPlayerRecommended, livePlayerRecommendedShort => {
+                countShorts(youtubeElements.searchAndPlayerShortContainer);
+
+                livePlayerRecommendedShort.forEach(element => element.remove());
+                logger('log_LivePlayerRecommendedShort');
+            });
+        })
+    }
+
+    function removeVideoPlayerRecommendedShort() {
+        getParamState('paramVideoPlayerRecommendedShort', isActive => {
+            if (!isActive) return;
+            
+            observeElement(youtubeElements.videoPlayerRecommended, playerRecommendedShort => {
+                playerRecommendedShort.forEach(element =>  {
+                    if (element.children[0].children[0].children[0].childElementCount == 0) return;
+
+                    countShorts(youtubeElements.searchAndPlayerShortContainer);
+                    element.remove();
+
+                    logger('log_VideoPlayerRecommendedShort');
+                });
+
+            });
+        });
+    }
+
+    function removeRemixedRecommendedShort() {
+        getParamState('paramRemixedRecommendedShort', isActive => {
+            if (!isActive) return;
+
+            waitForElement(youtubeElements.remixedRecommendedShort, remixedRecommendedShort => {
+                remixedRecommendedShort.remove();
+
+                logger('log_RemixedRecommendedShort');
+            }, 10000);
+
+            waitForElement(youtubeElements.remixedRecommendedShortInDescription, remixedRecommendedShortInDescription => {
+                remixedRecommendedShortInDescription.remove();
+                
+                logger('log_RemixedRecommendedShort');
+            }, 10000);
+        });
+    }
+
+    function removeSubscriptionShorts() {
+        getParamState('paramSubscriptionShort', isActive => {
+            if (!isActive) return;
+
+            waitForElement(youtubeElements.recommendedShort, subscriptionsShorts => {
+                countShorts(youtubeElements.homeAndSubShortContainer);
+                
+                subscriptionsShorts.remove();
+                logger('log_SubscriptionShort');
+            });
+        });
+    }
+
+
+    chrome.storage.local.get('extensionIsActive', function (result) {
+        const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
+        if (!extensionIsActive) return;
+        
+        removeNavbarButtonUndeployed();
+        removeNavbarButtonDeployed();
     
         // Listen for URL changes
         window.addEventListener("yt-navigate-finish", event => {
@@ -168,44 +294,19 @@
             disconnectAllObservers();
     
             if (URL.includes("/@") || URL.includes("/channel/")) {
-                getParamState('paramChannelTab', (isActive) => {
-                    if (!isActive) return;
-        
-                    document.querySelectorAll('.yt-tab-shape-wiz--host-clickable').forEach(tabElement => {
-                        tabElement.children[0].innerHTML.toLowerCase().includes('shorts') ? tabElement.remove() : null;
-                    });
-                });
+                removeChannelTabShorts();
             }
             
             // Shorts in home page
 
             if (URL == "/" || URL == "/?sttick=0" || URL.toLowerCase() == "/?bp=wguceae%3d") { // Home Page & Supecific URL
-                getParamState('paramHomeRecommendedShort', isActive => {
-                    if (!isActive) return;
-    
-                    observeElement(youtubeElements.recommendedShort, homeRecommendedShort => {
-                        countShorts(youtubeElements.homeAndSubShortContainer);
-                        
-                        homeRecommendedShort.forEach(element => element.remove());
-                        logger('log_HomeRecommendedShort');
-                    });
-                });
+                removeHomePageRecommendedShorts();
             }
     
             // Short in search results
 
             if (URL.includes("/results?search_query")) {
-                getParamState('paramShortSearchResult', isActive => {
-                    if (!isActive && document.URL.includes("youtube.com/results")) return;
-                    
-                    observeElement(youtubeElements.recommendedShort, shortSearchResult => {                   
-                        countShorts(youtubeElements.searchAndPlayerShortContainer);
-                        
-                        shortSearchResult.forEach(element => element.remove());
-                        logger('log_ShortSearchResult');
-                    });
-                    
-                });
+                removeShotSearchResult();
             }
 
             // Video & Live player recommended Shorts
@@ -219,46 +320,18 @@
                 if (!pageLoadTime || pageLoadTime < 0) pageLoadTime = 2000; // Fallback to 2 seconds
 
                 setTimeout(() => {
-                    if (document.getElementById('chat')) {
-                        getParamState('paramLivePlayerRecommendedShort', isActive => {
-                            if (!isActive) return;
-            
-                            waitForElement(youtubeElements.videoPlayerRecommended, livePlayerRecommendedShort => {
-                                countShorts(youtubeElements.searchAndPlayerShortContainer);
-        
-                                livePlayerRecommendedShort.remove();
-                                logger('log_LivePlayerRecommendedShort');
-                            });
-                        })
+                    if (document.getElementById('chat') && !document.getElementById('chat').hasAttribute('collapsed')) {
+                        removeLivePlayerRecommendedShort();
                     } else {
-                        getParamState('paramVideoPlayerRecommendedShort', isActive => {
-                            if (!isActive) return;
-            
-                            waitForElement(youtubeElements.videoPlayerRecommended, playerRecommendedShort => {
-                                countShorts(youtubeElements.searchAndPlayerShortContainer);
-        
-                                playerRecommendedShort.remove();
-                                logger('log_VideoPlayerRecommendedShort');
-                            });
-                        });
+                        removeVideoPlayerRecommendedShort();
+                        removeRemixedRecommendedShort();
                     }
                 }, Math.floor(pageLoadTime / 3)); // Use the page load time to wait for the player to load
             }
-    
 
             if (URL.includes("/feed/subscriptions")) {
-                getParamState('paramSubscriptionShort', isActive => {
-                    if (!isActive) return;
-    
-                    waitForElement(youtubeElements.recommendedShort, subscriptionsShorts => {
-                        countShorts(youtubeElements.homeAndSubShortContainer);
-                        
-                        subscriptionsShorts.remove();
-                        logger('log_SubscriptionShort');
-                    });
-                });
+                removeSubscriptionShorts();
             }
-
 
             if (URL.includes("/shorts/")) {
                 addToStatistics('shortsWatched');

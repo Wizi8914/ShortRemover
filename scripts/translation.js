@@ -1,5 +1,5 @@
 const defaultLanguage = navigator.language.split('-')[0];
-const availableLanguages = ["en", "fr", "ko", "ru"];
+const availableLanguages = ["en", "fr", "ko", "ru", "de"];
 
 async function changeLanguage() {
     const elements = document.querySelectorAll('[i18n-data]');
