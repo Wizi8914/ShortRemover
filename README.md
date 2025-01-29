@@ -120,7 +120,7 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
           <br />
           <sub><b>Wizi_89</b></sub></a>
         <br />
-        <sub><b>844 words</b></sub>
+        <sub><b>855 words</b></sub>
         <br /><sub><b><code title="Arabic">ar</code></b>, <b><code title="Chinese Traditional">zh-TW</code></b>, <b><code title="French">fr</code></b>, <b><code title="German">de</code></b>, <b><code title="Italian">it</code></b>, <b><code title="Japanese">ja</code></b>, <b><code title="Korean">ko</code></b>, <b><code title="Russian">ru</code></b>, <b><code title="Spanish">es-ES</code></b></sub>
       </td>
       <td align="center" valign="top">
@@ -132,6 +132,14 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
         <br /><sub><b><code title="English">en</code></b>, <b><code title="German">de</code></b></sub>
       </td>
       <td align="center" valign="top">
+        <a href="https://crowdin.com/profile/glauberdasilvaalves1"><img alt="logo" style="width: 100px" src="https://crowdin-static.cf-downloads.crowdin.com/avatar/16800163/medium/6a5067923da44b7f81631e1fd5e29c92_default.png" />
+          <br />
+          <sub><b>glauberdasilvaalves1</b></sub></a>
+        <br />
+        <sub><b>98 words</b></sub>
+        <br /><sub><b><code title="Portuguese, Brazilian">pt-BR</code></b></sub>
+      </td>
+      <td align="center" valign="top">
         <a href="https://crowdin.com/profile/Mirnyang"><img alt="logo" style="width: 100px" src="https://crowdin-static.cf-downloads.crowdin.com/avatar/14153733/medium/9a2fe282298d66026016c71086cc6d6e.png" />
           <br />
           <sub><b>미르냥 (Mirnyang)</b></sub></a>
@@ -140,13 +148,15 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
         <br /><sub><b><code title="Korean">ko</code></b></sub>
       </td>
       <td align="center" valign="top">
-        <a href="https://crowdin.com/profile/Ronner231"><img alt="logo" style="width: 100px" src="https://crowdin-static.downloads.crowdin.com/avatar/16021342/medium/7734d550df2de5a2fec2ffff33e7024c.jpeg" />
+        <a href="https://crowdin.com/profile/Ronner231"><img alt="logo" style="width: 100px" src="https://crowdin-static.cf-downloads.crowdin.com/avatar/16021342/medium/7734d550df2de5a2fec2ffff33e7024c.jpeg" />
           <br />
           <sub><b>Ronner (Ronner231)</b></sub></a>
         <br />
         <sub><b>68 words</b></sub>
         <br /><sub><b><code title="Russian">ru</code></b></sub>
       </td>
+    </tr>
+    <tr>
       <td align="center" valign="top">
         <a href="https://crowdin.com/profile/kiangiuliano"><img alt="logo" style="width: 100px" src="https://crowdin-static.cf-downloads.crowdin.com/avatar/16666059/medium/7fee7008b6eeeb1cf6eee3a8c4f74e34.jpeg" />
           <br />
