@@ -94,7 +94,7 @@
         return count;
     }
     
-    function waitForElement(selector, callback) {
+    function waitForElement(selector, callback, timeout = 60000) { // Default timeout is 1 minute
         const element = document.querySelector(selector);
     
         if (element) {
@@ -104,6 +104,7 @@
                 const targetElement = document.querySelector(selector);
                 if (targetElement) {
                     observer.disconnect();
+                    clearTimeout(timeoutID);
                     callback(targetElement);
                 }
             });
@@ -112,6 +113,10 @@
                 childList: true,
                 subtree: true,
             });
+
+            const timeoutID = setTimeout(() => {
+                observer.disconnect();
+            }, timeout);
         }
     }
     
@@ -250,13 +255,13 @@
                 remixedRecommendedShort.remove();
 
                 logger('log_RemixedRecommendedShort');
-            });
+            }, 10000);
 
             waitForElement(youtubeElements.remixedRecommendedShortInDescription, remixedRecommendedShortInDescription => {
                 remixedRecommendedShortInDescription.remove();
                 
                 logger('log_RemixedRecommendedShort');
-            });
+            }, 10000);
         });
     }
 
