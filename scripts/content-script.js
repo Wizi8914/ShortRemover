@@ -94,7 +94,7 @@
         return count;
     }
     
-    function waitForElement(selector, callback, timeout = 60000) { // Default timeout is 1 minute
+    function waitForElement(selector, callback, timeout = 30000) { // Default timeout is 30 seconds
         const element = document.querySelector(selector);
     
         if (element) {
