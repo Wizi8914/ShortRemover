@@ -3,7 +3,9 @@
     const youtubeElements = {
         navbarUndeployed: ".ytd-mini-guide-renderer:nth-child(2)",
         navbarDeployed: "ytd-guide-entry-renderer:nth-child(2)",
-        videoPlayerRecommended: "ytd-reel-shelf-renderer.ytd-item-section-renderer",
+        videoPlayerRecommended: "ytd-reel-shelf-renderer.ytd-item-section-renderer:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape)",
+        remixedRecommendedShort: "ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer:not(:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape))",
+        remixedRecommendedShortInDescription: ".style-scope[inline-structured-description] > .style-scope > ytd-reel-shelf-renderer:not(:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape))",
         searchAndPlayerShortContainer: "#scroll-container > .yt-horizontal-list-renderer",
         homeAndSubShortContainer: ".ytd-rich-shelf-renderer > #contents",
         recommendedShort: 
@@ -77,6 +79,14 @@
         observers.length = 0;
     
         logger('log_DisconnectOberserver');
+    }
+
+    function disconnectObserver(observer) {
+        const index = observers.indexOf(observer);
+        if (index <= -1) return;
+
+        observer.disconnect();
+        observers.splice(index, 1);
     }
 
     function countElement(element) {
@@ -156,7 +166,7 @@
     function removeNavbarButtonDeployed() {
         getParamState('paramNavbarButtonDeployed', isActive => {
             if (!isActive) return;
-            
+
             waitForElement(youtubeElements.navbarDeployed, navbarButtonDeployed => {
                 navbarButtonDeployed.remove();
                 logger('log_NavbarButtonDeployed');
@@ -205,10 +215,10 @@
         getParamState('paramLivePlayerRecommendedShort', isActive => {
             if (!isActive) return;
 
-            waitForElement(youtubeElements.videoPlayerRecommended, livePlayerRecommendedShort => {
+            observeElement(youtubeElements.videoPlayerRecommended, livePlayerRecommendedShort => {
                 countShorts(youtubeElements.searchAndPlayerShortContainer);
 
-                livePlayerRecommendedShort.remove();
+                livePlayerRecommendedShort.forEach(element => element.remove());
                 logger('log_LivePlayerRecommendedShort');
             });
         })
@@ -217,12 +227,35 @@
     function removeVideoPlayerRecommendedShort() {
         getParamState('paramVideoPlayerRecommendedShort', isActive => {
             if (!isActive) return;
+            
+            observeElement(youtubeElements.videoPlayerRecommended, playerRecommendedShort => {
+                playerRecommendedShort.forEach(element =>  {
+                    if (element.children[0].children[0].children[0].childElementCount == 0) return;
 
-            waitForElement(youtubeElements.videoPlayerRecommended, playerRecommendedShort => {
-                countShorts(youtubeElements.searchAndPlayerShortContainer);
+                    countShorts(youtubeElements.searchAndPlayerShortContainer);
+                    element.remove();
 
-                playerRecommendedShort.remove();
-                logger('log_VideoPlayerRecommendedShort');
+                    logger('log_VideoPlayerRecommendedShort');
+                });
+
+            });
+        });
+    }
+
+    function removeRemixedRecommendedShort() {
+        getParamState('paramRemixedRecommendedShort', isActive => {
+            if (!isActive) return;
+
+            waitForElement(youtubeElements.remixedRecommendedShort, remixedRecommendedShort => {
+                remixedRecommendedShort.remove();
+
+                logger('log_RemixedRecommendedShort');
+            });
+
+            waitForElement(youtubeElements.remixedRecommendedShortInDescription, remixedRecommendedShortInDescription => {
+                remixedRecommendedShortInDescription.remove();
+                
+                logger('log_RemixedRecommendedShort');
             });
         });
     }
@@ -286,10 +319,10 @@
                         removeLivePlayerRecommendedShort();
                     } else {
                         removeVideoPlayerRecommendedShort();
+                        removeRemixedRecommendedShort();
                     }
                 }, Math.floor(pageLoadTime / 3)); // Use the page load time to wait for the player to load
             }
-    
 
             if (URL.includes("/feed/subscriptions")) {
                 removeSubscriptionShorts();
