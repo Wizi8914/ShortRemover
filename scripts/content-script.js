@@ -298,8 +298,13 @@
             }
             
             // Shorts in home page
-
-            if (URL == "/" || URL == "/?sttick=0" || URL.toLowerCase() == "/?bp=wguceae%3d") { // Home Page & Supecific URL
+            
+            // Home Page & Supecific URL
+            if (URL == "/" ||
+                URL == "/?sttick=0" ||
+                URL.toLowerCase() == "/?bp=wguceae%3d" ||
+                /\?app=desktop&hl=[a-zA-Z]{2,3}(-[a-zA-Z]{2})?/.test(URL)) 
+            {
                 removeHomePageRecommendedShorts();
             }
     
