@@ -56,6 +56,9 @@
     "param_LivePlayerRecommendedShort": {
         "message": "Short recommandé dans le lecteur en direct"
     },
+    "param_RemixedRecommendedShort": {
+        "message": "Shorts recommandés remixant une vidéo"
+    },
     "param_SubscriptionShort": {
         "message": "Shorts dans les abonnements"
     },
@@ -82,6 +85,9 @@
     },
     "log_LivePlayerRecommendedShort": {
         "message": "Short recommandé dans le lecteur en direct supprimé"
+    },
+    "log_RemixedRecommendedShort": {
+        "message": "Shorts recommandés remixant une vidéo supprimée"
     },
     "log_SubscriptionShort": {
         "message": "Shorts dans les abonnements supprimés"

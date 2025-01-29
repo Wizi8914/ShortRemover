@@ -1,0 +1,95 @@
+{
+    "extension_name": {
+        "message": "Removedor de Shorts"
+    },
+    "extension_description": {
+        "message": "Remova vídeos curtos do YouTube para uma experiência sem distrações."
+    },
+    "minute_label": {
+        "message": "minutos"
+    },
+    "hour_label": {
+        "message": "horas"
+    },
+    "statistics_blockedshort": {
+        "message": "Shorts Bloqueados"
+    },
+    "statistics_cleanedpages": {
+        "message": "Páginas limpas"
+    },
+    "statistics_shortswatched": {
+        "message": "Shorts assistidos"
+    },
+    "statistics_timesaved": {
+        "message": "Tempo poupado"
+    },
+    "options_name": {
+        "message": "Configurações"
+    },
+    "options_parameters": {
+        "message": "Parâmetros"
+    },
+    "options_themes": {
+        "message": "Temas"
+    },
+    "options_languages": {
+        "message": "Idiomas"
+    },
+    "param_NavbarButtonUndeployed": {
+        "message": "Botão da barra de navegação colapsada"
+    },
+    "param_NavbarButtonDeployed": {
+        "message": "Botão da barra de navegação expandida "
+    },
+    "param_ChannelTab": {
+        "message": "Aba de Canais de Shorts"
+    },
+    "param_HomePageRecommendedShort": {
+        "message": "Shorts recomendados da página inicial"
+    },
+    "param_ShortSearchResult": {
+        "message": "Shorts nos resultados de busca"
+    },
+    "param_VideoPlayerRecommendedShort": {
+        "message": "Shorts recomendados do reprodutor de vídeo"
+    },
+    "param_LivePlayerRecommendedShort": {
+        "message": "Shorts recomendados para transmições ao vivo"
+    },
+    "param_RemixedRecommendedShort": {
+        "message": "Shorts recomendados remixando um vídeo"
+    },
+    "param_SubscriptionShort": {
+        "message": "Inscrições dos shorts"
+    },
+    "log_DisconnectOberserver": {
+        "message": "Todos os observadores desconectados"
+    },
+    "log_ChangeTo": {
+        "message": "Alterar para:"
+    },
+    "log_NavbarButtonUndeployed": {
+        "message": "Botão da barra de navegação oculta removido"
+    },
+    "log_NavbarButtonDeployed": {
+        "message": "Botão da barra de navegação expandida "
+    },
+    "log_HomeRecommendedShort": {
+        "message": "Shorts recomendados da página inicial removida"
+    },
+    "log_ShortSearchResult": {
+        "message": "Shorts removidos dos resultados de pesquisa"
+    },
+    "log_VideoPlayerRecommendedShort": {
+        "message": "Shorts recomendados do reprodutor de vídeo removido"
+    },
+    "log_LivePlayerRecommendedShort": {
+        "message": "Shorts recomendados de transmissões ao vivo removidos"
+    },
+    "log_RemixedRecommendedShort": {
+        "message": "Shorts recomendados remixando um vídeo"
+    },
+    "log_SubscriptionShort": {
+        "message": "Short de assinatura removido"
+    }
+}
