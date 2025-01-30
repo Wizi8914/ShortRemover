@@ -14,19 +14,23 @@ async function changeLanguage() {
 
 function getAvailableLanguages() {
     return new Promise((resolve, reject) => 
-        chrome.runtime.getPackageDirectoryEntry(root => 
+        chrome.runtime.getPackageDirectoryEntry(root => {
+            if (chrome.runtime.lastError) return reject(chrome.runtime.lastError);
+
             root.getDirectory('_locales', {}, localesDir => 
                 localesDir.createReader().readEntries(entries => 
                     resolve(entries.filter(e => e.isDirectory).map(e => e.name))
                 )
             )
-        )
+        })
     );
 }
 
 function getLanguage() {
     return new Promise((resolve, reject) => {
         chrome.storage.local.get('language', function (result) {
+            if (chrome.runtime.lastError) return reject(chrome.runtime.lastError);
+
             let lang;
             
             if (availableLanguages.includes(defaultLanguage)) {
@@ -37,7 +41,6 @@ function getLanguage() {
 
             chrome.storage.local.set({ language: lang });
             resolve(lang);
-
         });
     });
 }

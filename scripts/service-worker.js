@@ -73,7 +73,7 @@
     }, paramName);
   }
   
-  chrome.runtime.onMessage.addListener(function (request, sender, sendResponse) {
+  chrome.runtime.onMessage.addListener(function (request) {
     if (request.command === 'toggleExtension') {
       toggleExtension();
     } else {
