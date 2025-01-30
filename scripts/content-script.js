@@ -292,6 +292,16 @@
         });
     }
 
+    function redirectShortsToVideo() {
+        getParamState('paramRedirectShort', isActive => {
+            if (!isActive) return;
+
+            let currentURL = window.location.href;
+
+            window.location.href = currentURL.replace("shorts", "video");
+        });
+    }
+
 
     chrome.storage.local.get('extensionIsActive', function (result) {
         const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
@@ -354,6 +364,7 @@
 
             if (URL.includes("/shorts/")) {
                 addToStatistics('shortsWatched');
+                redirectShortsToVideo();
             }
 
             addToStatistics('cleanedPage');
