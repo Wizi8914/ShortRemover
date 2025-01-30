@@ -33,7 +33,7 @@ function resetStatistics() { // Development function
     });
 }
 
-statistics.forEach((stat, i)=> {
+statistics.forEach((stat)=> {
     getStatistics(stat.getAttribute('data-key'), async (count) => {
         stat.setAttribute('data-value', count);
 
@@ -127,7 +127,7 @@ window.addEventListener('load', function() {
 
 const language = document.querySelectorAll('.languages__container--item');
 
-language.forEach((lang, i) => {
+language.forEach((lang) => {
     lang.addEventListener('click', async () => {
         language.forEach((lang) => {
             lang.classList.remove('active');
