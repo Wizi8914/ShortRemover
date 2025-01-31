@@ -62,6 +62,9 @@
     "param_SubscriptionShort": {
         "message": "Shorts dans les abonnements"
     },
+    "param_RedirectShort": {
+        "message": "Ouvrir les Shorts en tant que vidéo"
+    },
     "log_DisconnectOberserver": {
         "message": "Déconnexion de tous les observateurs"
     },
