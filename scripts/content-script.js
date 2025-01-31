@@ -94,6 +94,13 @@
         return count;
     }
     
+    /**
+     * Waits for a DOM element to appear and then executes a callback function.
+     *
+     * @param {string} selector - The CSS selector
+     * @param {function} callback - The function to execute once the element is found
+     * @param {number} [timeout=30000] - The maximum time to wait for the element in milliseconds
+     */
     function waitForElement(selector, callback, timeout = 30000) { // Default timeout is 30 seconds
         const element = document.querySelector(selector);
     
@@ -128,6 +135,13 @@
     }
     
 
+    /**
+     * Increments a value stored in Chrome's local storage by a specified amount.
+     * If the key does not exist, it initializes the value to 0 before incrementing.
+     *
+     * @param {string} dataKey - The key in Chrome's local storage to increment.
+     * @param {number} [increment=1] - The amount to increment the value by. Defaults to 1.
+     */
     function addToStatistics(dataKey, increment = 1) {
         chrome.storage.local.get(dataKey, function(result) {
             let currentCount = result[dataKey] || 0; // If the key doesn't exist, the count is 0
@@ -278,6 +292,16 @@
         });
     }
 
+    function redirectShortsToVideo() {
+        getParamState('paramRedirectShort', isActive => {
+            if (!isActive) return;
+
+            let currentURL = window.location.href;
+
+            window.location.href = currentURL.replace("shorts", "video");
+        });
+    }
+
 
     chrome.storage.local.get('extensionIsActive', function (result) {
         const extensionIsActive = result.extensionIsActive !== undefined ? result.extensionIsActive : true;
@@ -298,8 +322,13 @@
             }
             
             // Shorts in home page
-
-            if (URL == "/" || URL == "/?sttick=0" || URL.toLowerCase() == "/?bp=wguceae%3d") { // Home Page & Supecific URL
+            
+            // Home Page & Supecific URL
+            if (URL == "/" ||
+                URL == "/?sttick=0" ||
+                URL.toLowerCase() == "/?bp=wguceae%3d" ||
+                /\?app=desktop&hl=[a-zA-Z]{2,3}(-[a-zA-Z]{2})?/.test(URL)) 
+            {
                 removeHomePageRecommendedShorts();
             }
     
@@ -335,6 +364,7 @@
 
             if (URL.includes("/shorts/")) {
                 addToStatistics('shortsWatched');
+                redirectShortsToVideo();
             }
 
             addToStatistics('cleanedPage');
