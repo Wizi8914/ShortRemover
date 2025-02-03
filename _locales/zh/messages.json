@@ -1,0 +1,98 @@
+{
+    "extension_name": {
+        "message": "短暂还款"
+    },
+    "extension_description": {
+        "message": "从YouTube中删除短视频，以免受干扰。"
+    },
+    "minute_label": {
+        "message": "分钟"
+    },
+    "hour_label": {
+        "message": "小时"
+    },
+    "statistics_blockedshort": {
+        "message": "被阻止的快捷方式"
+    },
+    "statistics_cleanedpages": {
+        "message": "清理页面"
+    },
+    "statistics_shortswatched": {
+        "message": "已观看的短信数"
+    },
+    "statistics_timesaved": {
+        "message": "保存时间"
+    },
+    "options_name": {
+        "message": "设置"
+    },
+    "options_parameters": {
+        "message": "参数"
+    },
+    "options_themes": {
+        "message": "主题"
+    },
+    "options_languages": {
+        "message": "语文"
+    },
+    "param_NavbarButtonUndeployed": {
+        "message": "折叠导航栏按钮"
+    },
+    "param_NavbarButtonDeployed": {
+        "message": "扩展导航栏按钮"
+    },
+    "param_ChannelTab": {
+        "message": "频道短标签"
+    },
+    "param_HomePageRecommendedShort": {
+        "message": "推荐的主页"
+    },
+    "param_ShortSearchResult": {
+        "message": "搜索结果中的不足"
+    },
+    "param_VideoPlayerRecommendedShort": {
+        "message": "推荐的视频播放器快捷方式"
+    },
+    "param_LivePlayerRecommendedShort": {
+        "message": "在线玩家推荐短暂时间"
+    },
+    "param_RemixedRecommendedShort": {
+        "message": "推荐短片混合视频"
+    },
+    "param_SubscriptionShort": {
+        "message": "订阅快捷方式"
+    },
+    "param_RedirectShort": {
+        "message": "以视频形式打开 Short"
+    },
+    "log_DisconnectOberserver": {
+        "message": "断开所有观察家的连接"
+    },
+    "log_ChangeTo": {
+        "message": "更改到："
+    },
+    "log_NavbarButtonUndeployed": {
+        "message": "删除折叠导航栏按钮"
+    },
+    "log_NavbarButtonDeployed": {
+        "message": "移除扩展导航栏按钮"
+    },
+    "log_HomeRecommendedShort": {
+        "message": "删除推荐的首页"
+    },
+    "log_ShortSearchResult": {
+        "message": "已删除搜索结果中的短号"
+    },
+    "log_VideoPlayerRecommendedShort": {
+        "message": "已删除推荐短视播放器"
+    },
+    "log_LivePlayerRecommendedShort": {
+        "message": "已移除在线玩家推荐的快捷方式"
+    },
+    "log_RemixedRecommendedShort": {
+        "message": "删除推荐短片混合视频"
+    },
+    "log_SubscriptionShort": {
+        "message": "已移除订阅快捷方式"
+    }
+}
