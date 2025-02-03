@@ -1,0 +1,98 @@
+{
+    "extension_name": {
+        "message": "ショートリムーバー"
+    },
+    "extension_description": {
+        "message": "YouTubeからショートパンツの動画を削除して気晴らしをお楽しみください。"
+    },
+    "minute_label": {
+        "message": "分"
+    },
+    "hour_label": {
+        "message": "時間"
+    },
+    "statistics_blockedshort": {
+        "message": "ブロックされたショート"
+    },
+    "statistics_cleanedpages": {
+        "message": "クリーンアップされたページ"
+    },
+    "statistics_shortswatched": {
+        "message": "ショートパンツを見た時"
+    },
+    "statistics_timesaved": {
+        "message": "保存された時間"
+    },
+    "options_name": {
+        "message": "設定"
+    },
+    "options_parameters": {
+        "message": "パラメータ"
+    },
+    "options_themes": {
+        "message": "テーマ"
+    },
+    "options_languages": {
+        "message": "言語"
+    },
+    "param_NavbarButtonUndeployed": {
+        "message": "ナビゲーションバーを折りたたんだボタン"
+    },
+    "param_NavbarButtonDeployed": {
+        "message": "ナビゲーションバーを展開する"
+    },
+    "param_ChannelTab": {
+        "message": "Channel Shorts タブ"
+    },
+    "param_HomePageRecommendedShort": {
+        "message": "ホームページで推奨されるショートショート"
+    },
+    "param_ShortSearchResult": {
+        "message": "検索結果のショート"
+    },
+    "param_VideoPlayerRecommendedShort": {
+        "message": "ビデオプレーヤーがショートパンツをお勧めします"
+    },
+    "param_LivePlayerRecommendedShort": {
+        "message": "ライブプレイヤーがショートパンツをお勧めします"
+    },
+    "param_RemixedRecommendedShort": {
+        "message": "推奨ショートミキシング動画"
+    },
+    "param_SubscriptionShort": {
+        "message": "サブスクリプションショート"
+    },
+    "param_RedirectShort": {
+        "message": "ショートパンツを動画として開く"
+    },
+    "log_DisconnectOberserver": {
+        "message": "すべてのオブザーバーを切断しました"
+    },
+    "log_ChangeTo": {
+        "message": "変更先:"
+    },
+    "log_NavbarButtonUndeployed": {
+        "message": "ナビバーが折りたたまれているボタンを削除しました"
+    },
+    "log_NavbarButtonDeployed": {
+        "message": "ナビゲーションバーの拡大ボタンを削除しました"
+    },
+    "log_HomeRecommendedShort": {
+        "message": "ホームページ推奨ショートパンツを削除しました"
+    },
+    "log_ShortSearchResult": {
+        "message": "検索結果からショーツを削除しました"
+    },
+    "log_VideoPlayerRecommendedShort": {
+        "message": "ショートパンツを推奨するビデオプレーヤーを削除しました"
+    },
+    "log_LivePlayerRecommendedShort": {
+        "message": "ライブプレイヤーの推奨ショートを削除しました"
+    },
+    "log_RemixedRecommendedShort": {
+        "message": "Recommended Shorts remixing a video"
+    },
+    "log_SubscriptionShort": {
+        "message": "サブスクリプションショートパンツを削除しました"
+    }
+}
