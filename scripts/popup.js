@@ -13,6 +13,16 @@
         }
     }
     
+    function activateCustomTheme(customGradientList) {
+        chrome.storage.local.get('colorTheme', function (result) {
+            if (typeof result.colorTheme !== 'string') return;
+
+            let customThemeIndex = parseInt(result.colorTheme.split('-')[1]) - 1;
+
+            document.body.style.setProperty('--gradient-color', `${customGradientList[customThemeIndex]}`);
+        });
+    }
+    
     document.addEventListener('DOMContentLoaded', function () {
         const manifest = chrome.runtime.getManifest();
         const extensionVersionLabel = document.querySelector('.footer-version--text');
@@ -23,6 +33,10 @@
         chrome.storage.local.get('extensionIsActive', function (result) {
             toggleCheckbox.checked = result.extensionIsActive !== undefined ? result.extensionIsActive : true;  
             disableParams(toggleCheckbox.checked);
+        });
+
+        chrome.storage.local.get('customGradientList').then((result) => {
+            activateCustomTheme(result.customGradientList);
         });
     
         paramButtons.forEach((button) => {

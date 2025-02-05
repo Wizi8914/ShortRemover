@@ -56,6 +56,7 @@ function setMessage(element, messageKey, language) {
             
             if (json[messageKey] == null) {
                 setMessage(element, messageKey, 'en');
+                return;
             };
 
             element.textContent = json[messageKey]['message'] !== null ? json[messageKey]['message'] : messageKey;
