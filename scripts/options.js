@@ -63,7 +63,7 @@ async function formatTime(minutes) {
 
 // Theme //
 
-const themes = document.querySelectorAll('.themes__container--item');
+const themes = document.querySelectorAll('div.themes__container--item');
 
 themes.forEach((theme, i) => {
     if (theme.classList.contains('custom')) return;

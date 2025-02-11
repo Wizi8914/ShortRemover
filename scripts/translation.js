@@ -5,6 +5,8 @@ async function changeLanguage() {
     const elements = document.querySelectorAll('[i18n-data]');
     const language = await getLanguage();
 
+    document.documentElement.setAttribute("lang", language)
+
     elements.forEach((element) => {
         let messageKey = element.getAttribute('i18n-data'); 
 
