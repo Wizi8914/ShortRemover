@@ -359,20 +359,3 @@ submitBtn.addEventListener("click", () => {
         window.location.href = "../pages/options.html"
     });
 });
-
-/*
-gradientButton.addEventListener('click', () => {
-    chrome.storage.local.get('customGradientList', function (result) {
-        const customGradientList = result.customGradientList !== undefined ? result.customGradientList : [];
-        
-        //customGradientList.push(`linear-gradient(0deg, ${gradientText.value} 0%, ${gradientText.value})`);
-        customGradientList.push(gradientText.value)
-        
-        chrome.storage.local.set({ customGradientList: customGradientList });
-        chrome.storage.local.set({ colorTheme: `custom-${customGradientList.length}` });
-        //document.body.style.setProperty('--configurator-gradient', `${customGradientList[getIndexOfCustomTheme(customTheme)]}`);
-
-        console.log(customGradientList)
-    });
-});
-*/
