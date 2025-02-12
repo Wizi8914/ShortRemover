@@ -87,7 +87,7 @@ ShortRemover is a browser extension that removes short videos on youtube. It's u
 - 🚫 **Automatic Removal:** Block YouTube Shorts with one click.
 - 🎥 **Optimized Focus:** Stay focused on the content you care about.
 - 🌐 **Smoother Navigation:** Browse without interruptions.
-- ⚙️ **Customization:** Choose when and where to block Shorts.
+- ⚙️ **Customization:** Modify the interface to your taste.
 - 🌍 **Multilingual Support:** Available in multiple languages.
 - ⚡ **Quick Activation:** Enable or disable with one click.
 - 💻 **Lightweight & Fast:** Works seamlessly in the background.
