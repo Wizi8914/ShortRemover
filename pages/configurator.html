@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/options.css">
+    <link rel="stylesheet" href="../css/configurator.css">
+    <title>ShortRemover - Configurator</title>
+
+    <style id="disable-transitions">
+        * {
+          transition: none !important;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <div class="header-left">
+                <img src="../images/icon-128.png" alt="Logo" class="header-left__logo">
+    
+                <h1 i18n-data="extension_name" class="header-left__text gradient__text">ShortRemover</h1>
+            </div>
+        </div>
+    </header>
+
+    <section class="configurator_container">
+        <div class="preview_container">
+            <h1 class="preview_container--text">ShortRemover</h1>
+            <div class="preview_container--bar"></div>
+        </div>
+        <div class="options_container">
+            <div class="options_container-up">
+                <div class="color-picker">
+                    <div class="color-picker--gradient-box" id="gradientBox">
+                        <div class="picker-thumb" id="pickerThumb"></div>
+                    </div>
+                    <div class="color-picker--color-slider" id="hue-slider">
+                        <div class="slider-thumb" id="thumb"></div>
+                    </div>
+                </div>
+                <div class="parameters_container">
+                    <h2 class="value_container--title">Color Code</h2>
+                    <div class="value_container">
+        
+                        <div class="value_container--hex">
+                            <input type="text" maxlength="7" id="hexInput">
+                            <label for="hexInput" class="value-container--hex_text">Hex</label>
+                        </div>
+        
+                        <div class="value_container--rgb">
+                            <div class="value_container--rgb_item">
+                                <input type="text" maxlength="3" id="rInput">
+                                <label for="r">R</label>
+                            </div>
+                            <div class="value_container--rgb_item">
+                                <input type="text" maxlength="3" id="gInput">
+                                <label for="g">G</label>
+                            </div>
+                            <div class="value_container--rgb_item">
+                                <input type="text" maxlength="3" id="bInput">
+                                <label for="b">B</label>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="rotation_container--title">Rotation</h2>
+                    <div class="rotation_container">
+                        <div class="rotation_container--knob">
+                            <div class="rotation_container--knob_item">
+                                <div class="rotation_container--knob_item-indicator"></div>
+                            </div>
+                        </div>
+                        <input class="rotation_container--input" type="text" id="angle" value="360" maxlength="3">
+                        <label for="angle" class="rotation_container--label">Degree</label>
+                    </div>
+                </div>
+            </div>
+            <div class="options_container-down">
+                <button class="submit-button">Add To Themes</button>
+            </div>
+
+            
+        </div>
+    </section>
+    
+
+    <script src="../scripts/translation.js"></script>
+    <script src="../scripts/configurator.js"></script>
+</body>
+</html>

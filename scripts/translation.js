@@ -1,9 +1,11 @@
 const defaultLanguage = navigator.language.split('-')[0];
-const availableLanguages = ["en", "fr", "ko", "ru", "de", "pt"];
+const availableLanguages = ["en", "fr", "ko", "ru", "de", "pt", "ja", "zh"];
 
 async function changeLanguage() {
     const elements = document.querySelectorAll('[i18n-data]');
     const language = await getLanguage();
+
+    document.documentElement.setAttribute("lang", language)
 
     elements.forEach((element) => {
         let messageKey = element.getAttribute('i18n-data'); 
@@ -52,8 +54,12 @@ function setMessage(element, messageKey, language) {
         .then((json) => {
             const lastParam = [...document.querySelectorAll('.param-name')].pop();
 
-            if (json[messageKey] == null && element == lastParam) fitTextSize(); // If the message is not found but it's the last parameter, fit the text size
-            if (json[messageKey] == null) return;
+            if (element == lastParam) fitTextSize(); // If the message is not found but it's the last parameter, fit the text size
+            
+            if (json[messageKey] == null) {
+                setMessage(element, messageKey, 'en');
+                return;
+            };
 
             element.textContent = json[messageKey]['message'] !== null ? json[messageKey]['message'] : messageKey;
             

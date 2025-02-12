@@ -233,6 +233,56 @@ header .header-right__theme:hover {
 .themes__container--item:nth-child(23) {
   background: linear-gradient(to right, #3c3b3f, #605c3c);
 }
+.themes__container--item:last-child {
+  background: none;
+}
+.themes__container--item:last-child svg {
+  display: block;
+}
+.themes__container--item.custom {
+  position: relative;
+}
+.themes__container--item.custom:hover .theme-delete, .themes__container--item.custom:hover .theme-modify {
+  opacity: 1;
+}
+.themes__container--item.custom .theme-delete, .themes__container--item.custom .theme-modify {
+  position: absolute;
+  z-index: 3;
+  display: flex;
+  opacity: 0;
+  transition: opacity 0.4s !important;
+}
+.themes__container--item.custom .theme-delete svg, .themes__container--item.custom .theme-modify svg {
+  display: block;
+  height: 25px;
+  width: 25px;
+  margin: 10px;
+  fill: rgba(255, 255, 255, 0.7058823529);
+  transition: opacity 0.4s !important;
+}
+.themes__container--item.custom .theme-delete svg:nth-child(2), .themes__container--item.custom .theme-modify svg:nth-child(2) {
+  opacity: 0;
+}
+.themes__container--item.custom .theme-delete:hover svg:nth-child(1), .themes__container--item.custom .theme-modify:hover svg:nth-child(1) {
+  opacity: 0;
+}
+.themes__container--item.custom .theme-delete:hover svg:nth-child(2), .themes__container--item.custom .theme-modify:hover svg:nth-child(2) {
+  opacity: 1;
+}
+.themes__container--item.custom .theme-delete {
+  left: 0;
+  top: 0;
+}
+.themes__container--item.custom .theme-delete svg:nth-child(2) {
+  fill: rgb(175, 46, 46);
+}
+.themes__container--item.custom .theme-modify {
+  right: 45px;
+  top: 0;
+}
+.themes__container--item.custom .theme-modify svg:nth-child(2) {
+  fill: rgb(255, 255, 255);
+}
 
 .languages {
   margin-top: 130px;
