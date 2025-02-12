@@ -413,8 +413,6 @@ function modifyColorInList(newColor) {
     if (COLOR_LIST[CURRENT_INDEX] == null) return;
 
     COLOR_LIST[CURRENT_INDEX] = { color: newColor, position: CURRENT_INDEX }
-
-    console.log(newColor)
 }
 
 function updateGradientRender() {
