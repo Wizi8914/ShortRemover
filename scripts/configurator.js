@@ -6,13 +6,21 @@ let CURRENT_INDEX = 0;
 let ANGLE = 0;
 
 window.addEventListener("load", () => {
-    if (getThemeID() == -1) {
-        return;
-    }
+    var styleTag = document.getElementById('disable-transitions');
+    const themeID = getThemeID();
+    
+    setTimeout(() => {
+        if (styleTag) styleTag.parentNode.removeChild(styleTag);
+    }, 50);
+    
+    if (themeID == -1) return;
+
+    submitBtn.textContent = "Modify this Theme";
+    initializeGradient(themeID);
 })
 
 function getThemeID() {
-    return window.location.href.split("=")[1];
+    return parseInt(window.location.href.split("=")[1]);
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -23,6 +31,74 @@ chrome.storage.local.get('theme', function (result) {
     const theme = result.theme !== undefined ? result.theme : 'dark';
     document.body.classList.toggle('light-theme', theme === 'light');
 });
+
+async function initializeGradient(themeID) {
+    const gradientComponents = await getGradientComponents(themeID);
+
+    let colorElements = gradientComponents.colorElements;
+
+    // KNOB Rotation
+
+    ANGLE = gradientComponents.angle;
+
+    if (ANGLE > 360) {
+        ANGLE = Math.round(ANGLE - 360);
+    } else if (ANGLE > 720) {
+        ANGLE = Math.round(ANGLE - 720)
+    } else if (ANGLE < 0) {
+        ANGLE = Math.round(ANGLE + 360);
+    } else if (ANGLE < - 360) {
+        ANGLE = Math.round(ANGLE + 720);
+    } else {
+        ANGLE = Math.round(ANGLE);
+    }
+
+    angleInput.value = Math.round(ANGLE);
+    knob.style.transform = `rotate(${ANGLE}deg)`;
+
+    if (colorElements.length == 2 && colorElements[0].color == colorElements[1].color && colorElements[1].position == 100) {
+        colorElements = [colorElements[0]]
+    }
+    
+    COLOR_LIST = colorElements;
+
+    hexInput.value = colorElements[0].color
+    updateRGBValue(colorElements[0].color);
+    updateSlidersFromHex(colorElements[0].color);
+    updateGradientRender();
+}
+
+function getGradientComponents(themeID) {
+    return new Promise((resolve, reject) => {
+        chrome.storage.local.get('customGradientList', function (result) {
+            if (chrome.runtime.lastError) return reject(chrome.runtime.lastError); // Gestion d'erreur
+            
+            const customGradientList = result.customGradientList;
+
+            const themeGradient = customGradientList[themeID];
+
+            if (themeGradient == null) return resolve(null);
+
+            
+            const gradientComponents = themeGradient
+            .replace("linear-gradient(", "")
+            .replace(")", "")
+            .split(",");
+
+            const angle = Number(gradientComponents[0].replace("deg", ""));
+
+            const colorElement = [];
+
+            for (let index = 1; index < gradientComponents.length; index++) {
+                const colorAndPosition = gradientComponents[index].trim().split(" ");
+                
+                colorElement.push({ color: colorAndPosition[0], position: colorAndPosition[1].replace("%", "") })
+            }
+
+            resolve({ angle: angle, colorElements: colorElement });
+        });
+    });
+}
 
 // CONFIGURATOR - COLOR SELECTOR //
 
@@ -174,7 +250,6 @@ function updateSlidersFromHex(hex) {
     
     colorThumb.style.left = `${Math.round(hue * 100)}%`;
 
-
     hue *= 360;
 
     const color = `hsl(${hue}, ${Math.round(correctedValue.saturation * 100)}%, ${correctedValue.lightness * 100}%)`;
@@ -189,7 +264,7 @@ function updateSlidersFromHex(hex) {
     pickerThumb.style.left = `${(pickerX / gradientBox.offsetWidth) * 100}%`;
     pickerThumb.style.top = `${(pickerY / gradientBox.offsetHeight) * 100}%`;
     
-    modifyColorInList(color)
+    modifyColorInList(hex)
     updateGradientRender()
 }
 
@@ -213,19 +288,22 @@ document.addEventListener("mousemove", (e) => {
     }
 });
 
-hexInput.addEventListener("input", () => {
-    const hexRegex = /#(([0-9a-fA-F]{2}){3,4}|([0-9a-fA-F]){3,4})/g
-
-    if (!hexRegex.test(hexInput.value)) return;
-
-    const rgbValues = HEXToRGB(hexInput.value)
+function updateRGBValue(hexValue) {
+    const rgbValues = HEXToRGB(hexValue)
     if (rgbValues == null) return;
 
     rgbInputs[0].children[0].value = rgbValues.r
     rgbInputs[1].children[0].value = rgbValues.g
     rgbInputs[2].children[0].value = rgbValues.b
-    
-    updateSlidersFromHex(hexInput.value)
+}
+
+hexInput.addEventListener("input", () => {
+    const hexRegex = /#(([0-9a-fA-F]{2}){3,4}|([0-9a-fA-F]){3,4})/g
+
+    if (!hexRegex.test(hexInput.value)) return;
+
+    updateRGBValue(hexInput.value);
+    updateSlidersFromHex(hexInput.value);
 })
 
 rgbInputs.forEach(function callback(rgbInput, index) {
@@ -314,7 +392,7 @@ document.addEventListener("mousemove", (event) => {
 });
 
 angleInput.addEventListener("input", () => {
-    inputValue = Number(angleInput.value);
+    const inputValue = Number(angleInput.value);
     
     if (Number.isNaN(inputValue)) return;
 
@@ -335,12 +413,19 @@ function modifyColorInList(newColor) {
     if (COLOR_LIST[CURRENT_INDEX] == null) return;
 
     COLOR_LIST[CURRENT_INDEX] = { color: newColor, position: CURRENT_INDEX }
+
+    console.log(newColor)
 }
 
 function updateGradientRender() {
-    let gradient = `linear-gradient(${ANGLE}deg, ${COLOR_LIST.map(({ color, position }) => `${color} ${position}%`).join(", ")}, ${COLOR_LIST[0].color} 100%)`;
+    if (COLOR_LIST.length == 1) {
+        let gradient = `linear-gradient(${ANGLE}deg, ${COLOR_LIST.map(({ color, position }) => `${color} ${position}%`).join(", ")}, ${COLOR_LIST[0].color} 100%)`;
+        document.body.style.setProperty('--configurator-gradient', gradient);
+    } else {
+        let gradient = `linear-gradient(${ANGLE}deg, ${COLOR_LIST.map(({ color, position }) => `${color} ${position}%`).join(", ")})`;
+        document.body.style.setProperty('--configurator-gradient', gradient);
+    }
 
-    document.body.style.setProperty('--configurator-gradient', gradient);
 }
 
 // SUBMIT BUTTON //
@@ -349,13 +434,20 @@ const submitBtn = document.querySelector(".submit-button");
 
 submitBtn.addEventListener("click", () => {
     chrome.storage.local.get('customGradientList', function (result) {
-        const customGradientList = result.customGradientList !== undefined ? result.customGradientList : [];
-        
-        customGradientList.push(document.body.style.getPropertyValue("--configurator-gradient"))
-        
-        chrome.storage.local.set({ customGradientList: customGradientList });
-        chrome.storage.local.set({ colorTheme: `custom-${customGradientList.length}` });
+        let customGradientList = result.customGradientList !== undefined ? result.customGradientList : [];
+        const themeID = getThemeID();
 
-        window.location.href = "../pages/options.html"
+        if (themeID == -1) {
+            customGradientList.push(document.body.style.getPropertyValue("--configurator-gradient"));
+        
+            chrome.storage.local.set({ colorTheme: `custom-${customGradientList.length}` });
+        } else {
+            customGradientList[themeID] = document.body.style.getPropertyValue("--configurator-gradient");
+            
+            chrome.storage.local.set({ colorTheme: `custom-${themeID + 1 == customGradientList.length ? themeID + 1 : themeID}` });
+        }
+
+        chrome.storage.local.set({ customGradientList: customGradientList });
+        window.location.href = "../pages/options.html";
     });
 });
