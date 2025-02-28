@@ -376,7 +376,7 @@ hexInput.addEventListener("input", () => {
     updateSlidersFromHex(hexInput.value);
 })
 
-rgbInputs.forEach(function callback(rgbInput, index) {
+rgbInputs.forEach(rgbInput => {
     rgbInput.addEventListener("input", () => {
         if (Number.isNaN(Number(rgbInputs[0].children[0].value)) ||
             Number.isNaN(Number(rgbInputs[1].children[0].value)) ||
