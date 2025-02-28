@@ -1,9 +1,13 @@
 let COLOR_LIST = [
-    { color: "#FFFFFF", position: 0 }
+    { HTMLelement: "", color: "#FFFFFF", position: 0 },
+    { HTMLelement: "", color: "#FFFF8F", position: 30 },
+    { HTMLelement: "", color: "#FFFF9F", position: 50 },
 ];
 
+let isDraggingGradient = [false, false, false]
+
 let CURRENT_INDEX = 0;
-let ANGLE = 0;
+let ANGLE = 90;
 
 window.addEventListener("load", () => {
     var styleTag = document.getElementById('disable-transitions');
@@ -25,6 +29,8 @@ function getThemeID() {
 
 document.addEventListener('DOMContentLoaded', () => {
     changeLanguage();
+
+    displayGradientsElement()
 });
 
 chrome.storage.local.get('theme', function (result) {
@@ -100,10 +106,73 @@ function getGradientComponents(themeID) {
     });
 }
 
+// CONFIGURATOR - GRADIENT BAR //
+const gradientBar = document.querySelector(".preview_container--bar");
+
+function displayGradientsElement() {
+    for (let i = 0; i < COLOR_LIST.length; i++) {
+        const colorElement = COLOR_LIST[i];
+        const sliderThumb = document.createElement("div");
+        
+        sliderThumb.style.background = colorElement.color;
+        sliderThumb.classList.add("slider-thumb");
+        sliderThumb.style.left = `${colorElement.position}%`;
+        gradientBar.appendChild(sliderThumb);
+        
+        COLOR_LIST[i].HTMLelement = sliderThumb;
+    
+        initThumbEventListener(COLOR_LIST[i].HTMLelement)
+    }
+}
+
+function initThumbEventListener(htmlElement) {
+    /*
+    htmlElement.addEventListener("click", () => {
+        console.log("uwu")
+    })
+    */
+    
+    htmlElement.addEventListener("mousedown", () => {
+        CURRENT_INDEX = foundIndexFromElement(htmlElement);
+
+        isDraggingGradient[CURRENT_INDEX] = true;
+    });
+}
+
+function foundIndexFromElement(htmlElement) {
+    for (let i = 0; i < COLOR_LIST.length; i++) {
+        if (COLOR_LIST[i].HTMLelement == htmlElement) return i;
+    }
+}
+
+function updateGradientThumbPosition(element, x) {
+    x = clamp(x, 0, gradientBar.offsetWidth);
+
+    element.style.left = `${(x / gradientBar.offsetWidth) * 100}%`;
+    COLOR_LIST[CURRENT_INDEX].position = (x / gradientBar.offsetWidth) * 100
+
+    updateGradientRender()
+}
+
+function updateGradientThumbColor(newColor) {
+    const thumb = COLOR_LIST[CURRENT_INDEX].HTMLelement;
+
+    console.log(CURRENT_INDEX)
+    console.log(COLOR_LIST[CURRENT_INDEX])
+    console.log(COLOR_LIST)
+    console.log(thumb)
+
+    //thumb.style.background = newColor;
+}
+
+document.addEventListener("mousemove", (e) => {
+    if (isDraggingGradient[CURRENT_INDEX]) updateGradientThumbPosition(COLOR_LIST[CURRENT_INDEX].HTMLelement, (e.clientX - gradientBar.getBoundingClientRect().left))
+});
+
 // CONFIGURATOR - COLOR SELECTOR //
 
 const colorSlider = document.getElementById("hue-slider");
-const colorThumb = document.getElementById("thumb");
+const colorThumb = document.getElementById("hueThumb");
 const gradientBox = document.getElementById("gradientBox");
 const pickerThumb = document.getElementById("pickerThumb");
 const hexInput = document.getElementById("hexInput");
@@ -210,6 +279,7 @@ function updateColor() {
     rgbInputs[2].children[0].value = rgb.b;
 
     modifyColorInList(rgbToHex(rgb.r, rgb.g, rgb.b));
+    updateGradientThumbColor(rgbToHex(rgb.r, rgb.g, rgb.b)) // CACA
     updateGradientRender()
 }
 
@@ -324,6 +394,7 @@ rgbInputs.forEach(function callback(rgbInput, index) {
 document.addEventListener("mouseup", () => {
     isDraggingSlider = false;
     isDraggingPicker = false;
+    isDraggingGradient = isDraggingGradient.map(() => false);
 
     updateGradientRender()
 });
@@ -336,7 +407,7 @@ updateColor()
 
 const knob = document.querySelector(".rotation_container--knob_item");
 const angleInput = document.querySelector(".rotation_container--input")
-let isDragging = false;
+let isDraggingKnob = false;
 let lastAngle = 0;
 
 function getAngle(event) {
@@ -349,7 +420,7 @@ function getAngle(event) {
 }
 
 knob.addEventListener("mousedown", (event) => {
-    isDragging = true;
+    isDraggingKnob = true;
     lastAngle = ANGLE;
     ANGLE = getAngle(event);
     knob.style.transform = `rotate(${ANGLE}deg)`;
@@ -357,11 +428,13 @@ knob.addEventListener("mousedown", (event) => {
 
     angleInput.value = Math.round(ANGLE);
 
+    console.log('test')
+
     updateGradientRender()
 });
 
 document.addEventListener("mousemove", (event) => {
-    if (!isDragging) return;
+    if (!isDraggingKnob) return;
 
     let newAngle = getAngle(event);
     let delta = newAngle - lastAngle;
@@ -404,7 +477,7 @@ angleInput.addEventListener("input", () => {
 
 
 document.addEventListener("mouseup", () => {
-    isDragging = false;
+    isDraggingKnob = false;
 });
 
 // RENDER GRADIENT //
@@ -412,7 +485,7 @@ document.addEventListener("mouseup", () => {
 function modifyColorInList(newColor) {
     if (COLOR_LIST[CURRENT_INDEX] == null) return;
 
-    COLOR_LIST[CURRENT_INDEX] = { color: newColor, position: CURRENT_INDEX }
+    COLOR_LIST[CURRENT_INDEX].color = newColor;
 }
 
 function updateGradientRender() {
@@ -423,7 +496,6 @@ function updateGradientRender() {
         let gradient = `linear-gradient(${ANGLE}deg, ${COLOR_LIST.map(({ color, position }) => `${color} ${position}%`).join(", ")})`;
         document.body.style.setProperty('--configurator-gradient', gradient);
     }
-
 }
 
 // SUBMIT BUTTON //

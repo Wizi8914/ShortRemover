@@ -18,17 +18,29 @@ input {
     }
 }
 
-
 label {
     font-weight: 800;
 }
+
+.slider-thumb {
+    top: 0;
+    left: 0;
+    width: 16px;
+    height: 40px;
+    background: white;
+    border: 2px solid white;
+    outline: 2px solid black;
+    position: absolute;
+    border-radius: 10px;
+    transform: translate(-50%, -12%);
+}
+
 
 .configurator_container {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 40px;
 
     .preview_container {
         display: flex;
@@ -49,6 +61,13 @@ label {
             background: var(--configurator-gradient);
             width: 100%;
             height: 30px;
+            position: relative;
+            border-radius: 5px;
+            cursor: copy;
+
+            .slider-thumb {
+                cursor: pointer;
+            }
         }
     }
 
@@ -138,16 +157,6 @@ label {
                 border-radius: 5px;
 
                 .slider-thumb {
-                    top: 0;
-                    left: 0;
-                    width: 16px;
-                    height: 40px;
-                    background: white;
-                    border: 2px solid white;
-                    outline: 2px solid black;
-                    position: absolute;
-                    border-radius: 10px;
-                    transform: translate(-50%, -12%);
                     pointer-events: none;
                 }
             }
@@ -217,6 +226,7 @@ label {
                     align-items: center;
                     cursor: grab;
                     user-select: none;
+                    transform: rotate(90deg);
 
                     &-indicator {
                         width: 10px;
