@@ -1,10 +1,7 @@
 let COLOR_LIST = [
-    { HTMLelement: "", color: "#FFFFFF", position: 0 },
-    { HTMLelement: "", color: "#FFFF8F", position: 30 },
-    { HTMLelement: "", color: "#FFFF9F", position: 50 },
+    { HTMLelement: "", color: "#FFFF", position: 0 },
+    { HTMLelement: "", color: "#3000FF", position: 100 },
 ];
-
-let isDraggingGradient = [false, false, false]
 
 let CURRENT_INDEX = 0;
 let ANGLE = 90;
@@ -31,6 +28,8 @@ document.addEventListener('DOMContentLoaded', () => {
     changeLanguage();
 
     displayGradientsElement()
+    updateGradientThumbActive();
+    updateColorSelectorActive();
 });
 
 chrome.storage.local.get('theme', function (result) {
@@ -85,7 +84,6 @@ function getGradientComponents(themeID) {
 
             if (themeGradient == null) return resolve(null);
 
-            
             const gradientComponents = themeGradient
             .replace("linear-gradient(", "")
             .replace(")", "")
@@ -108,6 +106,41 @@ function getGradientComponents(themeID) {
 
 // CONFIGURATOR - GRADIENT BAR //
 const gradientBar = document.querySelector(".preview_container--bar");
+let isDraggingGradientSlider = false;
+
+gradientBar.addEventListener("mousedown", e => {
+    const x = clamp((e.clientX - gradientBar.getBoundingClientRect().left), 0, gradientBar.offsetWidth);
+    const percent = (x / gradientBar.offsetWidth) * 100;
+    const color = "#FFFFFF"
+
+    const index = getIndexOfPosition(percent);
+    CURRENT_INDEX = index;
+
+    const sliderThumb = document.createElement("div");
+    sliderThumb.style.background = color;
+    sliderThumb.classList.add("slider-thumb");
+    sliderThumb.style.left = `${percent}%`;
+    gradientBar.appendChild(sliderThumb);
+
+    const elementObject = { HTMLelement: sliderThumb, color: color, position: percent };
+
+    COLOR_LIST.splice(index, 0, elementObject);
+    initThumbEventListener(COLOR_LIST[index].HTMLelement);
+
+    updateAllParametersValue(color);
+    
+    initializeColorInColorList(percent);
+    updateGradientThumbActive();
+
+    updateColorSelectorActive();
+})
+
+function getIndexOfPosition(position) {
+    for (let i = 0; i < COLOR_LIST.length; i++) {
+        if (position < COLOR_LIST[i].position) return i;
+        if (i + 1 == COLOR_LIST.length) return i + 1;
+    }
+}
 
 function displayGradientsElement() {
     for (let i = 0; i < COLOR_LIST.length; i++) {
@@ -121,22 +154,35 @@ function displayGradientsElement() {
         
         COLOR_LIST[i].HTMLelement = sliderThumb;
     
-        initThumbEventListener(COLOR_LIST[i].HTMLelement)
+        initThumbEventListener(COLOR_LIST[i].HTMLelement);
+        initializeColorInColorList(colorElement.position);
+
     }
 }
 
 function initThumbEventListener(htmlElement) {
-    /*
-    htmlElement.addEventListener("click", () => {
-        console.log("uwu")
-    })
-    */
-    
-    htmlElement.addEventListener("mousedown", () => {
-        CURRENT_INDEX = foundIndexFromElement(htmlElement);
+    htmlElement.addEventListener("mousedown", event => {
+        event.stopPropagation()
+        isDraggingGradientSlider = true;
 
-        isDraggingGradient[CURRENT_INDEX] = true;
+        changeColorSelected(foundIndexFromElement(htmlElement))
     });
+}
+
+function changeColorSelected(colorIndex) {
+    CURRENT_INDEX = colorIndex;
+    const indexColor = COLOR_LIST[CURRENT_INDEX].color;
+
+    updateAllParametersValue(indexColor);
+    updateGradientThumbActive();
+
+    updateColorSelectorActive();
+}
+
+function updateAllParametersValue(hexValue) {
+    hexInput.value = hexValue
+    updateRGBValue(hexValue);
+    updateSlidersFromHex(hexValue);
 }
 
 function foundIndexFromElement(htmlElement) {
@@ -149,25 +195,157 @@ function updateGradientThumbPosition(element, x) {
     x = clamp(x, 0, gradientBar.offsetWidth);
 
     element.style.left = `${(x / gradientBar.offsetWidth) * 100}%`;
-    COLOR_LIST[CURRENT_INDEX].position = (x / gradientBar.offsetWidth) * 100
+    const position = (x / gradientBar.offsetWidth) * 100;
+    
+    COLOR_LIST[CURRENT_INDEX].position = position;
+    alternateThumbPositionInList();
 
-    updateGradientRender()
+    updateGradientRender();
+}
+
+function alternateThumbPositionInList() {
+    if (COLOR_LIST[CURRENT_INDEX].position <  COLOR_LIST[CURRENT_INDEX - 1]?.position) {
+        [COLOR_LIST[CURRENT_INDEX], COLOR_LIST[CURRENT_INDEX - 1]] = [COLOR_LIST[CURRENT_INDEX - 1], COLOR_LIST[CURRENT_INDEX]];
+        CURRENT_INDEX--;
+    }
+
+    if (COLOR_LIST[CURRENT_INDEX].position > COLOR_LIST[CURRENT_INDEX + 1]?.position) {
+        [COLOR_LIST[CURRENT_INDEX], COLOR_LIST[CURRENT_INDEX + 1]] = [COLOR_LIST[CURRENT_INDEX + 1], COLOR_LIST[CURRENT_INDEX]];
+        CURRENT_INDEX++;
+    }
 }
 
 function updateGradientThumbColor(newColor) {
     const thumb = COLOR_LIST[CURRENT_INDEX].HTMLelement;
 
-    console.log(CURRENT_INDEX)
-    console.log(COLOR_LIST[CURRENT_INDEX])
-    console.log(COLOR_LIST)
-    console.log(thumb)
+    if (thumb == "") return; // Verification
 
-    //thumb.style.background = newColor;
+    thumb.style.background = newColor;
+}
+
+function updateGradientThumbActive() {
+    for (let i = 0; i < COLOR_LIST.length; i++) {
+        COLOR_LIST[i].HTMLelement.classList.remove("selected");
+        if (i == CURRENT_INDEX) COLOR_LIST[i].HTMLelement.classList.add("selected");
+    }
 }
 
 document.addEventListener("mousemove", (e) => {
-    if (isDraggingGradient[CURRENT_INDEX]) updateGradientThumbPosition(COLOR_LIST[CURRENT_INDEX].HTMLelement, (e.clientX - gradientBar.getBoundingClientRect().left))
+    if (isDraggingGradientSlider) updateGradientThumbPosition(COLOR_LIST[CURRENT_INDEX].HTMLelement, (e.clientX - gradientBar.getBoundingClientRect().left));
 });
+
+
+// CONFIGURATOR - COLOR LIST //
+
+
+function initializeColorInColorList(percent) {
+    const colorContainer = document.querySelector(".color_container--bottom");
+    const elementIndex = getIndexOfPosition(percent) - 1;
+
+    const htmlTemplate = `
+        <div style="background-color: ${COLOR_LIST[elementIndex].color}" class="color_element--preview"></div>
+        <input type="text" maxlength="7" value="${COLOR_LIST[elementIndex].color}" class="color_element--hex">
+        <input type="text" maxlength="3" value="${Math.round(percent)}" class="color_element--percent">
+
+        <div class="color_element--delete">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
+        </div>
+    `;
+
+
+    const colorElement = document.createElement('div');
+    colorElement.classList.add('color_element');
+        
+    colorElement.innerHTML = htmlTemplate;
+    
+    colorContainer.insertBefore(colorElement, elementIndex === COLOR_LIST.length - 1 ? null : colorContainer.children[elementIndex]);
+    initializeColorListener(elementIndex);
+
+    updateColorContainerMargin()
+}
+
+function updateColorSelectorActive() {
+    const colorElements = document.querySelectorAll(".color_element")
+
+    for (let i = 0; i < colorElements.length; i++) {
+        colorElements[i].classList.remove("selected");
+        if (i == CURRENT_INDEX) colorElements[i].classList.add("selected");
+    }
+    
+}
+
+function initializeColorListener(elementIndex) {
+    const colorContainer_preview = document.querySelector(`.color_element:nth-child(${elementIndex + 1}) > .color_element--preview`);
+    const colorContainer_color = document.querySelector(`.color_element:nth-child(${elementIndex + 1}) > .color_element--hex`);
+    const colorContainer_percent = document.querySelector(`.color_element:nth-child(${elementIndex + 1}) > .color_element--percent`);
+    const colorContainer_delete = document.querySelector(`.color_element:nth-child(${elementIndex + 1}) > .color_element--delete`);
+    
+
+    colorContainer_preview.addEventListener("click", () => {
+        changeColorSelected(elementIndex);
+    });
+
+    // COLOR INPUT
+
+    colorContainer_color.addEventListener("click", () => {
+        changeColorSelected(elementIndex);
+    })
+
+    colorContainer_color.addEventListener("input", () => {
+        const hexRegex = /#(([0-9a-fA-F]{2}){3,4}|([0-9a-fA-F]){3,4})/g
+
+        if (!hexRegex.test(colorContainer_color.value)) return;
+
+        updateRGBValue(colorContainer_color.value);
+        updateSlidersFromHex(colorContainer_color.value);
+        updateGradientThumbColor(colorContainer_color.value);
+
+        colorContainer_preview.style.background = colorContainer_color.value;
+    })
+
+
+    // PERCENT INPUT
+
+    colorContainer_percent.addEventListener("click", () => {
+        changeColorSelected(elementIndex);
+    })
+
+    colorContainer_percent.addEventListener("input", () => {
+        console.log(colorContainer_percent.value)
+    })
+
+    colorContainer_delete.addEventListener("click", () => {
+        console.log("delete", elementIndex)
+    });
+}
+
+function updateColorPreviewInList(color) {
+    const colorElements = document.querySelectorAll(".color_element");
+
+    if (colorElements.length == 0) return;
+
+    colorElements[CURRENT_INDEX].querySelector(".color_element--preview").style.background = color; // CACA
+}
+
+function updateHexInList(hexValue) {
+    const colorElements = document.querySelectorAll(".color_element");
+
+    if (colorElements.length == 0) return;
+
+    colorElements[CURRENT_INDEX].querySelector(".color_element--hex").value = hexValue;
+}
+
+function updateColorContainerMargin() {
+    const colorContainer = document.querySelector(".color_container")
+    const elementContainer = document.querySelector(".color_container--bottom")
+
+    if (elementContainer.childElementCount >= 4) {
+        colorContainer.style.marginLeft = "10px";
+    } else {
+        colorContainer.style.marginLeft = "30px";
+    }
+}
 
 // CONFIGURATOR - COLOR SELECTOR //
 
@@ -269,18 +447,22 @@ function updateColor() {
 
     const color = `hsl(${HUE}, ${correctedValue.saturation * 100}%, ${correctedValue.lightness * 100}%)`;
     updatePickerThumbColor(color);
-    updateSliderThumbColor(HUE);
 
+    updateSliderThumbColor(HUE);
+    updateColorPreviewInList(color);
+    
     const rgb = HSLToRGB(HUE, correctedValue.saturation, correctedValue.lightness);
     hexInput.value = rgbToHex(rgb.r, rgb.g, rgb.b);
+    updateHexInList(rgbToHex(rgb.r, rgb.g, rgb.b));
 
     rgbInputs[0].children[0].value = rgb.r;
     rgbInputs[1].children[0].value = rgb.g;
     rgbInputs[2].children[0].value = rgb.b;
 
     modifyColorInList(rgbToHex(rgb.r, rgb.g, rgb.b));
-    updateGradientThumbColor(rgbToHex(rgb.r, rgb.g, rgb.b)) // CACA
+    updateGradientThumbColor(rgbToHex(rgb.r, rgb.g, rgb.b))
     updateGradientRender()
+    
 }
 
 function updateHue(x) {
@@ -324,8 +506,8 @@ function updateSlidersFromHex(hex) {
 
     const color = `hsl(${hue}, ${Math.round(correctedValue.saturation * 100)}%, ${correctedValue.lightness * 100}%)`;
 
-    updatePickerThumbColor(color)
-    updateSliderThumbColor(hue)
+    updatePickerThumbColor(color);
+    updateSliderThumbColor(hue);
 
     gradientBox.style.background = `linear-gradient(to top, black, transparent), linear-gradient(to right, white, hsl(${hue}, 100%, 50%))`;
 
@@ -374,6 +556,7 @@ hexInput.addEventListener("input", () => {
 
     updateRGBValue(hexInput.value);
     updateSlidersFromHex(hexInput.value);
+    updateGradientThumbColor(hexInput.value);
 })
 
 rgbInputs.forEach(rgbInput => {
@@ -388,13 +571,14 @@ rgbInputs.forEach(rgbInput => {
         hexInput.value = hexValue;
 
         updateSlidersFromHex(hexValue);
+        updateGradientThumbColor(hexValue);
     })  
 })
 
 document.addEventListener("mouseup", () => {
     isDraggingSlider = false;
     isDraggingPicker = false;
-    isDraggingGradient = isDraggingGradient.map(() => false);
+    isDraggingGradientSlider = false;
 
     updateGradientRender()
 });
@@ -427,8 +611,6 @@ knob.addEventListener("mousedown", (event) => {
     event.preventDefault();
 
     angleInput.value = Math.round(ANGLE);
-
-    console.log('test')
 
     updateGradientRender()
 });

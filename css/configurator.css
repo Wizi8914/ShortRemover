@@ -2,19 +2,24 @@
   --configurator-gradient: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
 }
 
+::-webkit-scrollbar-thumb {
+  background-color: var(--configurator-second);
+}
+
 input {
   font-weight: 600;
   height: 42px;
   padding: 0 8px;
-  border: 1px solid #bbbfc5;
   border-radius: 6px;
-  transition: all 175ms ease-out;
+  background: var(--configurator-second);
+  color: var(--color-text);
+  transition: all 0.3s ease-out;
+  border: 0px solid transparent;
   text-align: center;
 }
 input:focus {
   outline: none;
-  border: 1px solid #1F2667;
-  box-shadow: 0 0 0px 1.5px #1F2667;
+  border: 1px solid var(--color-text);
 }
 
 label {
@@ -32,6 +37,14 @@ label {
   position: absolute;
   border-radius: 10px;
   transform: translate(-50%, -12%);
+  box-shadow: rgba(255, 255, 255, 0.431372549) 0 0 0px 0px;
+  transition: box-shadow ease-out 0.3s;
+}
+.slider-thumb:hover {
+  box-shadow: rgba(255, 255, 255, 0.431372549) 0 0 0px 5px;
+}
+.slider-thumb.selected {
+  box-shadow: rgba(255, 255, 255, 0.7) 0 0 0px 5px;
 }
 
 .configurator_container {
@@ -90,7 +103,7 @@ label {
   cursor: pointer;
   padding: 15px;
   border-radius: 15px;
-  background-color: var(--configurator-knob);
+  background-color: var(--configurator-second);
   color: var(--color-text);
   transition-duration: 0.3s;
   overflow: hidden;
@@ -191,7 +204,7 @@ label {
 .configurator_container .options_container .rotation_container--knob_item {
   width: 100px;
   height: 100px;
-  background: var(--configurator-knob);
+  background: var(--configurator-second);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -219,4 +232,98 @@ label {
 .configurator_container .options_container .rotation_container--label {
   margin-left: 0.5em;
   font-size: 1.3em;
+}
+.configurator_container .color_container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-left: 30px;
+}
+.configurator_container .color_container--top {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+}
+.configurator_container .color_container--top .hex-title {
+  margin-left: 85px;
+  width: 100%;
+  max-width: 100px;
+  text-align: center;
+}
+.configurator_container .color_container--top .percent-title {
+  max-width: 50px;
+  width: 100%;
+  text-align: center;
+}
+.configurator_container .color_container--bottom {
+  display: flex;
+  flex-direction: column;
+  margin-top: 15px;
+  max-height: 251px;
+  overflow: overlay;
+  overflow-x: hidden;
+}
+.configurator_container .color_container--bottom .color_element {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 5px;
+  max-height: 72px;
+  max-width: 323px;
+  border-radius: 6px;
+  border: 1px solid var(--configurator-second);
+  margin-bottom: 10px;
+  max-width: 308px;
+}
+.configurator_container .color_container--bottom .color_element.selected {
+  background: rgba(0, 0, 0, 0.25);
+}
+.configurator_container .color_container--bottom .color_element--preview {
+  height: 60px;
+  width: 60px;
+  min-width: 60px;
+  border-radius: 6px;
+  background-color: white;
+  cursor: pointer;
+}
+.configurator_container .color_container--bottom .color_element--hex {
+  width: 100px;
+  margin-left: 20px;
+}
+.configurator_container .color_container--bottom .color_element--percent {
+  width: 50px;
+  margin-left: 10px;
+}
+.configurator_container .color_container--bottom .color_element--delete {
+  position: relative;
+  display: flex;
+  justify-self: end;
+  align-items: center;
+  height: 100%;
+  padding: 0 10px;
+  margin-left: 5px;
+  cursor: pointer;
+}
+.configurator_container .color_container--bottom .color_element--delete:hover svg:nth-child(1) {
+  opacity: 1;
+}
+.configurator_container .color_container--bottom .color_element--delete:hover svg:nth-child(2) {
+  opacity: 0;
+}
+.configurator_container .color_container--bottom .color_element--delete svg {
+  transition: opacity 0.4s !important;
+  height: 30px;
+  width: 30px;
+}
+.configurator_container .color_container--bottom .color_element--delete svg:nth-child(1) {
+  opacity: 0;
+  fill: rgb(175, 46, 46);
+  display: block;
+  position: absolute;
+}
+.configurator_container .color_container--bottom .color_element--delete svg:nth-child(2) {
+  fill: var(--color-text);
+  opacity: 1;
+  height: 30px;
+  width: 30px;
 }/*# sourceMappingURL=configurator.css.map */
