@@ -28,6 +28,9 @@
         "scripting",
         "webNavigation"
     ],
+    "host_permissions": [
+        "*://*.youtube.com/*"
+    ],
     "content_scripts": [
         {
             "css": ["css/content-style.css"],

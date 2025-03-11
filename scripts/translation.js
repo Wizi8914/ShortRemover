@@ -105,6 +105,5 @@ function fitTextSize() {
             parameterFontSize--;
             parameter.style.fontSize = `${parameterFontSize}px`;
         }
-            
     });
 }
