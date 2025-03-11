@@ -1,6 +1,6 @@
-let COLOR_LIST = [
-    { HTMLelement: "", color: "#FFFF", position: 0 },
-    { HTMLelement: "", color: "#3000FF", position: 100 },
+let COLOR_LIST = [ // Default ShortRemover theme gradient value
+    { HTMLelement: "", color: "#AE67fA", position: 0 },
+    { HTMLelement: "", color: "#F49867", position: 100 },
 ];
 
 let CURRENT_INDEX = 0;
@@ -8,28 +8,36 @@ let ANGLE = 90;
 
 window.addEventListener("load", () => {
     var styleTag = document.getElementById('disable-transitions');
-    const themeID = getThemeID();
     
     setTimeout(() => {
         if (styleTag) styleTag.parentNode.removeChild(styleTag);
     }, 50);
-    
-    if (themeID == -1) return;
-
-    submitBtn.textContent = "Modify this Theme";
-    initializeGradient(themeID);
 })
 
 function getThemeID() {
     return parseInt(window.location.href.split("=")[1]);
 }
 
-document.addEventListener('DOMContentLoaded', () => {
+let isLoadingCustomGradient = false;
+
+document.addEventListener('DOMContentLoaded', async () => {
     changeLanguage();
 
-    displayGradientsElement()
+    const themeID = getThemeID();
+
+    if (themeID != -1) {
+        submitBtn.setAttribute("i18n-data", "configurator_modifyTheme")
+        isLoadingCustomGradient = true;
+        await initializeGradient(themeID);
+    }
+
+    displayGradientsElement();
     updateGradientThumbActive();
     updateColorSelectorActive();
+    
+    updateAllParametersValue(COLOR_LIST[0].color);
+
+    updateColor()
 });
 
 chrome.storage.local.get('theme', function (result) {
@@ -43,9 +51,9 @@ async function initializeGradient(themeID) {
     let colorElements = gradientComponents.colorElements;
 
     // KNOB Rotation
-
+    
     ANGLE = gradientComponents.angle;
-
+    
     if (ANGLE > 360) {
         ANGLE = Math.round(ANGLE - 360);
     } else if (ANGLE > 720) {
@@ -57,16 +65,16 @@ async function initializeGradient(themeID) {
     } else {
         ANGLE = Math.round(ANGLE);
     }
-
+    
     angleInput.value = Math.round(ANGLE);
     knob.style.transform = `rotate(${ANGLE}deg)`;
-
+    
     if (colorElements.length == 2 && colorElements[0].color == colorElements[1].color && colorElements[1].position == 100) {
         colorElements = [colorElements[0]]
     }
     
     COLOR_LIST = colorElements;
-
+    
     hexInput.value = colorElements[0].color
     updateRGBValue(colorElements[0].color);
     updateSlidersFromHex(colorElements[0].color);
@@ -76,7 +84,7 @@ async function initializeGradient(themeID) {
 function getGradientComponents(themeID) {
     return new Promise((resolve, reject) => {
         chrome.storage.local.get('customGradientList', function (result) {
-            if (chrome.runtime.lastError) return reject(chrome.runtime.lastError); // Gestion d'erreur
+            if (chrome.runtime.lastError) return reject(chrome.runtime.lastError); // Error handling
             
             const customGradientList = result.customGradientList;
 
@@ -139,8 +147,14 @@ gradientBar.addEventListener("mousedown", e => {
 
 function getIndexOfPosition(position) {
     for (let i = 0; i < COLOR_LIST.length; i++) {
-        if (position < COLOR_LIST[i].position) return i;
-        if (i + 1 == COLOR_LIST.length) return i + 1;
+        if (isLoadingCustomGradient) {
+            if (position == COLOR_LIST[i].position) return i + 1;
+        } else {
+            if (position < COLOR_LIST[i].position) return i;
+
+            if (i + 1 == COLOR_LIST.length) return i + 1;
+        }
+
     }
 }
 
@@ -158,8 +172,9 @@ function displayGradientsElement() {
     
         initThumbEventListener(COLOR_LIST[i].HTMLelement);
         initializeColorInColorList(colorElement.position);
-
     }
+
+    isLoadingCustomGradient = false;
 }
 
 function initThumbEventListener(htmlElement) {
@@ -300,7 +315,8 @@ function initializeColorInColorList(percent) {
     colorElement.innerHTML = htmlTemplate;
 
     colorContainer.insertBefore(colorElement, elementIndex === COLOR_LIST.length - 1 ? null : colorContainer.children[elementIndex]);
-    initializeColorListener(elementIndex);
+    
+    //initializeColorListener(elementIndex);
 
     updateColorContainerMargin();
 }
@@ -331,7 +347,7 @@ function initializeColorListener(elementIndex) {
         changeColorSelected(getColorElementIndex(colorContainer));
     });
     
-    // COLOR INPUT
+    // COLOR INPUT //
     
     colorContainer_color.addEventListener("click", () => {
         changeColorSelected(getColorElementIndex(colorContainer));
@@ -666,10 +682,8 @@ document.addEventListener("mouseup", () => {
     isDraggingPicker = false;
     isDraggingGradientSlider = false;
 
-    updateGradientRender()
+    updateGradientRender();
 });
-
-updateColor()
 
 // CONFIGURATOR - KNOB //
 
