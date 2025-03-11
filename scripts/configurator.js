@@ -120,8 +120,9 @@ gradientBar.addEventListener("mousedown", e => {
     sliderThumb.style.background = color;
     sliderThumb.classList.add("slider-thumb");
     sliderThumb.style.left = `${percent}%`;
-    gradientBar.appendChild(sliderThumb);
 
+    gradientBar.insertBefore(sliderThumb, gradientBar.children[index])
+    
     const elementObject = { HTMLelement: sliderThumb, color: color, position: percent };
 
     COLOR_LIST.splice(index, 0, elementObject);
@@ -133,6 +134,7 @@ gradientBar.addEventListener("mousedown", e => {
     updateGradientThumbActive();
 
     updateColorSelectorActive();
+    checkLastColorInList();
 })
 
 function getIndexOfPosition(position) {
@@ -198,21 +200,62 @@ function updateGradientThumbPosition(element, x) {
     const position = (x / gradientBar.offsetWidth) * 100;
     
     COLOR_LIST[CURRENT_INDEX].position = position;
-    alternateThumbPositionInList();
+    alternateThumbPosition();
+
+    document.querySelector(`.color_element:nth-child(${CURRENT_INDEX + 1}) > .color_element--percent`).value = Math.round(position);
 
     updateGradientRender();
 }
 
-function alternateThumbPositionInList() {
-    if (COLOR_LIST[CURRENT_INDEX].position <  COLOR_LIST[CURRENT_INDEX - 1]?.position) {
+function alternateThumbPosition() {
+    const color_container = document.querySelector(".color_container--bottom");
+    const gradient_bar = document.querySelector(".preview_container--bar");
+
+    // Selected thumb is after
+    if (COLOR_LIST[CURRENT_INDEX].position < COLOR_LIST[CURRENT_INDEX - 1]?.position) {
         [COLOR_LIST[CURRENT_INDEX], COLOR_LIST[CURRENT_INDEX - 1]] = [COLOR_LIST[CURRENT_INDEX - 1], COLOR_LIST[CURRENT_INDEX]];
+
+        // Color List
+        let color1 = color_container.children[CURRENT_INDEX - 1];
+        let color2 = color_container.children[CURRENT_INDEX];
+
+        swapHtmlElements(color1, color2);
+
+        // Gradient Bar Thumb
+        let thumb1 = gradient_bar.children[CURRENT_INDEX - 1];
+        let thumb2 = gradient_bar.children[CURRENT_INDEX];
+
+        swapHtmlElements(thumb1, thumb2);
+
         CURRENT_INDEX--;
     }
 
+    // Selected thumb is before
     if (COLOR_LIST[CURRENT_INDEX].position > COLOR_LIST[CURRENT_INDEX + 1]?.position) {
         [COLOR_LIST[CURRENT_INDEX], COLOR_LIST[CURRENT_INDEX + 1]] = [COLOR_LIST[CURRENT_INDEX + 1], COLOR_LIST[CURRENT_INDEX]];
+
+        // Color List
+        let color1 = color_container.children[CURRENT_INDEX];
+        let color2 = color_container.children[CURRENT_INDEX + 1];
+
+        swapHtmlElements(color1, color2);
+
+        // Gradient Bar Thumb
+        let thumb1 = gradient_bar.children[CURRENT_INDEX];
+        let thumb2 = gradient_bar.children[CURRENT_INDEX + 1];
+
+        swapHtmlElements(thumb1, thumb2);
+
         CURRENT_INDEX++;
     }
+}
+
+function swapHtmlElements(elem1, elem2) {
+    const parent = elem1.parentNode;
+    const nextSibling = elem2.nextSibling;
+
+    parent.insertBefore(elem1, nextSibling);
+    parent.insertBefore(elem2, elem1);
 }
 
 function updateGradientThumbColor(newColor) {
@@ -234,9 +277,7 @@ document.addEventListener("mousemove", (e) => {
     if (isDraggingGradientSlider) updateGradientThumbPosition(COLOR_LIST[CURRENT_INDEX].HTMLelement, (e.clientX - gradientBar.getBoundingClientRect().left));
 });
 
-
 // CONFIGURATOR - COLOR LIST //
-
 
 function initializeColorInColorList(percent) {
     const colorContainer = document.querySelector(".color_container--bottom");
@@ -253,43 +294,47 @@ function initializeColorInColorList(percent) {
         </div>
     `;
 
-
     const colorElement = document.createElement('div');
     colorElement.classList.add('color_element');
         
     colorElement.innerHTML = htmlTemplate;
-    
+
     colorContainer.insertBefore(colorElement, elementIndex === COLOR_LIST.length - 1 ? null : colorContainer.children[elementIndex]);
     initializeColorListener(elementIndex);
 
-    updateColorContainerMargin()
+    updateColorContainerMargin();
 }
 
 function updateColorSelectorActive() {
-    const colorElements = document.querySelectorAll(".color_element")
+    const colorElements = document.querySelectorAll(".color_element");
 
     for (let i = 0; i < colorElements.length; i++) {
         colorElements[i].classList.remove("selected");
         if (i == CURRENT_INDEX) colorElements[i].classList.add("selected");
     }
-    
+}
+
+function getColorElementIndex(colorElement) {
+    var nodes = Array.prototype.slice.call(document.querySelector(".color_container--bottom").children)
+
+    return nodes.indexOf(colorElement);
 }
 
 function initializeColorListener(elementIndex) {
-    const colorContainer_preview = document.querySelector(`.color_element:nth-child(${elementIndex + 1}) > .color_element--preview`);
-    const colorContainer_color = document.querySelector(`.color_element:nth-child(${elementIndex + 1}) > .color_element--hex`);
-    const colorContainer_percent = document.querySelector(`.color_element:nth-child(${elementIndex + 1}) > .color_element--percent`);
-    const colorContainer_delete = document.querySelector(`.color_element:nth-child(${elementIndex + 1}) > .color_element--delete`);
+    const colorContainer = document.querySelector(`.color_element:nth-child(${elementIndex + 1})`);
+    const colorContainer_preview = colorContainer.querySelector(`.color_element--preview`);
+    const colorContainer_color = colorContainer.querySelector(`.color_element--hex`);
+    const colorContainer_percent = colorContainer.querySelector(`.color_element--percent`);
+    const colorContainer_delete = colorContainer.querySelector(`.color_element--delete`);
     
-
     colorContainer_preview.addEventListener("click", () => {
-        changeColorSelected(elementIndex);
+        changeColorSelected(getColorElementIndex(colorContainer));
     });
-
+    
     // COLOR INPUT
-
+    
     colorContainer_color.addEventListener("click", () => {
-        changeColorSelected(elementIndex);
+        changeColorSelected(getColorElementIndex(colorContainer));
     })
 
     colorContainer_color.addEventListener("input", () => {
@@ -297,27 +342,62 @@ function initializeColorListener(elementIndex) {
 
         if (!hexRegex.test(colorContainer_color.value)) return;
 
-        updateRGBValue(colorContainer_color.value);
-        updateSlidersFromHex(colorContainer_color.value);
+        updateAllParametersValue(colorContainer_color.value);
         updateGradientThumbColor(colorContainer_color.value);
 
         colorContainer_preview.style.background = colorContainer_color.value;
     })
 
-
-    // PERCENT INPUT
+    // PERCENT INPUT //
 
     colorContainer_percent.addEventListener("click", () => {
-        changeColorSelected(elementIndex);
+        changeColorSelected(getColorElementIndex(colorContainer));
     })
 
     colorContainer_percent.addEventListener("input", () => {
-        console.log(colorContainer_percent.value)
-    })
+        if ((!(colorContainer_percent.value >= 0) || 
+             !(colorContainer_percent.value <= 100)) || 
+             !Number.isInteger(Number(colorContainer_percent.value)) || 
+             colorContainer_percent.value.length <= 0
+        ) return;
+
+        updateGradientThumbPosition(COLOR_LIST[CURRENT_INDEX].HTMLelement, colorContainer_percent.value * (gradientBar.clientWidth / 100));
+    });
+
+    // DELETE ELEMENT //
 
     colorContainer_delete.addEventListener("click", () => {
-        console.log("delete", elementIndex)
+        if (document.querySelectorAll(".color_element").length == 1) return;
+
+        elementIndex = getColorElementIndex(colorContainer);
+        
+        COLOR_LIST.splice(elementIndex, 1);
+        
+        document.querySelector(`.color_element:nth-child(${elementIndex + 1})`).remove();
+        document.querySelector(`.preview_container--bar > .slider-thumb:nth-child(${elementIndex + 1})`).remove();
+        
+        if (CURRENT_INDEX == elementIndex) {
+            CURRENT_INDEX = 0;
+        } else if (CURRENT_INDEX > elementIndex) {
+            CURRENT_INDEX--;
+        }
+
+        changeColorSelected(CURRENT_INDEX);
+
+        checkLastColorInList();
     });
+}
+
+function checkLastColorInList() {
+    const colorElements = document.querySelectorAll(".color_element");
+
+    if (colorElements.length == 1) {
+        document.querySelector(".color_element").classList.add("disable");
+    } else if (colorElements.length > 1) {
+        colorElements.forEach(element => {
+            element.classList.remove("disable");
+        })
+    }
 }
 
 function updateColorPreviewInList(color) {
@@ -325,7 +405,7 @@ function updateColorPreviewInList(color) {
 
     if (colorElements.length == 0) return;
 
-    colorElements[CURRENT_INDEX].querySelector(".color_element--preview").style.background = color; // CACA
+    colorElements[CURRENT_INDEX].querySelector(".color_element--preview").style.background = color;
 }
 
 function updateHexInList(hexValue) {
@@ -557,6 +637,9 @@ hexInput.addEventListener("input", () => {
     updateRGBValue(hexInput.value);
     updateSlidersFromHex(hexInput.value);
     updateGradientThumbColor(hexInput.value);
+
+    updateHexInList(hexInput.value);
+    updateColorPreviewInList(hexInput.value);
 })
 
 rgbInputs.forEach(rgbInput => {
@@ -572,6 +655,9 @@ rgbInputs.forEach(rgbInput => {
 
         updateSlidersFromHex(hexValue);
         updateGradientThumbColor(hexValue);
+
+        updateHexInList(hexValue);
+        updateColorPreviewInList(hexValue);
     })  
 })
 
@@ -584,8 +670,6 @@ document.addEventListener("mouseup", () => {
 });
 
 updateColor()
-
-
 
 // CONFIGURATOR - KNOB //
 

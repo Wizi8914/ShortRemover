@@ -317,6 +317,16 @@ label {
                     background: rgb(0 0 0 / 25%);
                 }
 
+                &.disable {
+                    .color_element--delete {
+                        cursor: not-allowed;
+                        svg {
+                            transition: none !important;
+                            fill: rgb(119, 119, 119);
+                        }
+                    }
+                }
+
                 &--preview {
                     height: 60px;
                     width: 60px;

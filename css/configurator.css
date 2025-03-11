@@ -278,6 +278,13 @@ label {
 .configurator_container .color_container--bottom .color_element.selected {
   background: rgba(0, 0, 0, 0.25);
 }
+.configurator_container .color_container--bottom .color_element.disable .color_element--delete {
+  cursor: not-allowed;
+}
+.configurator_container .color_container--bottom .color_element.disable .color_element--delete svg {
+  transition: none !important;
+  fill: rgb(119, 119, 119);
+}
 .configurator_container .color_container--bottom .color_element--preview {
   height: 60px;
   width: 60px;

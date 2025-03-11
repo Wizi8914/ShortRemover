@@ -65,6 +65,18 @@
     "param_RedirectShort": {
         "message": "Open Shorts as a video"
     },
+    "configurator_createTheme": {
+        "message": "Add to themes"
+    },
+    "configurator_modifyTheme": {
+        "message": "Modify this theme"
+    },
+    "configurator_colorCode": {
+        "message": "Color Code"
+    },
+    "configurator_rotation": {
+        "message": "Rotation"
+    },
     "log_DisconnectOberserver": {
         "message": "Disconnected all observers"
     },
