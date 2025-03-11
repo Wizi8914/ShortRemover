@@ -316,7 +316,7 @@ function initializeColorInColorList(percent) {
 
     colorContainer.insertBefore(colorElement, elementIndex === COLOR_LIST.length - 1 ? null : colorContainer.children[elementIndex]);
     
-    //initializeColorListener(elementIndex);
+    initializeColorListener(elementIndex);
 
     updateColorContainerMargin();
 }
