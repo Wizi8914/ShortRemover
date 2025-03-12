@@ -22,23 +22,26 @@ let isLoadingCustomGradient = false;
 
 document.addEventListener('DOMContentLoaded', async () => {
     changeLanguage();
+    await loadCustomTheme();
+    initializeUIComponents();
+    updateColor();
+});
 
+async function loadCustomTheme() {
     const themeID = getThemeID();
-
     if (themeID != -1) {
-        submitBtn.setAttribute("i18n-data", "configurator_modifyTheme")
+        submitBtn.setAttribute("i18n-data", "configurator_modifyTheme");
         isLoadingCustomGradient = true;
         await initializeGradient(themeID);
     }
+}
 
+function initializeUIComponents() {
     displayGradientsElement();
     updateGradientThumbActive();
     updateColorSelectorActive();
-    
     updateAllParametersValue(COLOR_LIST[0].color);
-
-    updateColor()
-});
+}
 
 chrome.storage.local.get('theme', function (result) {
     const theme = result.theme !== undefined ? result.theme : 'dark';
@@ -47,35 +50,36 @@ chrome.storage.local.get('theme', function (result) {
 
 async function initializeGradient(themeID) {
     const gradientComponents = await getGradientComponents(themeID);
-
     let colorElements = gradientComponents.colorElements;
 
-    // KNOB Rotation
-    
-    ANGLE = gradientComponents.angle;
-    
-    if (ANGLE > 360) {
-        ANGLE = Math.round(ANGLE - 360);
-    } else if (ANGLE > 720) {
-        ANGLE = Math.round(ANGLE - 720)
-    } else if (ANGLE < 0) {
-        ANGLE = Math.round(ANGLE + 360);
-    } else if (ANGLE < - 360) {
-        ANGLE = Math.round(ANGLE + 720);
-    } else {
-        ANGLE = Math.round(ANGLE);
-    }
-    
+    ANGLE = normalizeAngle(gradientComponents.angle);
     angleInput.value = Math.round(ANGLE);
     knob.style.transform = `rotate(${ANGLE}deg)`;
-    
+
     if (colorElements.length == 2 && colorElements[0].color == colorElements[1].color && colorElements[1].position == 100) {
-        colorElements = [colorElements[0]]
+        colorElements = [colorElements[0]];
     }
-    
+
     COLOR_LIST = colorElements;
-    
-    hexInput.value = colorElements[0].color
+    initializeColorElements(colorElements);
+}
+
+function normalizeAngle(angle) {
+    if (angle > 360) {
+        return Math.round(angle - 360);
+    } else if (angle > 720) {
+        return Math.round(angle - 720);
+    } else if (angle < 0) {
+        return Math.round(angle + 360);
+    } else if (angle < -360) {
+        return Math.round(angle + 720);
+    } else {
+        return Math.round(angle);
+    }
+}
+
+function initializeColorElements(colorElements) {
+    hexInput.value = colorElements[0].color;
     updateRGBValue(colorElements[0].color);
     updateSlidersFromHex(colorElements[0].color);
     updateGradientRender();
@@ -539,26 +543,29 @@ function updateSliderThumbColor(hue) {
 }
 
 function updateColor() {
-    const correctedValue = HSVToHSL(BRIGHTNESS, SATURATION)
-
+    const correctedValue = HSVToHSL(BRIGHTNESS, SATURATION);
     const color = `hsl(${HUE}, ${correctedValue.saturation * 100}%, ${correctedValue.lightness * 100}%)`;
-    updatePickerThumbColor(color);
 
+    updatePickerThumbColor(color);
     updateSliderThumbColor(HUE);
     updateColorPreviewInList(color);
-    
-    const rgb = HSLToRGB(HUE, correctedValue.saturation, correctedValue.lightness);
-    hexInput.value = rgbToHex(rgb.r, rgb.g, rgb.b);
-    updateHexInList(rgbToHex(rgb.r, rgb.g, rgb.b));
 
+    const rgb = HSLToRGB(HUE, correctedValue.saturation, correctedValue.lightness);
+    const hexValue = rgbToHex(rgb.r, rgb.g, rgb.b);
+
+    hexInput.value = hexValue;
+    updateHexInList(hexValue);
+    updateRGBInputs(rgb);
+
+    modifyColorInList(hexValue);
+    updateGradientThumbColor(hexValue);
+    updateGradientRender();
+}
+
+function updateRGBInputs(rgb) {
     rgbInputs[0].children[0].value = rgb.r;
     rgbInputs[1].children[0].value = rgb.g;
     rgbInputs[2].children[0].value = rgb.b;
-
-    modifyColorInList(rgbToHex(rgb.r, rgb.g, rgb.b));
-    updateGradientThumbColor(rgbToHex(rgb.r, rgb.g, rgb.b))
-    updateGradientRender()
-    
 }
 
 function updateHue(x) {
@@ -616,25 +623,38 @@ function updateSlidersFromHex(hex) {
     updateGradientRender()
 }
 
-colorSlider.addEventListener("mousedown", (e) => {
+// ICI
+
+colorSlider.addEventListener("mousedown", startDraggingSlider);
+gradientBox.addEventListener("mousedown", startDraggingPicker);
+document.addEventListener("mousemove", handleDragging);
+document.addEventListener("mouseup", stopDragging);
+
+function startDraggingSlider(e) {
     isDraggingSlider = true;
     updateHue(e.offsetX);
-});
+}
 
-gradientBox.addEventListener("mousedown", (e) => {
+function startDraggingPicker(e) {
     isDraggingPicker = true;
     updatePicker(e.offsetX, e.offsetY);
-});
+}
 
-document.addEventListener("mousemove", (e) => {
+function handleDragging(e) {
     if (isDraggingSlider) {
         updateHue(e.clientX - colorSlider.getBoundingClientRect().left);
     }
-
     if (isDraggingPicker) {
         updatePicker(e.clientX - gradientBox.getBoundingClientRect().left, e.clientY - gradientBox.getBoundingClientRect().top);
     }
-});
+}
+
+function stopDragging() {
+    isDraggingSlider = false;
+    isDraggingPicker = false;
+    isDraggingGradientSlider = false;
+    updateGradientRender();
+}
 
 function updateRGBValue(hexValue) {
     const rgbValues = HEXToRGB(hexValue)
@@ -676,14 +696,6 @@ rgbInputs.forEach(rgbInput => {
         updateColorPreviewInList(hexValue);
     })  
 })
-
-document.addEventListener("mouseup", () => {
-    isDraggingSlider = false;
-    isDraggingPicker = false;
-    isDraggingGradientSlider = false;
-
-    updateGradientRender();
-});
 
 // CONFIGURATOR - KNOB //
 
