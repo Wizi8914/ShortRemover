@@ -3,6 +3,7 @@
     const youtubeElements = {
         navbarUndeployed: ".ytd-mini-guide-renderer:nth-child(2)",
         navbarDeployed: "ytd-guide-entry-renderer:nth-child(2)",
+        channelTab: "yt-tab-shape.yt-tab-shape-wiz--host-clickable[tab-title=Shorts]",
         videoPlayerRecommended: "ytd-reel-shelf-renderer.ytd-item-section-renderer:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape)",
         remixedRecommendedShort: "ytd-reel-shelf-renderer.style-scope.ytd-item-section-renderer:not(:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape))",
         remixedRecommendedShortInDescription: ".style-scope[inline-structured-description] > .style-scope > ytd-reel-shelf-renderer:not(:has(> .ytd-reel-shelf-renderer > .ytd-reel-shelf-renderer > yt-icon > .yt-icon-shape))",
@@ -198,9 +199,24 @@
         getParamState('paramChannelTab', (isActive) => {
             if (!isActive) return;
 
-            document.querySelectorAll('.yt-tab-shape-wiz--host-clickable').forEach(tabElement => {
-                tabElement.children[0].innerHTML.toLowerCase().includes('shorts') ? tabElement.remove() : null;
-            });
+            waitForElement(youtubeElements.channelTab, channelTab => {
+                const tabContainer = Array.prototype.slice.call(document.querySelector('.yt-tab-group-shape-wiz__tabs').children);
+                const tabWidth = channelTab.clientWidth;
+                channelTab.style.display = "none"; // Cant remove because this cause lot of bugs after changing tab
+                
+                // Replace the slider position under tab
+                const tabSlider = document.querySelector(".yt-tab-group-shape-wiz__slider");
+                let sliderTransform = parseInt(tabSlider.style.transform.replace("translateX(", "").replace("px)", ""));
+
+                const selectedIndex = tabContainer.indexOf(document.querySelector(".yt-tab-shape-wiz__tab--tab-selected").parentElement); // Index of selected element
+                const shortsTabIndex = tabContainer.indexOf(channelTab); // Index of selected element
+
+                if (selectedIndex <= shortsTabIndex) return;                
+                
+                sliderTransform = (sliderTransform - tabWidth - 24) > (selectedIndex * 50) ? (sliderTransform - tabWidth - 24) : sliderTransform;
+
+                tabSlider.style.transform = `translateX(${sliderTransform}px)`;
+            })
         });
     }
 
