@@ -39,24 +39,51 @@ body {
     }
 
     &__bottom {
-        display: flex;
-        margin-top: 4em;
-        gap: 3rem;        
+        &-row {
+            display: flex;
+            margin-top: 4em;
+            gap: 3rem;
+            justify-content: center;
 
-        &--button {
-            padding: 20px 30px;
-            font-size: 1.8em;
-            border-radius: 20px;
-            background-color: var(--color-blog);
-            color: var(--color-text);
-
-            &:hover {
-                filter: brightness(1.2);
-                transition-duration: .5s;
+            &:nth-child(2) {
+                margin-top: 2.5em;
             }
         }
     }
 }
+
+.link-button {
+    padding: 20px 30px;
+    font-size: 1.8em;
+    border-radius: 20px;
+    background-color: var(--color-blog);
+    color: var(--color-text);
+
+    &:hover {
+        filter: brightness(1.2);
+        transition-duration: .5s;
+    }
+}
+
+/* ko-fi icon */
+
+.fa-ko-fi::before {
+    content: "\f0f4";
+    display: inline-block;
+    font-size: 1.1em;
+    line-height: 0.45em;
+    margin: -0.45em 0 0 -0.2em;
+    overflow-y: hidden;
+    padding-top: 0.45em;
+  }
+  .fa-ko-fi::after {
+    color: #000;
+    content: "\f004";
+    font-size: 50%;
+    font-weight: 900;
+    margin: 0.5em 0 0 -2em;
+    position: absolute;
+  }
 
 .footer {
     position: absolute;
