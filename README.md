@@ -170,5 +170,9 @@ Want to **contribute** and appear here ? Open a [Pull Request](https://github.co
 </table><a href="https://crowdin.com/project/shortremover" target="_blank">Translate in Crowdin 🚀</a>
 <!-- CROWDIN-CONTRIBUTORS-LIST:END -->
 
+# 💖 Support Me
+If you enjoy using this project and want to support its development, consider buying me a coffee!
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/B0B51BZA6O)
 ___
 Made with ❤️ and JavaScript!
