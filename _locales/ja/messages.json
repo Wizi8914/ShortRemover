@@ -65,6 +65,18 @@
     "param_RedirectShort": {
         "message": "ショートパンツを動画として開く"
     },
+    "configurator_createTheme": {
+        "message": "テーマに追加"
+    },
+    "configurator_modifyTheme": {
+        "message": "このテーマを変更"
+    },
+    "configurator_colorCode": {
+        "message": "カラーコード"
+    },
+    "configurator_rotation": {
+        "message": "回転"
+    },
     "log_DisconnectOberserver": {
         "message": "すべてのオブザーバーを切断しました"
     },
