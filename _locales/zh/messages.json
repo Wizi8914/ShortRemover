@@ -65,6 +65,18 @@
     "param_RedirectShort": {
         "message": "以视频形式打开 Short"
     },
+    "configurator_createTheme": {
+        "message": "添加到主题"
+    },
+    "configurator_modifyTheme": {
+        "message": "修改主题"
+    },
+    "configurator_colorCode": {
+        "message": "颜色代码"
+    },
+    "configurator_rotation": {
+        "message": "旋转"
+    },
     "log_DisconnectOberserver": {
         "message": "断开所有观察家的连接"
     },
