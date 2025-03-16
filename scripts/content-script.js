@@ -211,9 +211,9 @@
                 const selectedIndex = tabContainer.indexOf(document.querySelector(".yt-tab-shape-wiz__tab--tab-selected").parentElement); // Index of selected element
                 const shortsTabIndex = tabContainer.indexOf(channelTab); // Index of selected element
 
-                if (selectedIndex <= shortsTabIndex) return;                
+                if (selectedIndex <= shortsTabIndex) return;
                 
-                sliderTransform = (sliderTransform - tabWidth - 24) > (selectedIndex * 50) ? (sliderTransform - tabWidth - 24) : sliderTransform;
+                sliderTransform = (sliderTransform - tabWidth - 24) > (selectedIndex * 47) ? (sliderTransform - tabWidth - 24) : sliderTransform;
 
                 tabSlider.style.transform = `translateX(${sliderTransform}px)`;
             })
