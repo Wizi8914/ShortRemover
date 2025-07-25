@@ -24,6 +24,12 @@
   <a title="Crowdin" target="_blank" href="https://crowdin.com/project/shortremover">
     <img src="https://badges.crowdin.net/shortremover/localized.svg">
   </a>
+   <a href="https://chromewebstore.google.com/detail/shortremover/peleaobidpefakpgljeakdidoplcjemj" target="_blank">
+    <img alt="Chrome Web Store Users" src="https://img.shields.io/chrome-web-store/users/peleaobidpefakpgljeakdidoplcjemj">
+  </a>
+  <a href="https://chromewebstore.google.com/detail/shortremover/peleaobidpefakpgljeakdidoplcjemj" target="_blank">
+    <img alt="Chrome Web Store Rating" src="https://img.shields.io/chrome-web-store/rating/peleaobidpefakpgljeakdidoplcjemj">
+  </a>
 </p>
 
 <p align="center">
